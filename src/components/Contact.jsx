@@ -24,19 +24,36 @@ const CONTACT_INFO = [
   },
 ]
 
+const EMPTY_FORM = { name: '', phone: '', email: '', message: '', website: '' }
+
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [form, setForm] = useState(EMPTY_FORM)
+  const [status, setStatus] = useState('idle') // idle | submitting | success | error
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
-    setForm({ name: '', phone: '', email: '', message: '' })
+
+    // Honeypot: si el campo trampa viene lleno, es un bot — ignorar en silencio
+    if (form.website) return
+
+    setStatus('submitting')
+    try {
+      await fetch(import.meta.env.VITE_CONTACT_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(form),
+      })
+      setStatus('success')
+      setForm(EMPTY_FORM)
+    } catch (err) {
+      setStatus('error')
+    }
   }
 
   return (
@@ -148,14 +165,36 @@ export default function Contact() {
               </div>
             </div>
 
-            <button type="submit" className="btn-primary mt-6 w-full sm:w-auto">
-              Enviar mensaje
+            <input
+              type="text"
+              name="website"
+              value={form.website}
+              onChange={handleChange}
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
+
+            <button
+              type="submit"
+              disabled={status === 'submitting'}
+              className="btn-primary mt-6 w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+            >
+              {status === 'submitting' ? 'Enviando…' : 'Enviar mensaje'}
               <Send size={16} />
             </button>
 
-            {sent && (
+            {status === 'success' && (
               <p className="mt-4 text-sm font-medium text-primary-600">
                 ¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.
+              </p>
+            )}
+
+            {status === 'error' && (
+              <p className="mt-4 text-sm font-medium text-red-600">
+                Hubo un problema al enviar tu mensaje. Intenta de nuevo o
+                escríbenos directo al 55 8404 1696.
               </p>
             )}
           </form>
