@@ -1,5 +1,6 @@
 import { ArrowRight, MessageCircle } from 'lucide-react'
 import doctoraPhoto from '@/assets/doctora.jpeg'
+import { trackClickWhatsApp } from '@/lib/analytics'
 
 export default function Hero() {
   return (
@@ -35,6 +36,7 @@ export default function Hero() {
               href="https://wa.me/525584041696"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={trackClickWhatsApp}
               className="btn-secondary"
             >
               <MessageCircle size={16} />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Menu, X, Phone } from 'lucide-react'
 import logo from '@/assets/logo.png'
+import { trackClickPhone } from '@/lib/analytics'
 
 const NAV_LINKS = [
   { label: 'Inicio', href: '#inicio' },
@@ -54,6 +55,7 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-3">
           <a
             href="tel:+525584041696"
+            onClick={trackClickPhone}
             className="flex items-center gap-2 rounded-full border border-nude-300 bg-white px-4 py-2.5 text-sm font-semibold text-primary-800 transition hover:bg-nude-100"
           >
             <Phone size={15} />

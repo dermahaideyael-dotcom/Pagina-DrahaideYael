@@ -1,5 +1,6 @@
 import { Instagram, Music2 } from 'lucide-react'
 import logo from '@/assets/logo.png'
+import { trackClickPhone } from '@/lib/analytics'
 
 const LINKS = [
   { label: 'Inicio', href: '#inicio' },
@@ -85,7 +86,11 @@ export default function Footer() {
           </h4>
           <ul className="mt-4 space-y-3 text-sm text-primary-200">
             <li>Plaza Mandarina Interlomas, Edo. de México</li>
-            <li>55 8404 1696</li>
+            <li>
+              <a href="tel:+525584041696" onClick={trackClickPhone} className="hover:text-white">
+                55 8404 1696
+              </a>
+            </li>
             <li>derma.haideyael@gmail.com</li>
           </ul>
         </div>

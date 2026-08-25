@@ -1,26 +1,32 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Mail, MapPin, Phone, Send, Clock } from 'lucide-react'
+import { getAttribution, flattenAttribution } from '@/hooks/useAttribution'
+import { trackClickPhone, trackFormStart, trackGenerateLead } from '@/lib/analytics'
 
 const CONTACT_INFO = [
   {
     icon: MapPin,
     title: 'Dirección',
     detail: 'Plaza Mandarina Interlomas, Calle Parque de Cádiz 1, Col. Parques de la Herradura, Primer piso, Estado de México',
+    href: null,
   },
   {
     icon: Phone,
     title: 'Teléfono / WhatsApp',
     detail: '55 8404 1696',
+    href: 'tel:+525584041696',
   },
   {
     icon: Mail,
     title: 'Correo',
     detail: 'derma.haideyael@gmail.com',
+    href: null,
   },
   {
     icon: Clock,
     title: 'Horario',
     detail: 'Lun - Vie: 10:00 AM - 8:00 PM · Sáb: 8:00 AM - 3:00 PM · Dom: Cerrado',
+    href: null,
   },
 ]
 
@@ -29,10 +35,17 @@ const EMPTY_FORM = { name: '', phone: '', email: '', message: '', website: '' }
 export default function Contact() {
   const [form, setForm] = useState(EMPTY_FORM)
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
+  const hasStartedRef = useRef(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
+
+    // form_start: una sola vez por sesión de interacción, y no para el honeypot
+    if (!hasStartedRef.current && name !== 'website') {
+      hasStartedRef.current = true
+      trackFormStart()
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -42,15 +55,35 @@ export default function Contact() {
     if (form.website) return
 
     setStatus('submitting')
+
+    const payload = {
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      message: form.message,
+      website: form.website,
+      ...flattenAttribution(getAttribution()),
+      current_page: window.location.pathname + window.location.search,
+      referrer: document.referrer || null,
+    }
+
     try {
-      await fetch(import.meta.env.VITE_CONTACT_ENDPOINT, {
+      const res = await fetch(import.meta.env.VITE_CONTACT_ENDPOINT, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       })
-      setStatus('success')
-      setForm(EMPTY_FORM)
+
+      const data = await res.json()
+
+      if (data.ok) {
+        setStatus('success')
+        trackGenerateLead()
+        setForm(EMPTY_FORM)
+        hasStartedRef.current = false
+      } else {
+        setStatus('error')
+      }
     } catch (err) {
       setStatus('error')
     }
@@ -73,14 +106,24 @@ export default function Contact() {
         <div className="mt-14 grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="space-y-6">
-              {CONTACT_INFO.map(({ icon: Icon, title, detail }) => (
+              {CONTACT_INFO.map(({ icon: Icon, title, detail, href }) => (
                 <div key={title} className="flex items-start gap-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
                     <Icon size={22} />
                   </span>
                   <div>
                     <p className="text-sm font-semibold text-primary-950">{title}</p>
-                    <p className="text-sm text-nude-600">{detail}</p>
+                    {href ? (
+                      <a
+                        href={href}
+                        onClick={trackClickPhone}
+                        className="text-sm text-nude-600 transition hover:text-primary-700"
+                      >
+                        {detail}
+                      </a>
+                    ) : (
+                      <p className="text-sm text-nude-600">{detail}</p>
+                    )}
                   </div>
                 </div>
               ))}

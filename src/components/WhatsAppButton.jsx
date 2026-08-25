@@ -1,3 +1,5 @@
+import { trackClickWhatsApp } from '@/lib/analytics'
+
 const PHONE_NUMBER = '525584041696'
 const DEFAULT_MESSAGE = 'Hola, me gustaría agendar una cita con la Dra. Haide Yael.'
 
@@ -9,6 +11,7 @@ export default function WhatsAppButton() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={trackClickWhatsApp}
       aria-label="Escríbenos por WhatsApp"
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/40 transition hover:scale-110 animate-pulse hover:animate-none"
     >
