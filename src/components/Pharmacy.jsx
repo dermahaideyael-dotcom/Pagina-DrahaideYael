@@ -1,26 +1,10 @@
-import { CheckCircle2, ShoppingBag } from 'lucide-react'
+import { CheckCircle2, ShoppingBag, Sparkles } from 'lucide-react'
 
 const CATEGORIES = [
-  {
-    name: 'Protectores solares dermatológicos',
-    image:
-      'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80',
-  },
-  {
-    name: 'Tratamientos para acné',
-    image:
-      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=500&q=80',
-  },
-  {
-    name: 'Cremas hidratantes especializadas',
-    image:
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80',
-  },
-  {
-    name: 'Productos antiedad y piel sensible',
-    image:
-      'https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?auto=format&fit=crop&w=500&q=80',
-  },
+  { name: 'Protectores solares dermatológicos' },
+  { name: 'Tratamientos para acné' },
+  { name: 'Cremas hidratantes especializadas' },
+  { name: 'Productos antiedad y piel sensible' },
 ]
 
 const BRANDS = ['SVR', 'HD Cosmetics', 'Tizo', 'Eucerin', 'La Roche-Posay', 'ISDIN', 'Parabotíca', 'Lazartigue']
@@ -51,18 +35,12 @@ export default function Pharmacy() {
             {CATEGORIES.map((category) => (
               <div
                 key={category.name}
-                className="overflow-hidden rounded-2xl border border-nude-200 bg-white shadow-sm transition hover:shadow-lg"
+                className="flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-nude-200 bg-white p-4 text-center shadow-sm transition hover:shadow-lg"
               >
-                <div className="aspect-square w-full overflow-hidden">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="h-full w-full object-cover transition duration-300 hover:scale-105"
-                  />
-                </div>
-                <div className="p-4">
-                  <p className="text-sm font-semibold text-primary-950">{category.name}</p>
-                </div>
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-50 text-accent-600">
+                  <Sparkles size={22} />
+                </span>
+                <p className="text-sm font-semibold text-primary-950">{category.name}</p>
               </div>
             ))}
           </div>
