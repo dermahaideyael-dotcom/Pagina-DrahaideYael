@@ -69,8 +69,7 @@ export default function Testimonials() {
             Comparte tu experiencia
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-primary-100 md:text-lg">
-            Si ya fuiste paciente de la Dra. Haide, cuéntanos cómo te fue. Tu
-            comentario será revisado antes de publicarse en la página.
+            Si ya fuiste paciente de la Dra. Haide, cuéntanos cómo te fue.
           </p>
         </div>
 
@@ -171,7 +170,7 @@ export default function Testimonials() {
 
           {status === 'success' && (
             <p className="mt-4 text-sm font-medium text-primary-300">
-              ¡Gracias por tu comentario! Lo revisaremos antes de publicarlo.
+              ¡Gracias por tu comentario!
             </p>
           )}
 
