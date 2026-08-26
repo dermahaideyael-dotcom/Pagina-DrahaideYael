@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom'
 import { Instagram, Music2 } from 'lucide-react'
 import logo from '@/assets/logo.png'
 import { trackClickPhone } from '@/lib/analytics'
@@ -19,6 +20,9 @@ const SERVICES = [
 ]
 
 export default function Footer() {
+  const { pathname } = useLocation()
+  const withHomePrefix = (hash) => (pathname === '/' ? hash : `/${hash}`)
+
   return (
     <footer className="bg-primary-950 pt-16 text-primary-100">
       <div className="section-container grid gap-10 pb-12 md:grid-cols-4">
@@ -59,7 +63,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-3">
             {LINKS.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="text-sm text-primary-200 transition hover:text-white">
+                <a href={withHomePrefix(link.href)} className="text-sm text-primary-200 transition hover:text-white">
                   {link.label}
                 </a>
               </li>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Menu, X, Phone } from 'lucide-react'
 import logo from '@/assets/logo.png'
 import { trackClickPhone } from '@/lib/analytics'
@@ -15,6 +16,10 @@ const NAV_LINKS = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  // Los anclas (#servicios, etc.) solo existen en el home — desde otra ruta
+  // (ej. /melasma) hay que anteponer "/" para volver ahí antes de saltar.
+  const withHomePrefix = (hash) => (pathname === '/' ? hash : `/${hash}`)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -30,7 +35,7 @@ export default function Header() {
       }`}
     >
       <div className="section-container flex h-18 items-center justify-between py-4">
-        <a href="#inicio" className="flex items-center gap-3">
+        <a href={withHomePrefix('#inicio')} className="flex items-center gap-3">
           <img src={logo} alt="Dra. Haide Yael" className="h-10 w-10 rounded-full object-cover shadow-sm" />
           <span className="flex items-baseline gap-2">
             <span className="font-display text-xl font-bold text-primary-900 sm:text-2xl">
@@ -44,7 +49,7 @@ export default function Header() {
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={withHomePrefix(link.href)}
               className="text-sm font-medium text-nude-700 transition hover:text-primary-800"
             >
               {link.label}
@@ -61,7 +66,7 @@ export default function Header() {
             <Phone size={15} />
             55 8404 1696
           </a>
-          <a href="#contacto" className="btn-primary !px-5 !py-2.5">
+          <a href={withHomePrefix('#contacto')} className="btn-primary !px-5 !py-2.5">
             Agendar Cita
           </a>
         </div>
@@ -81,7 +86,7 @@ export default function Header() {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={withHomePrefix(link.href)}
                 onClick={() => setOpen(false)}
                 className="text-sm font-medium text-nude-700 hover:text-primary-800"
               >
@@ -89,7 +94,7 @@ export default function Header() {
               </a>
             ))}
             <a
-              href="#contacto"
+              href={withHomePrefix('#contacto')}
               onClick={() => setOpen(false)}
               className="btn-primary mt-2 w-full"
             >

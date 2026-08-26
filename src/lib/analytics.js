@@ -8,7 +8,7 @@ import { initGA4, sendGA4Event } from '@/lib/ga4'
 // ga4.js) deberían cambiar.
 
 let analyticsInitialized = false
-let initialPageViewSent = false
+let lastTrackedPage = null
 
 /** Inicializa todas las plataformas conectadas (hoy: solo GA4). Llamar una sola vez. */
 export function initAnalytics() {
@@ -77,17 +77,19 @@ export function trackEvent(eventName, parameters = {}) {
 }
 
 /**
- * page_view — llamar una sola vez en la carga inicial (ver App.jsx).
- * Protegido con un flag propio (independiente de initAnalytics) porque
- * React StrictMode ejecuta los efectos de montaje dos veces en desarrollo,
- * y esta función se invoca desde un useEffect distinto al de initAnalytics().
- * El día que se agregue un router con rutas propias (/acne, /melasma, etc.),
- * cada cambio de ruta debe volver a llamar trackPageView() de forma explícita
- * (ej. en un listener de cambio de ubicación) — este flag solo cubre la carga inicial.
+ * page_view — llamar en la carga inicial y en cada cambio de ruta (ver App.jsx,
+ * que la invoca desde un listener de useLocation()). Deduplicado por URL exacta
+ * (pathname + search): evita el doble disparo de React StrictMode en la carga
+ * inicial (ambos montajes leen la misma URL), pero sí dispara de nuevo cuando
+ * el usuario navega a una ruta distinta (ej. "/" → "/melasma").
  */
 export function trackPageView() {
-  if (initialPageViewSent) return
-  initialPageViewSent = true
+  if (typeof window === 'undefined') return
+
+  const currentPage = window.location.pathname + window.location.search
+  if (currentPage === lastTrackedPage) return
+  lastTrackedPage = currentPage
+
   trackEvent('page_view', attributionParams())
 }
 
