@@ -4,6 +4,9 @@ import { useAttribution } from '@/hooks/useAttribution'
 import { initAnalytics, trackPageView } from '@/lib/analytics'
 import Home from '@/pages/Home'
 import Melasma from '@/pages/Melasma'
+import Acne from '@/pages/Acne'
+import CaidaCabello from '@/pages/CaidaCabello'
+import Rejuvenecimiento from '@/pages/Rejuvenecimiento'
 
 function App() {
   useAttribution()
@@ -26,6 +29,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/melasma" element={<Melasma />} />
+      <Route path="/acne" element={<Acne />} />
+      <Route path="/caida-cabello" element={<CaidaCabello />} />
+      <Route path="/rejuvenecimiento" element={<Rejuvenecimiento />} />
     </Routes>
   )
 }
