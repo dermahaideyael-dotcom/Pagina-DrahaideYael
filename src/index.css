@@ -32,4 +32,12 @@ body {
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-nude-300 bg-nude-100 px-6 py-3.5 text-sm font-semibold text-primary-800 transition hover:bg-nude-200;
   }
+
+  /* Placeholders temporales de imagen en las landing pages — reemplazar el
+     src de cada <img class="placeholder-img"> por la foto real cuando esté
+     disponible; esta clase se puede quitar en ese momento. */
+  .placeholder-img {
+    background: #f0f0f0;
+    border: 2px dashed #ccc;
+  }
 }

@@ -2,18 +2,7 @@ import {
   ArrowRight,
   MessageCircle,
   Phone,
-  Search,
-  ScanFace,
-  Sparkle,
-  ClipboardList,
-  Stethoscope,
-  CalendarCheck,
-  MapPin,
-  Clock,
-  FlaskConical,
-  Zap,
-  Droplets,
-  ShieldCheck,
+  Sparkles,
 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -25,72 +14,18 @@ const WHATSAPP_HREF =
   encodeURIComponent('Hola, quiero agendar una valoración por acné / cicatrices.') +
   '&utm_source=chatgpt&utm_medium=paid&utm_campaign=acne'
 
-const CAUSES = [
-  {
-    icon: Sparkle,
-    title: 'Acné después de los 25',
-    description:
-      'El acné adulto no funciona igual que el de la adolescencia — suele tener causas distintas (hormonales, estrés, productos inadecuados) y requiere un enfoque diferente.',
-  },
-  {
-    icon: ScanFace,
-    title: 'Cicatrices',
-    description:
-      'Las marcas y cicatrices que deja el acné activo necesitan un diagnóstico de su tipo y profundidad antes de elegir cualquier tratamiento para mejorarlas.',
-  },
-  {
-    icon: Search,
-    title: '¿Por qué es difícil tratarlo solo?',
-    description:
-      'Productos de venta libre no distinguen el tipo de acné ni su causa — sin un diagnóstico dermatológico, es común probar varios productos sin resolver la causa real.',
-  },
+const BENEFICIOS = [
+  { title: 'Piel más clara y uniforme', description: 'Reducción visible de brotes activos e inflamación.' },
+  { title: 'Cicatrices visiblemente reducidas', description: 'Tratamientos orientados a mejorar textura y marcas.' },
+  { title: 'Menos brotes recurrentes', description: 'Un plan que ataca la causa, no solo el síntoma.' },
+  { title: 'Confianza restaurada', description: 'Acompañamiento médico en cada etapa del proceso.' },
 ]
 
-const TREATMENTS = [
-  {
-    icon: FlaskConical,
-    title: 'Tratamiento médico del acné',
-    description: 'Manejo tópico y/o oral prescrito según el tipo y la gravedad de tu acné.',
-  },
-  {
-    icon: Droplets,
-    title: 'Peelings químicos',
-    description: 'Renovación celular para ayudar a mejorar textura y marcas superficiales.',
-  },
-  {
-    icon: Zap,
-    title: 'Micropunción',
-    description: 'Estimulación de la piel orientada a mejorar cicatrices de acné.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Limpieza facial profesional',
-    description: 'Extracción y cuidado profesional como parte del plan, no como sustituto del tratamiento médico.',
-  },
-]
-
-const EXPECTATIONS = [
-  {
-    icon: ClipboardList,
-    step: '1',
-    title: 'Valoración y diagnóstico',
-    description:
-      'La Dra. Haide evalúa tu piel, identifica el tipo de acné y sus posibles causas antes de proponer cualquier tratamiento.',
-  },
-  {
-    icon: Stethoscope,
-    step: '2',
-    title: 'Plan personalizado',
-    description:
-      'Se diseña un plan según tu piel y tu caso particular — no existe un tratamiento único que funcione igual para todas las personas.',
-  },
-  {
-    icon: CalendarCheck,
-    step: '3',
-    title: 'Seguimiento y ajustes',
-    description:
-      'El acné y sus cicatrices suelen requerir varias sesiones y ajustes en el tiempo. Los resultados pueden variar según cada paciente.',
-  },
+const GALLERY = [
+  { src: '/images/placeholder-gallery-acne-1.webp', alt: 'Tratamiento de acné — resultado 1' },
+  { src: '/images/placeholder-gallery-acne-2.webp', alt: 'Tratamiento de acné — resultado 2' },
+  { src: '/images/placeholder-gallery-acne-3.webp', alt: 'Tratamiento de acné — resultado 3' },
+  { src: '/images/placeholder-gallery-acne-4.webp', alt: 'Tratamiento de acné — resultado 4' },
 ]
 
 export default function Acne() {
@@ -143,7 +78,7 @@ export default function Acne() {
                 <div className="aspect-[4/5] w-full overflow-hidden rounded-[1.5rem]">
                   <img
                     src="/doctora-800.webp"
-                    srcSet={`/doctora-480.webp 480w, /doctora-800.webp 800w`}
+                    srcSet="/doctora-480.webp 480w, /doctora-800.webp 800w"
                     sizes="(min-width: 768px) 500px, 90vw"
                     alt="Dra. Haide Yael, especialista en dermatología clínica"
                     width={800}
@@ -160,199 +95,145 @@ export default function Acne() {
 
         {/* 2. Problema */}
         <section className="bg-white py-20 md:py-28">
-          <div className="section-container">
-            <div className="mx-auto max-w-2xl text-center">
+          <div className="section-container grid items-center gap-12 md:grid-cols-2">
+            <div>
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Entendiendo el acné adulto
+                El problema
               </span>
-              <h2 className="section-title mt-6">No todo el acné es igual</h2>
-              <p className="section-subtitle mx-auto">
-                Antes de tratar el acné o sus cicatrices es necesario entender qué
-                lo provoca — por eso un diagnóstico dermatológico hace la
-                diferencia.
+              <h2 className="section-title mt-6">¿Por qué aparece el acné adulto?</h2>
+              <p className="section-subtitle">
+                El acné adulto puede aparecer por cambios hormonales, estrés o el
+                uso de productos inadecuados. A diferencia del acné juvenil,
+                suele ser más persistente y dejar marcas si no se trata a tiempo.
               </p>
             </div>
-
-            <div className="mt-14 grid gap-6 md:grid-cols-3">
-              {CAUSES.map(({ icon: Icon, title, description }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-nude-200 bg-nude-50 p-7 shadow-sm"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-5 text-lg font-bold text-primary-950">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-nude-600">{description}</p>
-                </div>
-              ))}
+            <div>
+              {/* REEMPLAZAR CON IMAGEN REAL: acné (problema) */}
+              <img
+                src="/images/placeholder-acne.webp"
+                alt="Acné adulto"
+                width={400}
+                height={300}
+                loading="lazy"
+                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+              />
             </div>
           </div>
         </section>
 
-        {/* 3. Autoridad */}
-        <section className="py-20 md:py-28">
-          <div className="section-container grid items-center gap-12 md:grid-cols-5">
-            <div className="md:col-span-2">
-              <div className="rounded-[2rem] bg-white p-3 shadow-xl shadow-primary-900/10">
-                <div className="aspect-square w-full overflow-hidden rounded-[1.5rem]">
-                  <img
-                    src="/doctora-800.webp"
-                    alt="Dra. Haide Yael"
-                    width={800}
-                    height={800}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
+        {/* 3. Solución */}
+        <section className="bg-nude-100 py-20 md:py-28">
+          <div className="section-container grid items-center gap-12 md:grid-cols-2">
+            <div className="order-2 md:order-1">
+              {/* REEMPLAZAR CON IMAGEN REAL: solución acné */}
+              <img
+                src="/images/placeholder-solution-acne.webp"
+                alt="Solución para el acné"
+                width={400}
+                height={300}
+                loading="lazy"
+                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+              />
+            </div>
+            <div className="order-1 md:order-2">
+              <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
+                La solución
+              </span>
+              <h2 className="section-title mt-6">Así trata la Dra. Haide el acné</h2>
+              <p className="section-subtitle">
+                La Dra. Haide combina limpieza profunda, tratamientos médicos
+                específicos según tu tipo de acné y un plan de cuidado
+                post-tratamiento para ayudar a controlar los brotes y prevenir
+                nuevas cicatrices.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {['Diagnóstico', 'Plan personalizado', 'Resultados naturales'].map((item) => (
+                  <span
+                    key={item}
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-primary-800 shadow-sm"
+                  >
+                    <Sparkles size={14} className="text-primary-500" />
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
-
-            <div className="md:col-span-3">
-              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Dra. Haide Yael
-              </span>
-              <h2 className="section-title mt-6">
-                Especialista en Dermatología Clínica y Tricología
-              </h2>
-              <p className="section-subtitle">
-                Con experiencia en diagnóstico, tratamiento y prevención de
-                enfermedades de la piel, la Dra. Haide aborda el acné con un
-                enfoque médico riguroso — priorizando siempre tu seguridad y
-                bienestar por encima de promesas irreales.
-              </p>
-              <ul className="mt-6 space-y-3 text-sm text-nude-700">
-                <li>• Atención médica personalizada, no protocolos genéricos</li>
-                <li>• Tratamientos sustentados en evidencia científica</li>
-                <li>• Consultorio en Plaza Mandarina Interlomas, Estado de México</li>
-              </ul>
-            </div>
           </div>
         </section>
 
-        {/* 4. Tratamiento */}
-        <section className="bg-nude-100 py-20 md:py-28">
-          <div className="section-container">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
-                Opciones de tratamiento
-              </span>
-              <h2 className="section-title mt-6">Un plan dermatológico, no una fórmula única</h2>
-              <p className="section-subtitle mx-auto">
-                Estas son algunas de las herramientas disponibles en consulta. La
-                combinación adecuada depende de tu diagnóstico — no prometemos un
-                resultado específico para ningún caso.
-              </p>
-            </div>
-
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {TREATMENTS.map(({ icon: Icon, title, description }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-nude-200 bg-white p-6 shadow-sm"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-4 text-base font-bold text-primary-950">{title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 5. Expectativas */}
-        <section className="py-20 md:py-28">
+        {/* 4. Resultados / Beneficios */}
+        <section className="bg-white py-20 md:py-28">
           <div className="section-container">
             <div className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Qué esperar
+                Beneficios
               </span>
-              <h2 className="section-title mt-6">Un proceso realista, paso a paso</h2>
-              <p className="section-subtitle mx-auto">
-                El acné y sus secuelas son una condición que se maneja, no se
-                "cura" de la noche a la mañana — así se ve el proceso en consulta.
-              </p>
+              <h2 className="section-title mt-6">Lo que buscamos lograr juntos</h2>
             </div>
 
-            <div className="mt-14 grid gap-6 md:grid-cols-3">
-              {EXPECTATIONS.map(({ icon: Icon, step, title, description }) => (
-                <div
-                  key={step}
-                  className="relative rounded-2xl border border-nude-200 bg-white p-7 shadow-sm"
-                >
-                  <span className="font-display text-4xl font-bold text-nude-200">{step}</span>
-                  <span className="mt-2 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-4 text-lg font-bold text-primary-950">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-nude-600">{description}</p>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2">
+              {BENEFICIOS.map((b) => (
+                <div key={b.title} className="rounded-2xl border border-nude-200 bg-nude-50 p-6">
+                  <p className="text-base font-bold text-primary-950">{b.title}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{b.description}</p>
                 </div>
               ))}
             </div>
 
-            <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-nude-500">
+            <div className="mt-10">
+              {/* REEMPLAZAR CON IMAGEN REAL: antes/después acné */}
+              <img
+                src="/images/placeholder-before-after-acne.webp"
+                alt="Antes y después — tratamiento de acné"
+                width={500}
+                height={300}
+                loading="lazy"
+                className="placeholder-img mx-auto w-full max-w-[500px] rounded-2xl"
+              />
+            </div>
+
+            <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-nude-500">
               Los resultados pueden variar según cada paciente y no garantizamos
               resultados específicos.
             </p>
           </div>
         </section>
 
-        {/* 6. Ubicación */}
-        <section className="bg-white py-20 md:py-28">
-          <div className="section-container grid gap-10 lg:grid-cols-2 lg:items-center">
+        {/* 5. Equipamiento / Procedimiento */}
+        <section className="bg-nude-100 py-20 md:py-28">
+          <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div>
-              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Ubicación
+              <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
+                Tecnología
               </span>
-              <h2 className="section-title mt-6">Consultorio en Interlomas, Huixquilucan</h2>
-
-              <div className="mt-8 space-y-5">
-                <div className="flex items-start gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <MapPin size={22} />
-                  </span>
-                  <p className="text-sm text-nude-700">
-                    Plaza Mandarina Interlomas, Calle Parque de Cádiz 1, Col.
-                    Parques de la Herradura, Primer piso, Huixquilucan, Estado de
-                    México
-                  </p>
-                </div>
-                <div className="flex items-start gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <Clock size={22} />
-                  </span>
-                  <p className="text-sm text-nude-700">
-                    Lun - Vie: 10:00 AM - 8:00 PM · Sáb: 8:00 AM - 3:00 PM · Dom: Cerrado
-                  </p>
-                </div>
-              </div>
+              <h2 className="section-title mt-6">Equipo y procedimientos</h2>
+              <p className="section-subtitle">
+                Utilizamos <strong>dermatoscopio</strong> para el diagnóstico,
+                tecnología <strong>láser</strong> y <strong>peelings químicos</strong>{' '}
+                según el caso, siempre con un enfoque médico personalizado.
+              </p>
             </div>
-
-            <div className="aspect-video w-full overflow-hidden rounded-2xl shadow-sm">
-              <iframe
-                title="Ubicación de la clínica en Interlomas"
-                className="h-full w-full border-0"
+            <div>
+              {/* REEMPLAZAR CON IMAGEN REAL: equipo utilizado en acné */}
+              <img
+                src="/images/placeholder-equipo-acne.webp"
+                alt="Equipo utilizado en el tratamiento de acné"
+                width={400}
+                height={300}
                 loading="lazy"
-                src="https://www.google.com/maps?q=Plaza%20Mandarina%20Interlomas%2C%20Estado%20de%20Mexico&output=embed"
+                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>
         </section>
 
-        {/* 7. CTA final */}
-        <section className="bg-primary-950 py-20 md:py-24">
+        {/* 6. CTA principal */}
+        <section className="bg-primary-950 py-16 md:py-20">
           <div className="section-container text-center">
-            <h2 className="font-display text-3xl font-bold text-white md:text-4xl">
+            <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
               Agenda tu valoración por acné o cicatrices
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-primary-100 md:text-lg">
-              El primer paso es una evaluación con la Dra. Haide para entender tu
-              caso y definir el plan adecuado para ti.
-            </p>
-
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-6">
               <a
                 href={WHATSAPP_HREF}
                 target="_blank"
@@ -363,10 +244,65 @@ export default function Acne() {
                 <MessageCircle size={18} />
                 Escribir por WhatsApp
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. Galería inspiradora */}
+        <section className="bg-white py-20 md:py-28">
+          <div className="section-container">
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
+                Galería
+              </span>
+              <h2 className="section-title mt-6">Inspiración de resultados</h2>
+            </div>
+
+            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+              {GALLERY.map((img) => (
+                // REEMPLAZAR CON IMAGEN REAL: galería de acné
+                <img
+                  key={img.src}
+                  src={img.src}
+                  alt={img.alt}
+                  width={300}
+                  height={300}
+                  loading="lazy"
+                  className="placeholder-img aspect-square w-full rounded-2xl object-cover"
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 8. CTA secundario */}
+        <section className="bg-nude-100 py-16 md:py-20">
+          <div className="section-container grid items-center gap-8 rounded-3xl bg-white p-8 shadow-sm md:grid-cols-2 md:p-12">
+            <div>
+              <h3 className="font-display text-2xl font-bold text-primary-950">
+                ¿Listo para tratar tu acné?
+              </h3>
+              <p className="mt-3 text-sm text-nude-600">
+                Escríbenos por WhatsApp o llámanos — consultorio en Plaza
+                Mandarina Interlomas, Huixquilucan, Estado de México. Lun - Vie:
+                10:00 AM - 8:00 PM · Sáb: 8:00 AM - 3:00 PM.
+              </p>
+            </div>
+            <div className="flex flex-col items-start gap-3 sm:flex-row md:justify-end">
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={trackClickWhatsApp}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                <MessageCircle size={18} />
+                WhatsApp
+              </a>
               <a
                 href="tel:+525584041696"
                 onClick={trackClickPhone}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/20"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-nude-300 bg-nude-50 px-6 py-3.5 text-sm font-semibold text-primary-800 transition hover:bg-nude-100"
               >
                 <Phone size={18} />
                 Llamar 55 8404 1696

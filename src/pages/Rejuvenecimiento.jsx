@@ -2,17 +2,7 @@ import {
   ArrowRight,
   MessageCircle,
   Phone,
-  Layers,
-  SunMedium,
-  Stethoscope,
-  ClipboardList,
-  CalendarCheck,
-  MapPin,
-  Clock,
-  Syringe,
-  Activity,
-  Zap,
-  Radar,
+  Sparkles,
 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -24,72 +14,18 @@ const WHATSAPP_HREF =
   encodeURIComponent('Hola, quiero agendar una valoración de rejuvenecimiento dermatológico.') +
   '&utm_source=chatgpt&utm_medium=paid&utm_campaign=rejuvenecimiento'
 
-const CAUSES = [
-  {
-    icon: Layers,
-    title: 'Líneas de expresión y pérdida de firmeza',
-    description:
-      'Con el tiempo, la piel produce menos colágeno — aparecen líneas de expresión y la piel pierde firmeza de forma gradual y natural.',
-  },
-  {
-    icon: SunMedium,
-    title: 'Manchas y textura irregular',
-    description:
-      'Años de exposición solar y el paso del tiempo afectan el tono y la textura de la piel, dando un aspecto menos uniforme y luminoso.',
-  },
-  {
-    icon: Stethoscope,
-    title: '¿Por qué buscar un enfoque médico?',
-    description:
-      'Los cosméticos de venta libre solo actúan de forma superficial — un diagnóstico dermatológico permite elegir el tratamiento adecuado para resultados naturales y seguros.',
-  },
+const BENEFICIOS = [
+  { title: 'Piel más firme', description: 'Mejora de la firmeza gracias a la bioestimulación de colágeno.' },
+  { title: 'Aspecto notablemente más joven', description: 'Suavizado de líneas de expresión con resultados naturales.' },
+  { title: 'Luminosidad restaurada', description: 'Piel con mejor textura y aspecto más descansado.' },
+  { title: 'Resultados naturales', description: 'Un enfoque médico que respeta tus rasgos, sin exagerar.' },
 ]
 
-const TREATMENTS = [
-  {
-    icon: Syringe,
-    title: 'Toxina botulínica',
-    description: 'Suaviza líneas de expresión con un enfoque médico y dosificación individual.',
-  },
-  {
-    icon: Activity,
-    title: 'Bioestimulación de colágeno',
-    description: 'Estimula la producción natural de colágeno de la piel de forma gradual.',
-  },
-  {
-    icon: Zap,
-    title: 'Micropunción',
-    description: 'Mejora de textura y luminosidad mediante estimulación controlada.',
-  },
-  {
-    icon: Radar,
-    title: 'Radiofrecuencia',
-    description: 'Reafirmación de la piel como parte de un plan de rejuvenecimiento integral.',
-  },
-]
-
-const EXPECTATIONS = [
-  {
-    icon: ClipboardList,
-    step: '1',
-    title: 'Valoración y diagnóstico',
-    description:
-      'La Dra. Haide evalúa tu piel y tus objetivos antes de proponer cualquier tratamiento — priorizando siempre un resultado natural.',
-  },
-  {
-    icon: Stethoscope,
-    step: '2',
-    title: 'Plan personalizado',
-    description:
-      'Se diseña un plan según tu piel y tus objetivos — no existe un tratamiento único que funcione igual para todas las personas.',
-  },
-  {
-    icon: CalendarCheck,
-    step: '3',
-    title: 'Seguimiento y ajustes',
-    description:
-      'El rejuvenecimiento dermatológico suele ser un proceso gradual con varias sesiones. Los resultados pueden variar según cada paciente.',
-  },
+const GALLERY = [
+  { src: '/images/placeholder-gallery-rejuvenecimiento-1.webp', alt: 'Rejuvenecimiento dermatológico — resultado 1' },
+  { src: '/images/placeholder-gallery-rejuvenecimiento-2.webp', alt: 'Rejuvenecimiento dermatológico — resultado 2' },
+  { src: '/images/placeholder-gallery-rejuvenecimiento-3.webp', alt: 'Rejuvenecimiento dermatológico — resultado 3' },
+  { src: '/images/placeholder-gallery-rejuvenecimiento-4.webp', alt: 'Rejuvenecimiento dermatológico — resultado 4' },
 ]
 
 export default function Rejuvenecimiento() {
@@ -142,7 +78,7 @@ export default function Rejuvenecimiento() {
                 <div className="aspect-[4/5] w-full overflow-hidden rounded-[1.5rem]">
                   <img
                     src="/doctora-800.webp"
-                    srcSet={`/doctora-480.webp 480w, /doctora-800.webp 800w`}
+                    srcSet="/doctora-480.webp 480w, /doctora-800.webp 800w"
                     sizes="(min-width: 768px) 500px, 90vw"
                     alt="Dra. Haide Yael, especialista en dermatología estética"
                     width={800}
@@ -159,199 +95,144 @@ export default function Rejuvenecimiento() {
 
         {/* 2. Problema */}
         <section className="bg-white py-20 md:py-28">
-          <div className="section-container">
-            <div className="mx-auto max-w-2xl text-center">
+          <div className="section-container grid items-center gap-12 md:grid-cols-2">
+            <div>
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Entendiendo el envejecimiento de la piel
+                El problema
               </span>
               <h2 className="section-title mt-6">Cada piel envejece de forma distinta</h2>
-              <p className="section-subtitle mx-auto">
-                Antes de elegir un tratamiento es necesario entender qué está
-                pasando en tu piel — por eso un diagnóstico dermatológico hace la
-                diferencia.
+              <p className="section-subtitle">
+                Con el paso del tiempo, la piel pierde colágeno de forma natural
+                — aparecen líneas de expresión, flacidez y un aspecto menos
+                luminoso.
               </p>
             </div>
-
-            <div className="mt-14 grid gap-6 md:grid-cols-3">
-              {CAUSES.map(({ icon: Icon, title, description }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-nude-200 bg-nude-50 p-7 shadow-sm"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-5 text-lg font-bold text-primary-950">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-nude-600">{description}</p>
-                </div>
-              ))}
+            <div>
+              {/* REEMPLAZAR CON IMAGEN REAL: rejuvenecimiento (problema) */}
+              <img
+                src="/images/placeholder-rejuvenecimiento.webp"
+                alt="Envejecimiento de la piel"
+                width={400}
+                height={300}
+                loading="lazy"
+                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+              />
             </div>
           </div>
         </section>
 
-        {/* 3. Autoridad */}
-        <section className="py-20 md:py-28">
-          <div className="section-container grid items-center gap-12 md:grid-cols-5">
-            <div className="md:col-span-2">
-              <div className="rounded-[2rem] bg-white p-3 shadow-xl shadow-primary-900/10">
-                <div className="aspect-square w-full overflow-hidden rounded-[1.5rem]">
-                  <img
-                    src="/doctora-800.webp"
-                    alt="Dra. Haide Yael"
-                    width={800}
-                    height={800}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
+        {/* 3. Solución */}
+        <section className="bg-nude-100 py-20 md:py-28">
+          <div className="section-container grid items-center gap-12 md:grid-cols-2">
+            <div className="order-2 md:order-1">
+              {/* REEMPLAZAR CON IMAGEN REAL: solución rejuvenecimiento */}
+              <img
+                src="/images/placeholder-solution-rejuvenecimiento.webp"
+                alt="Solución de rejuvenecimiento dermatológico"
+                width={400}
+                height={300}
+                loading="lazy"
+                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+              />
+            </div>
+            <div className="order-1 md:order-2">
+              <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
+                La solución
+              </span>
+              <h2 className="section-title mt-6">Así trabaja la Dra. Haide el rejuvenecimiento</h2>
+              <p className="section-subtitle">
+                La Dra. Haide combina procedimientos antiedad de vanguardia con
+                un enfoque de cuidado integral, priorizando siempre un resultado
+                natural y armónico con tus rasgos.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {['Diagnóstico', 'Plan personalizado', 'Resultados naturales'].map((item) => (
+                  <span
+                    key={item}
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-primary-800 shadow-sm"
+                  >
+                    <Sparkles size={14} className="text-primary-500" />
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
-
-            <div className="md:col-span-3">
-              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Dra. Haide Yael
-              </span>
-              <h2 className="section-title mt-6">
-                Especialista en Dermatología Clínica y Estética
-              </h2>
-              <p className="section-subtitle">
-                Con experiencia en procedimientos estéticos dermatológicos, la
-                Dra. Haide aborda el rejuvenecimiento con un enfoque médico
-                riguroso — priorizando siempre resultados naturales por encima de
-                promesas irreales.
-              </p>
-              <ul className="mt-6 space-y-3 text-sm text-nude-700">
-                <li>• Atención médica personalizada, no protocolos genéricos</li>
-                <li>• Tratamientos sustentados en evidencia científica</li>
-                <li>• Consultorio en Plaza Mandarina Interlomas, Estado de México</li>
-              </ul>
-            </div>
           </div>
         </section>
 
-        {/* 4. Tratamiento */}
-        <section className="bg-nude-100 py-20 md:py-28">
-          <div className="section-container">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
-                Opciones de tratamiento
-              </span>
-              <h2 className="section-title mt-6">Un plan dermatológico, no una fórmula única</h2>
-              <p className="section-subtitle mx-auto">
-                Estas son algunas de las herramientas disponibles en consulta. La
-                combinación adecuada depende de tu diagnóstico — no prometemos un
-                resultado específico para ningún caso.
-              </p>
-            </div>
-
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {TREATMENTS.map(({ icon: Icon, title, description }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-nude-200 bg-white p-6 shadow-sm"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-4 text-base font-bold text-primary-950">{title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 5. Expectativas */}
-        <section className="py-20 md:py-28">
+        {/* 4. Resultados / Beneficios */}
+        <section className="bg-white py-20 md:py-28">
           <div className="section-container">
             <div className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Qué esperar
+                Beneficios
               </span>
-              <h2 className="section-title mt-6">Un proceso realista, resultados naturales</h2>
-              <p className="section-subtitle mx-auto">
-                El rejuvenecimiento dermatológico es un proceso gradual, no un
-                cambio inmediato — así se ve el proceso en consulta.
-              </p>
+              <h2 className="section-title mt-6">Lo que buscamos lograr juntos</h2>
             </div>
 
-            <div className="mt-14 grid gap-6 md:grid-cols-3">
-              {EXPECTATIONS.map(({ icon: Icon, step, title, description }) => (
-                <div
-                  key={step}
-                  className="relative rounded-2xl border border-nude-200 bg-white p-7 shadow-sm"
-                >
-                  <span className="font-display text-4xl font-bold text-nude-200">{step}</span>
-                  <span className="mt-2 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-4 text-lg font-bold text-primary-950">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-nude-600">{description}</p>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2">
+              {BENEFICIOS.map((b) => (
+                <div key={b.title} className="rounded-2xl border border-nude-200 bg-nude-50 p-6">
+                  <p className="text-base font-bold text-primary-950">{b.title}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{b.description}</p>
                 </div>
               ))}
             </div>
 
-            <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-nude-500">
+            <div className="mt-10">
+              {/* REEMPLAZAR CON IMAGEN REAL: antes/después rejuvenecimiento */}
+              <img
+                src="/images/placeholder-before-after-rejuvenecimiento.webp"
+                alt="Antes y después — rejuvenecimiento dermatológico"
+                width={500}
+                height={300}
+                loading="lazy"
+                className="placeholder-img mx-auto w-full max-w-[500px] rounded-2xl"
+              />
+            </div>
+
+            <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-nude-500">
               Los resultados pueden variar según cada paciente y no garantizamos
               resultados específicos.
             </p>
           </div>
         </section>
 
-        {/* 6. Ubicación */}
-        <section className="bg-white py-20 md:py-28">
-          <div className="section-container grid gap-10 lg:grid-cols-2 lg:items-center">
+        {/* 5. Equipamiento / Procedimiento */}
+        <section className="bg-nude-100 py-20 md:py-28">
+          <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div>
-              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Ubicación
+              <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
+                Tecnología
               </span>
-              <h2 className="section-title mt-6">Consultorio en Interlomas, Huixquilucan</h2>
-
-              <div className="mt-8 space-y-5">
-                <div className="flex items-start gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <MapPin size={22} />
-                  </span>
-                  <p className="text-sm text-nude-700">
-                    Plaza Mandarina Interlomas, Calle Parque de Cádiz 1, Col.
-                    Parques de la Herradura, Primer piso, Huixquilucan, Estado de
-                    México
-                  </p>
-                </div>
-                <div className="flex items-start gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
-                    <Clock size={22} />
-                  </span>
-                  <p className="text-sm text-nude-700">
-                    Lun - Vie: 10:00 AM - 8:00 PM · Sáb: 8:00 AM - 3:00 PM · Dom: Cerrado
-                  </p>
-                </div>
-              </div>
+              <h2 className="section-title mt-6">Equipo y procedimientos</h2>
+              <p className="section-subtitle">
+                Utilizamos <strong>radiofrecuencia</strong>, tecnología{' '}
+                <strong>láser</strong> y <strong>ácido hialurónico</strong>,
+                combinados según las necesidades específicas de tu piel.
+              </p>
             </div>
-
-            <div className="aspect-video w-full overflow-hidden rounded-2xl shadow-sm">
-              <iframe
-                title="Ubicación de la clínica en Interlomas"
-                className="h-full w-full border-0"
+            <div>
+              {/* REEMPLAZAR CON IMAGEN REAL: equipo utilizado en rejuvenecimiento */}
+              <img
+                src="/images/placeholder-equipo-rejuvenecimiento.webp"
+                alt="Equipo utilizado en rejuvenecimiento dermatológico"
+                width={400}
+                height={300}
                 loading="lazy"
-                src="https://www.google.com/maps?q=Plaza%20Mandarina%20Interlomas%2C%20Estado%20de%20Mexico&output=embed"
+                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>
         </section>
 
-        {/* 7. CTA final */}
-        <section className="bg-primary-950 py-20 md:py-24">
+        {/* 6. CTA principal */}
+        <section className="bg-primary-950 py-16 md:py-20">
           <div className="section-container text-center">
-            <h2 className="font-display text-3xl font-bold text-white md:text-4xl">
+            <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
               Agenda tu valoración de rejuvenecimiento
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-primary-100 md:text-lg">
-              El primer paso es una evaluación con la Dra. Haide para entender tu
-              caso y definir el plan adecuado para ti.
-            </p>
-
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-6">
               <a
                 href={WHATSAPP_HREF}
                 target="_blank"
@@ -362,10 +243,65 @@ export default function Rejuvenecimiento() {
                 <MessageCircle size={18} />
                 Escribir por WhatsApp
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. Galería inspiradora */}
+        <section className="bg-white py-20 md:py-28">
+          <div className="section-container">
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
+                Galería
+              </span>
+              <h2 className="section-title mt-6">Inspiración de resultados</h2>
+            </div>
+
+            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+              {GALLERY.map((img) => (
+                // REEMPLAZAR CON IMAGEN REAL: galería de rejuvenecimiento
+                <img
+                  key={img.src}
+                  src={img.src}
+                  alt={img.alt}
+                  width={300}
+                  height={300}
+                  loading="lazy"
+                  className="placeholder-img aspect-square w-full rounded-2xl object-cover"
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 8. CTA secundario */}
+        <section className="bg-nude-100 py-16 md:py-20">
+          <div className="section-container grid items-center gap-8 rounded-3xl bg-white p-8 shadow-sm md:grid-cols-2 md:p-12">
+            <div>
+              <h3 className="font-display text-2xl font-bold text-primary-950">
+                ¿Lista para renovar tu piel?
+              </h3>
+              <p className="mt-3 text-sm text-nude-600">
+                Escríbenos por WhatsApp o llámanos — consultorio en Plaza
+                Mandarina Interlomas, Huixquilucan, Estado de México. Lun - Vie:
+                10:00 AM - 8:00 PM · Sáb: 8:00 AM - 3:00 PM.
+              </p>
+            </div>
+            <div className="flex flex-col items-start gap-3 sm:flex-row md:justify-end">
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={trackClickWhatsApp}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                <MessageCircle size={18} />
+                WhatsApp
+              </a>
               <a
                 href="tel:+525584041696"
                 onClick={trackClickPhone}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/20"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-nude-300 bg-nude-50 px-6 py-3.5 text-sm font-semibold text-primary-800 transition hover:bg-nude-100"
               >
                 <Phone size={18} />
                 Llamar 55 8404 1696
