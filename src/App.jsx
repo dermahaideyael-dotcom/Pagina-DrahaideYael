@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useAttribution } from '@/hooks/useAttribution'
 import { initAnalytics, trackPageView } from '@/lib/analytics'
+import { initOpenAIPixel } from '@/lib/openaiPixel'
 
 // Cada ruta se descarga solo cuando se visita, así una landing de anuncio
 // (ej. /melasma) no le hace descargar al visitante el código de las otras
@@ -22,6 +23,12 @@ function App() {
   // page_view inicial ya puede leer first_touch/last_touch recién capturados.
   useEffect(() => {
     initAnalytics()
+  }, [])
+
+  // Instalación base del OpenAI Ads Pixel — completamente independiente del
+  // efecto de GA4 de arriba. Solo carga el SDK, no envía eventos todavía.
+  useEffect(() => {
+    initOpenAIPixel()
   }, [])
 
   // Se dispara en la carga inicial y en cada cambio de ruta (trackPageView()
