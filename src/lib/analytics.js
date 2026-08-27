@@ -108,6 +108,13 @@ export function trackFormStart() {
 /** Llamar SOLO cuando el backend confirmó data.ok === true. Nunca antes. */
 export function trackGenerateLead() {
   trackEvent('generate_lead', attributionParams())
+
+  // Conversión de OpenAI Ads ("Lead — Dra. Haide Yael"). Misma acción real
+  // que generate_lead de GA4 — nunca antes de que el backend confirme el lead.
+  // Guardado tras window.oaiq para no romper nada si el pixel aún no cargó.
+  if (typeof window !== 'undefined' && typeof window.oaiq === 'function') {
+    window.oaiq('measure', 'lead_created', { type: 'customer_action' })
+  }
 }
 
 /** Llamar SOLO cuando el backend confirmó data.ok === true. Nunca antes. */
