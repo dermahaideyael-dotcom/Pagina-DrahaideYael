@@ -63,7 +63,8 @@ const CATEGORIES = [
     items: [
       { icon: Snowflake, title: 'Crioterapia', description: 'Eliminación de lesiones con nitrógeno líquido.' },
       { icon: Zap, title: 'Electrofulguración', description: 'Remoción de verrugas y lesiones benignas.' },
-      { icon: Radiation, title: 'Retiro de Tatuajes en Láser de Diodo', description: 'Eliminación de tatuajes mediante tecnología láser especializada.' },
+      { icon: Radiation, title: 'Retiro de Tatuajes', description: 'Eliminación de tatuajes mediante tecnología láser especializada.' },
+      { icon: Radiation, title: 'Láser de Diodo', description: 'Procedimientos dermatológicos especializados.' },
       { icon: CircleDot, title: 'Tx de Cicatrices', description: 'Tratamiento de cicatrices queloides.' },
     ],
   },
