@@ -17,7 +17,6 @@ import {
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import doctoraPhoto from '@/assets/doctora.jpeg'
 import { trackClickPhone, trackClickWhatsApp } from '@/lib/analytics'
 
 const WHATSAPP_HREF =
@@ -142,8 +141,14 @@ export default function Rejuvenecimiento() {
               <div className="rounded-[2rem] bg-white p-3 shadow-xl shadow-primary-900/10">
                 <div className="aspect-[4/5] w-full overflow-hidden rounded-[1.5rem]">
                   <img
-                    src={doctoraPhoto}
+                    src="/doctora-800.webp"
+                    srcSet={`/doctora-480.webp 480w, /doctora-800.webp 800w`}
+                    sizes="(min-width: 768px) 500px, 90vw"
                     alt="Dra. Haide Yael, especialista en dermatología estética"
+                    width={800}
+                    height={1000}
+                    fetchpriority="high"
+                    loading="eager"
                     className="h-full w-full object-cover object-top"
                   />
                 </div>
@@ -191,8 +196,11 @@ export default function Rejuvenecimiento() {
               <div className="rounded-[2rem] bg-white p-3 shadow-xl shadow-primary-900/10">
                 <div className="aspect-square w-full overflow-hidden rounded-[1.5rem]">
                   <img
-                    src={doctoraPhoto}
+                    src="/doctora-800.webp"
                     alt="Dra. Haide Yael"
+                    width={800}
+                    height={800}
+                    loading="lazy"
                     className="h-full w-full object-cover object-top"
                   />
                 </div>

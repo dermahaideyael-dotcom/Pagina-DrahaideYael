@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Menu, X, Phone } from 'lucide-react'
-import logo from '@/assets/logo.png'
+import logo from '@/assets/logo.webp'
 import { trackClickPhone } from '@/lib/analytics'
 
 const NAV_LINKS = [
@@ -36,7 +36,13 @@ export default function Header() {
     >
       <div className="section-container flex h-18 items-center justify-between py-4">
         <a href={withHomePrefix('#inicio')} className="flex items-center gap-3">
-          <img src={logo} alt="Dra. Haide Yael" className="h-10 w-10 rounded-full object-cover shadow-sm" />
+          <img
+            src={logo}
+            alt="Dra. Haide Yael"
+            width={80}
+            height={80}
+            className="h-10 w-10 rounded-full object-cover shadow-sm"
+          />
           <span className="flex items-baseline gap-2">
             <span className="font-display text-xl font-bold text-primary-900 sm:text-2xl">
               Dra. Haide Yael

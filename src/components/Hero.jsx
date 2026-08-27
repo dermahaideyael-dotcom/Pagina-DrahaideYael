@@ -1,5 +1,4 @@
 import { ArrowRight, MessageCircle } from 'lucide-react'
-import doctoraPhoto from '@/assets/doctora.jpeg'
 import { trackClickWhatsApp } from '@/lib/analytics'
 
 export default function Hero() {
@@ -49,8 +48,14 @@ export default function Hero() {
           <div className="rounded-[2rem] bg-white p-3 shadow-xl shadow-primary-900/10">
             <div className="aspect-[4/5] w-full overflow-hidden rounded-[1.5rem]">
               <img
-                src={doctoraPhoto}
+                src="/doctora-800.webp"
+                srcSet={`/doctora-480.webp 480w, /doctora-800.webp 800w`}
+                sizes="(min-width: 768px) 500px, 90vw"
                 alt="Dra. Haide Yael, especialista en Dermatología y Tricología"
+                width={800}
+                height={1000}
+                fetchpriority="high"
+                loading="eager"
                 className="h-full w-full object-cover object-top"
               />
             </div>

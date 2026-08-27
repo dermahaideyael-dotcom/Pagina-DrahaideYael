@@ -1,7 +1,7 @@
 import { ShieldCheck, HeartHandshake, ScrollText, Stethoscope } from 'lucide-react'
-import clinica1 from '@/assets/clinica-1.jpeg'
-import clinica2 from '@/assets/clinica-2.jpeg'
-import clinica3 from '@/assets/clinica-3.jpeg'
+import clinica1 from '@/assets/clinica-1.webp'
+import clinica2 from '@/assets/clinica-2.webp'
+import clinica3 from '@/assets/clinica-3.webp'
 
 const PILLARS = [
   {
@@ -35,16 +35,25 @@ export default function About() {
             <img
               src={clinica1}
               alt="Consultorio de la Dra. Haide Yael"
+              width={800}
+              height={600}
+              loading="lazy"
               className="col-span-2 h-56 w-full rounded-2xl object-cover shadow-lg"
             />
             <img
               src={clinica2}
               alt="Sala de tratamientos de la clínica"
+              width={800}
+              height={600}
+              loading="lazy"
               className="h-40 w-full rounded-2xl object-cover shadow-lg"
             />
             <img
               src={clinica3}
               alt="Oficina de la Dra. Haide Yael"
+              width={800}
+              height={600}
+              loading="lazy"
               className="h-40 w-full rounded-2xl object-cover shadow-lg"
             />
           </div>

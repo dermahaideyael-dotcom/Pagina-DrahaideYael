@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { Instagram, Music2 } from 'lucide-react'
-import logo from '@/assets/logo.png'
+import logo from '@/assets/logo.webp'
 import { trackClickPhone } from '@/lib/analytics'
 
 const LINKS = [
@@ -28,7 +28,14 @@ export default function Footer() {
       <div className="section-container grid gap-10 pb-12 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Dra. Haide Yael" className="h-10 w-10 rounded-full object-cover" />
+            <img
+              src={logo}
+              alt="Dra. Haide Yael"
+              width={80}
+              height={80}
+              loading="lazy"
+              className="h-10 w-10 rounded-full object-cover"
+            />
             <span className="flex items-baseline gap-2">
               <span className="font-display text-xl font-bold text-white">Dra. Haide Yael</span>
               <span className="text-sm text-primary-300">| Dermatología</span>
