@@ -59,7 +59,7 @@ const TREATMENTS = [
   },
   {
     icon: Zap,
-    title: 'Microagujas',
+    title: 'Micropunción',
     description: 'Estimulación de la piel orientada a mejorar cicatrices de acné.',
   },
   {

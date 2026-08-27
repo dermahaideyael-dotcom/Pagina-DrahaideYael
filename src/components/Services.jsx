@@ -40,9 +40,9 @@ const CATEGORIES = [
     title: 'Dermatología Estética',
     items: [
       { icon: Syringe, title: 'Toxina Botulínica', description: 'Reducción de líneas de expresión con resultados naturales.' },
-      { icon: Activity, title: 'Sculptra', description: 'Bioestimulación de colágeno para rejuvenecimiento.' },
+      { icon: Activity, title: 'Bioestimuladores', description: 'Bioestimulación de colágeno para rejuvenecimiento.' },
       { icon: Droplets, title: 'Mesoterapia Inyectable', description: 'Revitalización y nutrición profunda de la piel.' },
-      { icon: Zap, title: 'Microagujas', description: 'Estimulación de colágeno y mejora de textura.' },
+      { icon: Zap, title: 'Micropunción', description: 'Estimulación de colágeno y mejora de textura.' },
       { icon: FlaskConical, title: 'Peelings Químicos', description: 'Renovación celular y corrección de manchas.' },
       { icon: Sparkle, title: 'Limpieza Facial Profunda', description: 'Extracción y purificación profesional.' },
     ],
@@ -61,11 +61,10 @@ const CATEGORIES = [
     id: 'procedimientos',
     title: 'Procedimientos Dermatológicos',
     items: [
-      { icon: Snowflake, title: 'Criocirugía', description: 'Eliminación de lesiones con nitrógeno líquido.' },
+      { icon: Snowflake, title: 'Crioterapia', description: 'Eliminación de lesiones con nitrógeno líquido.' },
       { icon: Zap, title: 'Electrofulguración', description: 'Remoción de verrugas y lesiones benignas.' },
-      { icon: Radiation, title: 'Láser Nd:YAG', description: 'Tratamiento de lesiones vasculares y pigmentadas.' },
-      { icon: Radiation, title: 'Láser de Diodo', description: 'Procedimientos dermatológicos especializados.' },
-      { icon: CircleDot, title: 'Aplicación de Kenalog', description: 'Tratamiento de cicatrices queloides.' },
+      { icon: Radiation, title: 'Retiro de Tatuajes en Láser de Diodo', description: 'Eliminación de tatuajes mediante tecnología láser especializada.' },
+      { icon: CircleDot, title: 'Tx de Cicatrices', description: 'Tratamiento de cicatrices queloides.' },
     ],
   },
 ]

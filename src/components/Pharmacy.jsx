@@ -7,8 +7,6 @@ const CATEGORIES = [
   { name: 'Productos antiedad y piel sensible' },
 ]
 
-const BRANDS = ['SVR', 'HD Cosmetics', 'Tizo', 'Eucerin', 'La Roche-Posay', 'ISDIN', 'Parabotíca', 'Lazartigue']
-
 const PILLARS = [
   { title: 'Respaldo Dermatológico', description: 'Productos seleccionados y recomendados por nuestros especialistas.' },
   { title: 'Prescripción Responsable', description: 'Cada producto recetado según tu diagnóstico específico.' },
@@ -70,19 +68,6 @@ export default function Pharmacy() {
                 Consultar productos
               </a>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-14 text-center">
-          <p className="text-sm font-semibold uppercase tracking-wide text-nude-500">
-            Marcas disponibles
-          </p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            {BRANDS.map((brand) => (
-              <span key={brand} className="text-base font-bold text-nude-700">
-                {brand}
-              </span>
-            ))}
           </div>
         </div>
       </div>

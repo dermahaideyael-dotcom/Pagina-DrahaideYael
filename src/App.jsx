@@ -11,6 +11,7 @@ const Melasma = lazy(() => import('@/pages/Melasma'))
 const Acne = lazy(() => import('@/pages/Acne'))
 const CaidaCabello = lazy(() => import('@/pages/CaidaCabello'))
 const Rejuvenecimiento = lazy(() => import('@/pages/Rejuvenecimiento'))
+const AvisoPrivacidad = lazy(() => import('@/pages/AvisoPrivacidad'))
 
 function App() {
   useAttribution()
@@ -37,6 +38,7 @@ function App() {
         <Route path="/acne" element={<Acne />} />
         <Route path="/caida-cabello" element={<CaidaCabello />} />
         <Route path="/rejuvenecimiento" element={<Rejuvenecimiento />} />
+        <Route path="/aviso-de-privacidad" element={<AvisoPrivacidad />} />
       </Routes>
     </Suspense>
   )

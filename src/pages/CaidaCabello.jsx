@@ -63,7 +63,7 @@ const TREATMENTS = [
   },
   {
     icon: TrendingDown,
-    title: 'Microagujas',
+    title: 'Micropunción',
     description: 'Estimulación orientada a favorecer la salud del folículo piloso.',
   },
 ]

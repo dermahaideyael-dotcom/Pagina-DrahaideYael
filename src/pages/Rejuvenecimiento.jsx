@@ -58,7 +58,7 @@ const TREATMENTS = [
   },
   {
     icon: Zap,
-    title: 'Microagujas',
+    title: 'Micropunción',
     description: 'Mejora de textura y luminosidad mediante estimulación controlada.',
   },
   {

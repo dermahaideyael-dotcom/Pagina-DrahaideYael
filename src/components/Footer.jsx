@@ -121,8 +121,8 @@ export default function Footer() {
         <div className="section-container flex flex-col items-center justify-between gap-3 text-center text-xs text-primary-300 sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} Dra. Haide Yael Guerrero - Dermatología</p>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-white">Aviso de Privacidad</a>
-            <a href="#" className="hover:text-white">Ética Médica</a>
+            <a href="/aviso-de-privacidad" className="hover:text-white">Aviso de Privacidad</a>
+            <a href="/aviso-de-privacidad#etica-medica" className="hover:text-white">Ética Médica</a>
           </div>
         </div>
       </div>
