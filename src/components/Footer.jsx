@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom'
 import { Instagram, Music2 } from 'lucide-react'
 import logo from '@/assets/logo.webp'
 import { trackClickPhone } from '@/lib/analytics'
+import { INSTAGRAM_URL, TIKTOK_URL } from '@/lib/social'
 
 const LINKS = [
   { label: 'Inicio', href: '#inicio' },
@@ -45,20 +46,29 @@ export default function Footer() {
             Dermatología Clínica, Estética y Tricología con atención médica
             personalizada, ética y sustentada en la evidencia científica.
           </p>
-          <div className="mt-5 flex gap-3">
+          <h4 className="mt-6 text-sm font-semibold uppercase tracking-wide text-white">
+            Síguenos
+          </h4>
+          <div className="mt-4 flex gap-5">
             <a
-              href="#"
-              aria-label="Instagram"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-primary-600"
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en Instagram"
+              title="Instagram"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition duration-300 hover:bg-primary-600 hover:opacity-90"
             >
-              <Instagram size={16} />
+              <Instagram size={24} />
             </a>
             <a
-              href="#"
-              aria-label="TikTok"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-primary-600"
+              href={TIKTOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en TikTok"
+              title="TikTok"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition duration-300 hover:bg-primary-600 hover:opacity-90"
             >
-              <Music2 size={16} />
+              <Music2 size={24} />
             </a>
           </div>
         </div>

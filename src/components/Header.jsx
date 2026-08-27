@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, Instagram, Music2 } from 'lucide-react'
 import logo from '@/assets/logo.webp'
 import { trackClickPhone } from '@/lib/analytics'
+import { INSTAGRAM_URL, TIKTOK_URL } from '@/lib/social'
 
 const NAV_LINKS = [
   { label: 'Inicio', href: '#inicio' },
@@ -64,6 +65,28 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center gap-1.5 border-r border-nude-300 pr-3">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en Instagram"
+              title="Instagram"
+              className="flex h-8 w-8 items-center justify-center rounded-full text-nude-600 transition duration-300 hover:bg-nude-100 hover:text-primary-800"
+            >
+              <Instagram size={18} />
+            </a>
+            <a
+              href={TIKTOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en TikTok"
+              title="TikTok"
+              className="flex h-8 w-8 items-center justify-center rounded-full text-nude-600 transition duration-300 hover:bg-nude-100 hover:text-primary-800"
+            >
+              <Music2 size={18} />
+            </a>
+          </div>
           <a
             href="tel:+525584041696"
             onClick={trackClickPhone}
@@ -106,6 +129,29 @@ export default function Header() {
             >
               Agendar cita
             </a>
+
+            <div className="mt-2 flex items-center gap-5">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Síguenos en Instagram"
+                title="Instagram"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-nude-100 text-nude-700 transition duration-300 hover:bg-nude-200"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
+                href={TIKTOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Síguenos en TikTok"
+                title="TikTok"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-nude-100 text-nude-700 transition duration-300 hover:bg-nude-200"
+              >
+                <Music2 size={18} />
+              </a>
+            </div>
           </nav>
         </div>
       )}
