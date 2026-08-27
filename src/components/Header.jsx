@@ -65,7 +65,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <div className="flex items-center gap-1.5 border-r border-nude-300 pr-3">
+          <div className="hidden items-center gap-1.5 border-r border-nude-300 pr-3 lg:flex">
             <a
               href={INSTAGRAM_URL}
               target="_blank"
@@ -90,12 +90,12 @@ export default function Header() {
           <a
             href="tel:+525584041696"
             onClick={trackClickPhone}
-            className="flex items-center gap-2 rounded-full border border-nude-300 bg-white px-4 py-2.5 text-sm font-semibold text-primary-800 transition hover:bg-nude-100"
+            className="flex items-center gap-2 whitespace-nowrap rounded-full border border-nude-300 bg-white px-4 py-2.5 text-sm font-semibold text-primary-800 transition hover:bg-nude-100"
           >
             <Phone size={15} />
             55 8404 1696
           </a>
-          <a href={withHomePrefix('#contacto')} className="btn-primary !px-5 !py-2.5">
+          <a href={withHomePrefix('#contacto')} className="whitespace-nowrap btn-primary !px-5 !py-2.5">
             Agendar Cita
           </a>
         </div>

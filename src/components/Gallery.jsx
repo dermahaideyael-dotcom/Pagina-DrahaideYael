@@ -96,7 +96,7 @@ export default function Gallery() {
     <section className="section-container" style={{ marginTop: 60, marginBottom: 40 }}>
       <div
         ref={containerRef}
-        className="image-gallery relative w-full select-none overflow-hidden rounded-xl shadow-lg outline-none"
+        className="image-gallery relative mx-auto w-full max-w-sm select-none overflow-hidden rounded-xl shadow-lg outline-none sm:max-w-md"
         role="region"
         aria-roledescription="carrusel"
         aria-label="Galería de imágenes"
@@ -105,7 +105,10 @@ export default function Gallery() {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="gallery-container relative h-[300px] w-full md:h-[400px]">
+        {/* Las imágenes son gráficos tipo post de Instagram (~4:5) — el
+            contenedor respeta esa proporción para no recortar el contenido
+            en una franja panorámica. */}
+        <div className="gallery-container relative aspect-[4/5] w-full">
           {SLIDES.map((slide, i) => (
             <img
               key={slide.name}
