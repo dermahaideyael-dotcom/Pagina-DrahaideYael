@@ -4,6 +4,7 @@ import About from '@/components/About'
 import Services from '@/components/Services'
 import Pharmacy from '@/components/Pharmacy'
 import Testimonials from '@/components/Testimonials'
+import Gallery from '@/components/Gallery'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
@@ -18,6 +19,7 @@ export default function Home() {
         <Services />
         <Pharmacy />
         <Testimonials />
+        <Gallery />
         <Contact />
       </main>
       <Footer />
