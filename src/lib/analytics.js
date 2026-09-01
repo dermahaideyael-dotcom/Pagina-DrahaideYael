@@ -115,6 +115,10 @@ export function trackGenerateLead() {
   if (typeof window !== 'undefined' && typeof window.oaiq === 'function') {
     window.oaiq('measure', 'lead_created', { type: 'customer_action' })
   }
+
+  // Google Ads mide esta conversión importando generate_lead directamente
+  // desde GA4 (configurado del lado de Google Ads) — no hace falta un
+  // adaptador propio aquí.
 }
 
 /** Llamar SOLO cuando el backend confirmó data.ok === true. Nunca antes. */
