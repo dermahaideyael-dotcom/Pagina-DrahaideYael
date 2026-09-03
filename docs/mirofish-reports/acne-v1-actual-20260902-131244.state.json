@@ -1,0 +1,20 @@
+{
+  "source_file": "docs\\mirofish-seeds\\campana-acne-v1-actual.md",
+  "campaign_name": "acne-v1-actual",
+  "base_url": "http://localhost:5001",
+  "platform": "parallel",
+  "max_rounds": 8,
+  "created_at": "2026-09-02T13:12:44.038031",
+  "updated_at": "2026-09-02T13:35:37.728462",
+  "project_id": "proj_e25119d0662c",
+  "graph_id": "mirofish_388be9cd595847b7",
+  "graph_build_task_id": "7f3a80a1-017c-4055-bb70-a948a041bc89",
+  "simulation_id": "sim_6e968d68f42e",
+  "prepare_task_id": "ea91dc7c-43fd-4546-acd4-851c7cd7d255",
+  "report_id": "report_ebcfcfd1e7ee",
+  "report_task_id": "e09a9ace-7d1a-4295-93ff-835d9cc6bc79",
+  "stage": "done",
+  "output_path": "docs\\mirofish-reports\\acne-v1-actual-20260902-133537.md",
+  "personas_file": "docs\\mirofish-personas\\acne_agents_001_to_025_liviano.md",
+  "persona_count": 25
+}
