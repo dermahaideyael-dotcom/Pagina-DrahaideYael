@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom'
 import { Instagram } from 'lucide-react'
 import logo from '@/assets/logo.webp'
 import cilad from '@/assets/cilad.webp'
+import cmd from '@/assets/cmd.webp'
 import { trackClickPhone } from '@/lib/analytics'
 import { INSTAGRAM_URL, TIKTOK_URL } from '@/lib/social'
 
@@ -48,9 +49,9 @@ export default function Footer() {
               loading="lazy"
               className="h-10 w-10 rounded-full object-cover"
             />
-            <span className="flex items-baseline gap-2">
-              <span className="font-display text-xl font-bold text-white">Dra. Haide Yael</span>
-              <span className="text-sm text-primary-300">| Dermatología</span>
+            <span className="flex items-center gap-2">
+              <span className="whitespace-nowrap font-display text-xl font-bold text-white">Dra. Haide Yael</span>
+              <span className="whitespace-nowrap text-sm text-primary-300">| Dermatología</span>
             </span>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-primary-200">
@@ -58,15 +59,27 @@ export default function Footer() {
             personalizada, ética y sustentada en la evidencia científica.
           </p>
 
-          <div className="mt-5 flex items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white p-1.5">
-              <img src={cilad} alt="CILAD" className="h-full w-full object-contain" loading="lazy" />
-            </span>
-            <span className="text-xs leading-snug text-primary-300">
-              Miembro del CILAD
-              <br />
-              Colegio Ibero-Latino-Americano de Dermatología
-            </span>
+          <div className="mt-5 flex flex-col gap-3">
+            <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white p-1.5">
+                <img src={cilad} alt="CILAD" className="h-full w-full object-contain" loading="lazy" />
+              </span>
+              <span className="text-xs leading-snug text-primary-300">
+                Miembro del CILAD
+                <br />
+                Colegio Ibero-Latino-Americano de Dermatología
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white p-1.5">
+                <img src={cmd} alt="CMD" className="h-full w-full object-contain" loading="lazy" />
+              </span>
+              <span className="text-xs leading-snug text-primary-300">
+                Miembro del CMD
+                <br />
+                Consejo Mexicano de Dermatología, A.C.
+              </span>
+            </div>
           </div>
 
           <h4 className="mt-6 text-sm font-semibold uppercase tracking-wide text-white">

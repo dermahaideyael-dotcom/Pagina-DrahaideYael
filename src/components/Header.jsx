@@ -44,11 +44,11 @@ export default function Header() {
             height={80}
             className="h-10 w-10 rounded-full object-cover shadow-sm"
           />
-          <span className="flex items-baseline gap-2">
-            <span className="font-display text-xl font-bold text-primary-900 sm:text-2xl">
+          <span className="flex items-center gap-2">
+            <span className="whitespace-nowrap font-display text-xl font-bold text-primary-900 sm:text-2xl">
               Dra. Haide Yael
             </span>
-            <span className="hidden text-sm text-nude-600 sm:inline">| Dermatología</span>
+            <span className="hidden whitespace-nowrap text-sm text-nude-600 sm:inline">| Dermatología</span>
           </span>
         </a>
 
