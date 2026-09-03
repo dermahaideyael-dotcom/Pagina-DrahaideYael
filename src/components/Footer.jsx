@@ -1,8 +1,11 @@
 import { useLocation } from 'react-router-dom'
 import { Instagram } from 'lucide-react'
 import logo from '@/assets/logo.webp'
+import cilad from '@/assets/cilad.webp'
 import { trackClickPhone } from '@/lib/analytics'
 import { INSTAGRAM_URL, TIKTOK_URL } from '@/lib/social'
+
+const AVISO_PUBLICIDAD = '2515062002A00106'
 
 function TikTokIcon({ size = 24 }) {
   return (
@@ -54,6 +57,18 @@ export default function Footer() {
             Dermatología Clínica, Estética y Tricología con atención médica
             personalizada, ética y sustentada en la evidencia científica.
           </p>
+
+          <div className="mt-5 flex items-center gap-3">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white p-1.5">
+              <img src={cilad} alt="CILAD" className="h-full w-full object-contain" loading="lazy" />
+            </span>
+            <span className="text-xs leading-snug text-primary-300">
+              Miembro del CILAD
+              <br />
+              Colegio Ibero-Latino-Americano de Dermatología
+            </span>
+          </div>
+
           <h4 className="mt-6 text-sm font-semibold uppercase tracking-wide text-white">
             Síguenos
           </h4>
@@ -126,12 +141,15 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10 py-6">
-        <div className="section-container flex flex-col items-center justify-between gap-3 text-center text-xs text-primary-300 sm:flex-row sm:text-left">
+        <div className="section-container flex flex-col items-center justify-between gap-2 text-center text-xs text-primary-300 sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} Dra. Haide Yael Guerrero - Dermatología</p>
           <div className="flex gap-5">
             <a href="/aviso-de-privacidad" className="hover:text-white">Aviso de Privacidad</a>
             <a href="/aviso-de-privacidad#etica-medica" className="hover:text-white">Ética Médica</a>
           </div>
+        </div>
+        <div className="section-container mt-2 text-center text-[11px] text-primary-400 sm:text-left">
+          <p>Aviso de Publicidad: {AVISO_PUBLICIDAD}</p>
         </div>
       </div>
     </footer>
