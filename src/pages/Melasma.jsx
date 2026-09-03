@@ -113,10 +113,10 @@ export default function Melasma() {
               <img
                 src="/images/melasma-problema.webp"
                 alt="Por qué salen las manchas"
-                width={400}
-                height={300}
+                width={600}
+                height={760}
                 loading="lazy"
-                className="mx-auto w-full max-w-[400px] rounded-2xl object-cover"
+                className="mx-auto h-auto w-full max-w-[420px] rounded-2xl"
               />
             </div>
           </div>
@@ -129,10 +129,10 @@ export default function Melasma() {
               <img
                 src="/images/melasma-solucion.webp"
                 alt="Manchas"
-                width={400}
-                height={300}
+                width={600}
+                height={741}
                 loading="lazy"
-                className="mx-auto w-full max-w-[400px] rounded-2xl object-cover"
+                className="mx-auto h-auto w-full max-w-[420px] rounded-2xl"
               />
             </div>
             <div className="order-1 md:order-2">
@@ -184,10 +184,10 @@ export default function Melasma() {
               <img
                 src="/images/melasma-beneficios.webp"
                 alt="Qué mancha tienes"
-                width={500}
-                height={300}
+                width={700}
+                height={776}
                 loading="lazy"
-                className="mx-auto w-full max-w-[500px] rounded-2xl object-cover"
+                className="mx-auto h-auto w-full max-w-[480px] rounded-2xl"
               />
             </div>
 
@@ -216,10 +216,10 @@ export default function Melasma() {
               <img
                 src="/images/melasma-equipo.webp"
                 alt="Tratamiento para manchas y melasma"
-                width={400}
-                height={300}
+                width={600}
+                height={746}
                 loading="lazy"
-                className="mx-auto w-full max-w-[400px] rounded-2xl object-cover"
+                className="mx-auto h-auto w-full max-w-[420px] rounded-2xl"
               />
             </div>
           </div>

@@ -1,8 +1,9 @@
 // Procesa las fotos reales de la landing /melasma (carpeta "Imagenes/Manchas")
-// a .webp optimizado en public/images/, siguiendo las mismas convenciones que
-// las imágenes ya existentes del sitio: secciones de contenido a tamaño fijo
-// (400x300 / 500x300), carrusel a 640w/1024w con aspecto 4:5 (igual que
-// src/components/Gallery.jsx).
+// a .webp optimizado en public/images/. Son gráficos tipo post de Instagram
+// con logo y texto ya compuestos en la imagen -- por eso TODO acá usa
+// fit:'inside' (redimensiona sin recortar nunca, conserva el encuadre
+// original completo). La primera versión usaba fit:'cover' con recorte a
+// tamaño fijo y cortaba texto/logo en varias imágenes -- no repetir eso.
 import sharp from 'sharp'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -12,38 +13,39 @@ const root = path.resolve(__dirname, '..')
 const srcDir = path.join(root, 'Imagenes', 'Manchas')
 const outDir = path.join(root, 'public', 'images')
 
-const QUALITY = 80
+const QUALITY = 82
 
-async function single(srcName, outName, width, height) {
+async function single(srcName, outName, maxWidth, maxHeight) {
   const src = path.join(srcDir, srcName)
   const out = path.join(outDir, outName)
   await sharp(src)
-    .resize(width, height, { fit: 'cover', position: 'attention' })
+    .resize(maxWidth, maxHeight, { fit: 'inside', withoutEnlargement: true })
     .webp({ quality: QUALITY })
     .toFile(out)
-  console.log(`OK  ${srcName} -> ${path.relative(root, out)} (${width}x${height})`)
+  const meta = await sharp(out).metadata()
+  console.log(`OK  ${srcName} -> ${path.relative(root, out)} (${meta.width}x${meta.height}, sin recorte)`)
 }
 
 async function responsive(srcName, outBase) {
   const src = path.join(srcDir, srcName)
   for (const w of [640, 1024]) {
-    const h = Math.round((w * 5) / 4) // aspecto 4:5, igual que Gallery.jsx
     const out = path.join(outDir, `${outBase}-${w}.webp`)
     await sharp(src)
-      .resize(w, h, { fit: 'cover', position: 'attention' })
+      .resize(w, w * 2, { fit: 'inside', withoutEnlargement: true })
       .webp({ quality: QUALITY })
       .toFile(out)
-    console.log(`OK  ${srcName} -> ${path.relative(root, out)} (${w}x${h})`)
+    const meta = await sharp(out).metadata()
+    console.log(`OK  ${srcName} -> ${path.relative(root, out)} (${meta.width}x${meta.height}, sin recorte)`)
   }
 }
 
 async function main() {
   // Apartados 1-4 (imagen fija, sin srcset — igual que el resto de las
   // landings de tratamiento)
-  await single('Por que salen las manchas.jpeg', 'melasma-problema.webp', 400, 300)
-  await single('Manchas.jpeg', 'melasma-solucion.webp', 400, 300)
-  await single('Que mancha tienes.jpeg', 'melasma-beneficios.webp', 500, 300)
-  await single('Tratamiento.JPG', 'melasma-equipo.webp', 400, 300)
+  await single('Por que salen las manchas.jpeg', 'melasma-problema.webp', 600, 800)
+  await single('Manchas.jpeg', 'melasma-solucion.webp', 600, 800)
+  await single('Que mancha tienes.jpeg', 'melasma-beneficios.webp', 700, 800)
+  await single('Tratamiento.JPG', 'melasma-equipo.webp', 600, 800)
 
   // Apartado 5 — carrusel (reemplaza "Galería Inspiradora"), 5 slides en
   // orden: carrusel 1-4 primero, "Daño solar acumulado" al final
