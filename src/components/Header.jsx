@@ -6,7 +6,6 @@ import { trackClickPhone } from '@/lib/analytics'
 import { INSTAGRAM_URL, TIKTOK_URL } from '@/lib/social'
 
 const NAV_LINKS = [
-  { label: 'Inicio', href: '#inicio' },
   { label: 'Dra. Haide', href: '#dra-haide' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Farmacia', href: '#farmacia' },
