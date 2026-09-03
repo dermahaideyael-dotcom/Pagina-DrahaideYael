@@ -47,7 +47,7 @@ export default function Footer() {
               width={80}
               height={80}
               loading="lazy"
-              className="h-10 w-10 rounded-full object-cover"
+              className="h-12 w-12 shrink-0 rounded-full object-cover"
             />
             <span className="flex items-center gap-2">
               <span className="whitespace-nowrap font-display text-xl font-bold text-white">Dra. Haide Yael</span>

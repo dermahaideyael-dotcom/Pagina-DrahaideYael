@@ -36,23 +36,23 @@ export default function Header() {
       }`}
     >
       <div className="section-container flex h-18 items-center justify-between py-4">
-        <a href={withHomePrefix('#inicio')} className="flex items-center gap-3">
+        <a href={withHomePrefix('#inicio')} className="flex shrink-0 items-center gap-3">
           <img
             src={logo}
             alt="Dra. Haide Yael"
             width={80}
             height={80}
-            className="h-10 w-10 rounded-full object-cover shadow-sm"
+            className="h-12 w-12 shrink-0 rounded-full object-cover shadow-sm"
           />
           <span className="flex items-center gap-2">
             <span className="whitespace-nowrap font-display text-xl font-bold text-primary-900 sm:text-2xl">
               Dra. Haide Yael
             </span>
-            <span className="hidden whitespace-nowrap text-sm text-nude-600 sm:inline">| Dermatología</span>
+            <span className="hidden whitespace-nowrap text-sm text-nude-600 xl:inline">| Dermatología</span>
           </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -101,7 +101,7 @@ export default function Header() {
         </div>
 
         <button
-          className="flex items-center justify-center rounded-md p-2 text-primary-900 md:hidden"
+          className="flex items-center justify-center rounded-md p-2 text-primary-900 xl:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir menú"
         >
@@ -110,7 +110,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-nude-200 bg-nude-50 px-6 py-4 md:hidden">
+        <div className="border-t border-nude-200 bg-nude-50 px-6 py-4 xl:hidden">
           <nav className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => (
               <a
