@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-const SLIDES = [
+const DEFAULT_SLIDES = [
   { name: 'cara', alt: 'Cuidado de piel — Dra. Haide Yael' },
   { name: 'brazos', alt: 'Atención personalizada — Dra. Haide Yael' },
   { name: 'crema', alt: 'Producto profesional — Dra. Haide Yael' },
@@ -10,7 +10,7 @@ const SLIDES = [
 const AUTOPLAY_MS = 5000
 const RESUME_AFTER_MS = 8000
 
-export default function Gallery() {
+export default function Gallery({ slides = DEFAULT_SLIDES }) {
   const [index, setIndex] = useState(0)
   const resumeTimeoutRef = useRef(null)
   const autoplayIntervalRef = useRef(null)
@@ -18,8 +18,8 @@ export default function Gallery() {
   const containerRef = useRef(null)
 
   const goTo = useCallback((next) => {
-    setIndex(((next % SLIDES.length) + SLIDES.length) % SLIDES.length)
-  }, [])
+    setIndex(((next % slides.length) + slides.length) % slides.length)
+  }, [slides.length])
 
   const stopAutoplay = useCallback(() => {
     if (autoplayIntervalRef.current) {
@@ -31,9 +31,9 @@ export default function Gallery() {
   const startAutoplay = useCallback(() => {
     stopAutoplay()
     autoplayIntervalRef.current = setInterval(() => {
-      setIndex((prev) => (prev + 1) % SLIDES.length)
+      setIndex((prev) => (prev + 1) % slides.length)
     }, AUTOPLAY_MS)
-  }, [stopAutoplay])
+  }, [stopAutoplay, slides.length])
 
   // Pausa el autoplay al interactuar y lo reanuda después de RESUME_AFTER_MS
   const pauseAndScheduleResume = useCallback(() => {
@@ -109,7 +109,7 @@ export default function Gallery() {
             contenedor respeta esa proporción para no recortar el contenido
             en una franja panorámica. */}
         <div className="gallery-container relative aspect-[4/5] w-full">
-          {SLIDES.map((slide, i) => (
+          {slides.map((slide, i) => (
             <img
               key={slide.name}
               src={`/images/${slide.name}-1024.webp`}
@@ -144,7 +144,7 @@ export default function Gallery() {
         </button>
 
         <div className="gallery-dots absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
-          {SLIDES.map((slide, i) => (
+          {slides.map((slide, i) => (
             <span
               key={slide.name}
               role="button"

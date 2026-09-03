@@ -6,6 +6,7 @@ import {
 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Gallery from '@/components/Gallery'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { trackClickPhone, trackClickWhatsApp } from '@/lib/analytics'
 
@@ -21,11 +22,12 @@ const BENEFICIOS = [
   { title: 'Prevención de nuevas manchas', description: 'Protección solar médica como parte del plan.' },
 ]
 
-const GALLERY = [
-  { src: '/images/placeholder-gallery-melasma-1.webp', alt: 'Tratamiento de melasma — resultado 1' },
-  { src: '/images/placeholder-gallery-melasma-2.webp', alt: 'Tratamiento de melasma — resultado 2' },
-  { src: '/images/placeholder-gallery-melasma-3.webp', alt: 'Tratamiento de melasma — resultado 3' },
-  { src: '/images/placeholder-gallery-melasma-4.webp', alt: 'Tratamiento de melasma — resultado 4' },
+const CAROUSEL_SLIDES = [
+  { name: 'melasma-carrusel-1', alt: 'Manchas y melasma — Dra. Haide Yael' },
+  { name: 'melasma-carrusel-2', alt: 'Manchas y melasma — Dra. Haide Yael' },
+  { name: 'melasma-carrusel-3', alt: 'Manchas y melasma — Dra. Haide Yael' },
+  { name: 'melasma-carrusel-4', alt: 'Manchas y melasma — Dra. Haide Yael' },
+  { name: 'melasma-carrusel-5', alt: 'Daño solar acumulado' },
 ]
 
 export default function Melasma() {
@@ -108,14 +110,13 @@ export default function Melasma() {
               </p>
             </div>
             <div>
-              {/* REEMPLAZAR CON IMAGEN REAL: melasma (problema) */}
               <img
-                src="/images/placeholder-melasma.webp"
-                alt="Manchas y melasma"
+                src="/images/melasma-problema.webp"
+                alt="Por qué salen las manchas"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl object-cover"
               />
             </div>
           </div>
@@ -125,14 +126,13 @@ export default function Melasma() {
         <section className="bg-nude-100 py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div className="order-2 md:order-1">
-              {/* REEMPLAZAR CON IMAGEN REAL: solución melasma */}
               <img
-                src="/images/placeholder-solution-melasma.webp"
-                alt="Solución para el melasma"
+                src="/images/melasma-solucion.webp"
+                alt="Manchas"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl object-cover"
               />
             </div>
             <div className="order-1 md:order-2">
@@ -181,14 +181,13 @@ export default function Melasma() {
             </div>
 
             <div className="mt-10">
-              {/* REEMPLAZAR CON IMAGEN REAL: antes/después melasma */}
               <img
-                src="/images/placeholder-before-after-melasma.webp"
-                alt="Antes y después — tratamiento de melasma"
+                src="/images/melasma-beneficios.webp"
+                alt="Qué mancha tienes"
                 width={500}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[500px] rounded-2xl"
+                className="mx-auto w-full max-w-[500px] rounded-2xl object-cover"
               />
             </div>
 
@@ -214,14 +213,13 @@ export default function Melasma() {
               </p>
             </div>
             <div>
-              {/* REEMPLAZAR CON IMAGEN REAL: equipo utilizado en melasma */}
               <img
-                src="/images/placeholder-equipo-melasma.webp"
-                alt="Equipo utilizado en el tratamiento de melasma"
+                src="/images/melasma-equipo.webp"
+                alt="Tratamiento para manchas y melasma"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl object-cover"
               />
             </div>
           </div>
@@ -248,31 +246,18 @@ export default function Melasma() {
           </div>
         </section>
 
-        {/* 7. Galería inspiradora */}
+        {/* 7. Galería / carrusel */}
         <section className="bg-white py-20 md:py-28">
           <div className="section-container">
             <div className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
                 Galería
               </span>
-              <h2 className="section-title mt-6">Inspiración de resultados</h2>
-            </div>
-
-            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-              {GALLERY.map((img) => (
-                // REEMPLAZAR CON IMAGEN REAL: galería de melasma
-                <img
-                  key={img.src}
-                  src={img.src}
-                  alt={img.alt}
-                  width={300}
-                  height={300}
-                  loading="lazy"
-                  className="placeholder-img aspect-square w-full rounded-2xl object-cover"
-                />
-              ))}
+              <h2 className="section-title mt-6">Manchas y melasma</h2>
             </div>
           </div>
+
+          <Gallery slides={CAROUSEL_SLIDES} />
         </section>
 
         {/* 8. CTA secundario */}
