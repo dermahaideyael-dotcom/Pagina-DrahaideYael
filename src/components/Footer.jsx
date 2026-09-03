@@ -1,8 +1,16 @@
 import { useLocation } from 'react-router-dom'
-import { Instagram, Music2 } from 'lucide-react'
+import { Instagram } from 'lucide-react'
 import logo from '@/assets/logo.webp'
 import { trackClickPhone } from '@/lib/analytics'
 import { INSTAGRAM_URL, TIKTOK_URL } from '@/lib/social'
+
+function TikTokIcon({ size = 24 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M16.6 5.82c-1.02-.88-1.6-2.13-1.6-3.42h-3.2v13.86c0 1.53-1.24 2.77-2.77 2.77a2.77 2.77 0 1 1 0-5.54c.29 0 .57.04.83.13V9.9a6.03 6.03 0 0 0-.83-.06 6 6 0 0 0 0 12 6 6 0 0 0 6-6V8.9a7.6 7.6 0 0 0 4.4 1.4V7.1a4.85 4.85 0 0 1-2.83-1.28Z" />
+    </svg>
+  )
+}
 
 const LINKS = [
   { label: 'Inicio', href: '#inicio' },
@@ -68,7 +76,7 @@ export default function Footer() {
               title="TikTok"
               className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition duration-300 hover:bg-primary-600 hover:opacity-90"
             >
-              <Music2 size={24} />
+              <TikTokIcon size={24} />
             </a>
           </div>
         </div>
