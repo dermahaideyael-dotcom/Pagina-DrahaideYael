@@ -1,4 +1,4 @@
-const NOTIFY_EMAILS = 'derma.haideyael@gmail.com,jonatanmenriv@gmail.com';
+const NOTIFY_EMAILS = 'derma.haideyael@gmail.com,jonatanmenriv@gmail.com,gridseldahermenegildo8@gmail.com';
 
 // Encabezados que el script espera en la fila 1 de la primera pestaña.
 // Si faltan (por ejemplo, la primera vez que corre esta versión sobre una hoja
@@ -33,6 +33,39 @@ const EXPECTED_HEADERS = [
 ];
 
 const REVIEW_HEADERS = ['Fecha', 'Nombre', 'Tratamiento', 'Calificación', 'Comentario'];
+
+// Pestaña de seguimiento para recepción: id_lead...fecha_actualizacion se
+// autocompletan al llegar el lead; el resto (fecha_cita en adelante) lo llena
+// recepción a mano según avanza el caso. No sustituye la pestaña de leads
+// crudos de arriba — es la vista operativa para trabajar cada lead.
+const TRACKING_SHEET_NAME = 'Seguimiento';
+const TRACKING_HEADERS = [
+  'id_lead',
+  'fecha',
+  'nombre',
+  'telefono',
+  'servicio',
+  'origen',
+  'utm_campana',
+  'gclid',
+  'estado',
+  'fecha_cita',
+  'importe_consulta',
+  'observaciones',
+  'motivo_no_conversion',
+  'fecha_actualizacion',
+];
+const TRACKING_ESTADOS = [
+  'nuevo',
+  'contactado',
+  'calificado',
+  'cita agendada',
+  'asistió',
+  'paciente',
+  'no interesado',
+  'no respondió',
+];
+const TRACKING_SERVICIOS = ['Caída de cabello', 'Acné', 'Melasma', 'Rejuvenecimiento', 'Otro'];
 
 function doPost(e) {
   try {
@@ -87,6 +120,8 @@ function doPost(e) {
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
     const headers = ensureHeaders(sheet);
     sheet.appendRow(buildRowValues(headers, lead));
+
+    appendTrackingRow(lead);
 
     const bodyLines = [
       `Nombre: ${name}`,
@@ -195,4 +230,84 @@ function buildRowValues(headers, lead) {
 function jsonResponse(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * Crea (si no existe) la pestaña "Seguimiento" con encabezados y validación de
+ * datos en las columnas de lista cerrada (estado, servicio). No toca la
+ * pestaña de leads crudos ni "Reseñas".
+ */
+function getOrCreateTrackingSheet() {
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = spreadsheet.getSheetByName(TRACKING_SHEET_NAME);
+  if (sheet) return sheet;
+
+  sheet = spreadsheet.insertSheet(TRACKING_SHEET_NAME);
+  sheet.getRange(1, 1, 1, TRACKING_HEADERS.length).setValues([TRACKING_HEADERS]);
+
+  const servicioCol = TRACKING_HEADERS.indexOf('servicio') + 1;
+  const estadoCol = TRACKING_HEADERS.indexOf('estado') + 1;
+  const servicioRule = SpreadsheetApp.newDataValidation()
+    .requireValueInList(TRACKING_SERVICIOS, true)
+    .setAllowInvalid(true)
+    .build();
+  const estadoRule = SpreadsheetApp.newDataValidation()
+    .requireValueInList(TRACKING_ESTADOS, true)
+    .setAllowInvalid(true)
+    .build();
+  sheet.getRange(2, servicioCol, 500).setDataValidation(servicioRule);
+  sheet.getRange(2, estadoCol, 500).setDataValidation(estadoRule);
+
+  return sheet;
+}
+
+/**
+ * Adivina el servicio a partir de la página de entrada/actual. Es una
+ * inferencia, no un dato confirmado — recepción debe corregirlo si no
+ * corresponde (ej. alguien llegó por /caida-cabello pero pregunta por acné).
+ */
+function inferServicio(lead) {
+  const page = String(lead['last_touch_landing_page'] || lead['current_page'] || '');
+  if (page.indexOf('caida-cabello') !== -1) return 'Caída de cabello';
+  if (page.indexOf('acne') !== -1) return 'Acné';
+  if (page.indexOf('melasma') !== -1) return 'Melasma';
+  if (page.indexOf('rejuvenecimiento') !== -1) return 'Rejuvenecimiento';
+  return 'Otro';
+}
+
+/**
+ * Agrega una fila a "Seguimiento" con los campos que se pueden saber al
+ * momento del envío del formulario. Las columnas posteriores a "estado"
+ * (fecha_cita, importe_consulta, observaciones, motivo_no_conversion) quedan
+ * vacías: eso lo llena recepción a mano conforme avanza el caso, porque hoy
+ * no existe ninguna integración de calendario/CRM que lo pueda saber solo.
+ * Nunca debe romper el guardado del lead principal si algo falla aquí.
+ */
+function appendTrackingRow(lead) {
+  try {
+    const sheet = getOrCreateTrackingSheet();
+    const idLead = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd') +
+      '-' + ('000' + sheet.getLastRow()).slice(-3);
+
+    const row = {
+      id_lead: idLead,
+      fecha: lead['Fecha'],
+      nombre: lead['Nombre'],
+      telefono: lead['Teléfono'],
+      servicio: inferServicio(lead),
+      origen: lead['last_touch_source'] || lead['first_touch_source'] || 'directo',
+      utm_campana: lead['last_touch_campaign'] || lead['first_touch_campaign'] || '',
+      gclid: lead['last_touch_gclid'] || lead['first_touch_gclid'] || '',
+      estado: 'nuevo',
+      fecha_cita: '',
+      importe_consulta: '',
+      observaciones: '',
+      motivo_no_conversion: '',
+      fecha_actualizacion: new Date(),
+    };
+
+    sheet.appendRow(TRACKING_HEADERS.map((h) => row[h]));
+  } catch (err) {
+    // El seguimiento nunca debe impedir que se guarde/notifique el lead principal.
+  }
 }
