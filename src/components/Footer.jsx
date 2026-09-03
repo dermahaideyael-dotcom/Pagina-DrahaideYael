@@ -38,7 +38,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary-950 pt-16 text-primary-100">
-      <div className="section-container grid gap-10 pb-12 md:grid-cols-4">
+      <div className="section-container grid gap-y-10 gap-x-10 pb-12 md:grid-cols-4 md:gap-x-16">
         <div>
           <div className="flex items-center gap-3">
             <img
