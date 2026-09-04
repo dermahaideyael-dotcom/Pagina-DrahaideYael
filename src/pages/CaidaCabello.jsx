@@ -286,7 +286,7 @@ export default function CaidaCabello() {
               <p className="mt-3 text-sm text-nude-600">
                 Escríbenos por WhatsApp o llámanos — consultorio en Plaza
                 Mandarina Interlomas, Huixquilucan, Estado de México. Lun - Vie:
-                10:00 AM - 8:00 PM · Sáb: 8:00 AM - 3:00 PM.
+                10:00 AM - 8:00 PM · Sáb: 8:00 AM - 4:00 PM.
               </p>
             </div>
             <div className="flex flex-col items-start gap-3 sm:flex-row md:justify-end">
@@ -301,12 +301,12 @@ export default function CaidaCabello() {
                 WhatsApp
               </a>
               <a
-                href="tel:+525584041696"
+                href="tel:+525552915654"
                 onClick={trackClickPhone}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-nude-300 bg-nude-50 px-6 py-3.5 text-sm font-semibold text-primary-800 transition hover:bg-nude-100"
               >
                 <Phone size={18} />
-                Llamar 55 8404 1696
+                Llamar 55 5291 5654
               </a>
             </div>
           </div>

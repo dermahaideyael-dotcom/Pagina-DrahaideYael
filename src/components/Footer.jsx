@@ -144,8 +144,8 @@ export default function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-primary-200">
             <li>Plaza Mandarina Interlomas, Edo. de México</li>
             <li>
-              <a href="tel:+525584041696" onClick={trackClickPhone} className="hover:text-white">
-                55 8404 1696
+              <a href="tel:+525552915654" onClick={trackClickPhone} className="hover:text-white">
+                55 5291 5654
               </a>
             </li>
             <li>derma.haideyael@gmail.com</li>

@@ -87,12 +87,12 @@ export default function Header() {
             </a>
           </div>
           <a
-            href="tel:+525584041696"
+            href="tel:+525552915654"
             onClick={trackClickPhone}
             className="flex items-center gap-2 whitespace-nowrap rounded-full border border-nude-300 bg-white px-4 py-2.5 text-sm font-semibold text-primary-800 transition hover:bg-nude-100"
           >
             <Phone size={15} />
-            55 8404 1696
+            55 5291 5654
           </a>
           <a href={withHomePrefix('#contacto')} className="whitespace-nowrap btn-primary !px-5 !py-2.5">
             Agendar Cita

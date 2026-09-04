@@ -12,9 +12,9 @@ const CONTACT_INFO = [
   },
   {
     icon: Phone,
-    title: 'Teléfono / WhatsApp',
-    detail: '55 8404 1696',
-    href: 'tel:+525584041696',
+    title: 'Teléfono',
+    detail: '55 5291 5654',
+    href: 'tel:+525552915654',
   },
   {
     icon: Mail,
@@ -25,21 +25,29 @@ const CONTACT_INFO = [
   {
     icon: Clock,
     title: 'Horario',
-    detail: 'Lun - Vie: 10:00 AM - 8:00 PM · Sáb: 8:00 AM - 3:00 PM · Dom: Cerrado',
+    detail: 'Lun - Vie: 10:00 AM - 8:00 PM · Sáb: 8:00 AM - 4:00 PM · Dom: Cerrado',
     href: null,
   },
 ]
 
-const EMPTY_FORM = { name: '', phone: '', email: '', message: '', website: '' }
+const EMPTY_FORM = { name: '', phone: '', email: '', message: '', consentimiento: false, website: '' }
+
+const ESTADO_BOT_MESSAGES = {
+  enviado: { tone: 'success', text: 'Mensaje enviado. Te contactaremos por WhatsApp pronto.' },
+  sin_consentimiento: { tone: 'success', text: 'Contacto recibido. Para WhatsApp, marca el consentimiento.' },
+  telefono_invalido: { tone: 'error', text: 'Teléfono inválido. Verifica el formato.' },
+  error_webhook: { tone: 'warning', text: 'Hubo un error. Te contactaremos por email.' },
+}
 
 export default function Contact() {
   const [form, setForm] = useState(EMPTY_FORM)
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
+  const [estadoBot, setEstadoBot] = useState(null)
   const hasStartedRef = useRef(false)
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
+    const { name, value, type, checked } = e.target
+    setForm((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }))
 
     // form_start: una sola vez por sesión de interacción, y no para el honeypot
     if (!hasStartedRef.current && name !== 'website') {
@@ -55,12 +63,14 @@ export default function Contact() {
     if (form.website) return
 
     setStatus('submitting')
+    setEstadoBot(null)
 
     const payload = {
       name: form.name,
       phone: form.phone,
       email: form.email,
       message: form.message,
+      consentimiento: form.consentimiento,
       website: form.website,
       ...flattenAttribution(getAttribution()),
       current_page: window.location.pathname + window.location.search,
@@ -75,8 +85,11 @@ export default function Contact() {
       })
 
       const data = await res.json()
+      const isLeadAccepted = data.ok && data.estadoBot !== 'telefono_invalido'
 
-      if (data.ok) {
+      setEstadoBot(data.estadoBot || null)
+
+      if (isLeadAccepted) {
         setStatus('success')
         trackGenerateLead()
         setForm(EMPTY_FORM)
@@ -86,6 +99,7 @@ export default function Contact() {
       }
     } catch (err) {
       setStatus('error')
+      setEstadoBot(null)
     }
   }
 
@@ -208,6 +222,24 @@ export default function Contact() {
               </div>
             </div>
 
+            <label
+              htmlFor="consentimiento"
+              className="mt-5 flex items-start gap-3 rounded-xl border border-primary-200 bg-primary-50 p-4 text-sm text-primary-900"
+            >
+              <input
+                id="consentimiento"
+                name="consentimiento"
+                type="checkbox"
+                checked={form.consentimiento}
+                onChange={handleChange}
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-nude-300 text-primary-600 focus:ring-primary-500"
+              />
+              <span>
+                Acepto recibir mensajes de WhatsApp del asistente de la Dra. Haideyael{' '}
+                <span className="font-semibold text-primary-700">(recomendado)</span>
+              </span>
+            </label>
+
             <input
               type="text"
               name="website"
@@ -229,15 +261,26 @@ export default function Contact() {
             </button>
 
             {status === 'success' && (
-              <p className="mt-4 text-sm font-medium text-primary-600">
-                ¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.
+              <p
+                className={`mt-4 text-sm font-medium ${
+                  estadoBot && ESTADO_BOT_MESSAGES[estadoBot]?.tone === 'error'
+                    ? 'text-red-600'
+                    : estadoBot && ESTADO_BOT_MESSAGES[estadoBot]?.tone === 'warning'
+                    ? 'text-amber-600'
+                    : 'text-primary-600'
+                }`}
+              >
+                {estadoBot && ESTADO_BOT_MESSAGES[estadoBot]
+                  ? ESTADO_BOT_MESSAGES[estadoBot].text
+                  : '¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.'}
               </p>
             )}
 
             {status === 'error' && (
               <p className="mt-4 text-sm font-medium text-red-600">
-                Hubo un problema al enviar tu mensaje. Intenta de nuevo o
-                escríbenos directo al 55 8404 1696.
+                {estadoBot && ESTADO_BOT_MESSAGES[estadoBot]
+                  ? ESTADO_BOT_MESSAGES[estadoBot].text
+                  : 'Hubo un problema al enviar tu mensaje. Intenta de nuevo o escríbenos directo al 55 5291 5654.'}
               </p>
             )}
           </form>

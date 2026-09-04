@@ -16,10 +16,11 @@ const WHATSAPP_HREF =
   '&utm_source=chatgpt&utm_medium=paid&utm_campaign=melasma'
 
 const BENEFICIOS = [
-  { title: 'Piel más uniforme', description: 'Tono de piel más parejo en las zonas tratadas.' },
-  { title: 'Manchas visiblemente reducidas', description: 'Tratamientos según el tipo y profundidad del melasma.' },
-  { title: 'Aspecto más luminoso', description: 'Mejora en la textura y luminosidad general de la piel.' },
-  { title: 'Prevención de nuevas manchas', description: 'Protección solar médica como parte del plan.' },
+  { title: 'Diagnóstico que también descarta lo importante', description: 'Evaluamos si es melasma, léntigo solar u otra causa, y si algo amerita revisión adicional — no solo un diagnóstico estético.' },
+  { title: 'Plan de manejo a largo plazo, con seguimiento activo', description: 'El melasma puede reaparecer; por eso el plan incluye seguimiento continuo para sostener resultados, no una consulta única y listo.' },
+  { title: 'Láser y procedimientos con intensidad controlada', description: 'Ajustamos el tipo e intensidad del procedimiento a tu piel para reducir molestia e irritación; no hay un protocolo único para todos.' },
+  { title: 'Protección solar como parte del tratamiento', description: 'Es la base para sostener resultados, no un paso opcional.' },
+  { title: 'Consulta con diagnóstico incluido, sin presión para comprar', description: 'El precio cubre dermatoscopia, diagnóstico diferencial y plan personalizado; no hay presión para comprar tratamientos adicionales.' },
 ]
 
 const CAROUSEL_SLIDES = [
@@ -52,13 +53,14 @@ export default function Melasma() {
               </h1>
 
               <p className="mt-4 text-xl font-medium text-accent-600">
-                Diagnóstico dermatológico especializado, no cremas genéricas.
+                Diagnóstico dermatológico especializado.
               </p>
 
               <p className="section-subtitle mt-5 text-nude-700">
-                La Dra. Haide Yael evalúa tu piel de forma individual y diseña un
-                plan de tratamiento realista, sustentado en evidencia científica,
-                para ayudarte a manejar el melasma y las manchas del rostro.
+                La Dra. Haide Yael evalúa tu piel de forma individual, descarta lo
+                importante y diseña un plan de tratamiento realista y sustentado
+                en evidencia científica para ayudarte a manejar el melasma y las
+                manchas del rostro.
               </p>
 
               <div className="mt-8">
@@ -209,7 +211,8 @@ export default function Melasma() {
               <p className="section-subtitle">
                 Empleamos <strong>láser</strong>, <strong>luz pulsada</strong> y{' '}
                 <strong>tratamientos tópicos especializados</strong>,
-                seleccionados según el tipo y profundidad de tus manchas.
+                seleccionados según el tipo y profundidad de tus manchas, y
+                ajustados para minimizar irritación.
               </p>
             </div>
             <div>
@@ -270,7 +273,7 @@ export default function Melasma() {
               <p className="mt-3 text-sm text-nude-600">
                 Escríbenos por WhatsApp o llámanos — consultorio en Plaza
                 Mandarina Interlomas, Huixquilucan, Estado de México. Lun - Vie:
-                10:00 AM - 8:00 PM · Sáb: 8:00 AM - 3:00 PM.
+                10:00 AM - 8:00 PM · Sáb: 8:00 AM - 4:00 PM.
               </p>
             </div>
             <div className="flex flex-col items-start gap-3 sm:flex-row md:justify-end">
@@ -285,12 +288,12 @@ export default function Melasma() {
                 WhatsApp
               </a>
               <a
-                href="tel:+525584041696"
+                href="tel:+525552915654"
                 onClick={trackClickPhone}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-nude-300 bg-nude-50 px-6 py-3.5 text-sm font-semibold text-primary-800 transition hover:bg-nude-100"
               >
                 <Phone size={18} />
-                Llamar 55 8404 1696
+                Llamar 55 5291 5654
               </a>
             </div>
           </div>
