@@ -7,6 +7,7 @@ import {
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Gallery from '@/components/Gallery'
+import Contact from '@/components/Contact'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { trackClickPhone, trackClickWhatsApp } from '@/lib/analytics'
 
@@ -298,6 +299,8 @@ export default function Melasma() {
             </div>
           </div>
         </section>
+
+        <Contact />
       </main>
 
       <Footer />
