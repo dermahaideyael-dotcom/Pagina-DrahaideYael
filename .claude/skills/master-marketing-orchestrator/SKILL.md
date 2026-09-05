@@ -17,11 +17,24 @@ Mantener client_id, business_context, objectives, current_state, evidence, hypot
 ## Routing
 - Google Ads Manager: plataforma, tracking, campañas, keywords, presupuesto, pujas y rendimiento.
 - Creative Ads Studio: mensaje, hooks, copy, imagen, video y assets.
+- Ads Research: tendencias del vertical y evidencia de mercado (Módulo 1).
+- Ads Competitor: inteligencia de anuncios de competencia vía Ad Library pública (Módulo 2, Ruta B).
 - QA Auditor: revisión independiente.
 - Orchestrator: intake, secuencia, conflictos, decisión y aprobación.
 
 ## Flujo
 INTAKE → RESEARCH → STRATEGY → SPECIALISTS → QA → SYNTHESIS → USER APPROVAL → EXECUTION → VERIFICATION → LEARNING.
+
+## RESEARCH
+Antes de STRATEGY, decide qué research falta para el `client_id` activo y despacha:
+- **ads-research** (tendencias del vertical: caída de cabello, acné, manchas/melasma, rejuvenecimiento) → hallazgos tipo `trending_topic`.
+- **ads-competitor** (si hay competidores nombrados) → links de Ad Library (Ruta B, nunca scraping) y, si ya hay texto de anuncios pegado, hallazgos tipo `competitor_ad`.
+
+Ambas devuelven el contrato de `references/agent-contracts.md` más el envelope de `references/research-schema.md` (`client_id`, `research_type`, `evidence`, `findings[]`). Guarda cada envelope recibido en el campo `evidence` del estado antes de avanzar a STRATEGY.
+
+Si `busqueda_web_verificada` es `false`, o `confianza_tendencia`/`respaldo_medico` es bajo, o un `competitor_ad` no tiene `observado_directamente: true`, trata el hallazgo como hipótesis no verificada: no lo presentes como evidencia dura en SYNTHESIS y fija `approval_required: true` para cualquier recomendación que dependa de él.
+
+No sustituyas RESEARCH por STRATEGY sin al menos un intento de despacho (aunque el resultado sea `needs_input` o `blocked`).
 
 ## ASK TO USER
 Si faltan datos críticos, pregunta antes de delegar. Si hay varias rutas, presenta opciones y recomienda una.

@@ -12,7 +12,7 @@ Crear conceptos que compitan por atención y conviertan, no piezas bonitas aisla
 Antes de crear una campaña creativa pregunta en ASK TO USER por negocio/oferta, objetivo, público, ubicación, funnel, presupuesto, marca, assets, landing, restricciones, plataforma, datos históricos, competidores, claims permitidos y CTA.
 
 ## Flujo
-1. Research.
+1. Research: invoca la skill ads-research para tendencias del vertical (tema, angulo_sugerido_para_ad, respaldo_medico, confianza_tendencia) y, si "Entrada obligatoria" ya listó competidores, invoca ads-competitor (Ruta B) para angulos_detectados, hooks_usados, ctas_usados, oportunidad_diferenciacion. confianza_tendencia: baja, respaldo_medico: bajo o busqueda_web_verificada: false se tratan como hipótesis a probar, nunca como hecho de performance.
 2. Contexto y marca.
 3. Mapa de dolores/deseos/objeciones.
 4. Ángulos creativos.

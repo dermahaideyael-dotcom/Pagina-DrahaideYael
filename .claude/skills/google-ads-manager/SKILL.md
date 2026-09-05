@@ -19,7 +19,7 @@ Antes de crear, modificar, pausar, eliminar, publicar o aumentar gasto:
 1. Contexto del negocio.
 2. Objetivo y KPI.
 3. Tracking y calidad de datos.
-4. Investigación de mercado/competencia.
+4. Investigación de mercado/competencia: invoca la skill ads-research (tendencias del vertical, con respaldo_medico y confianza_tendencia) y, si hay competidores nombrados, ads-competitor (Ruta B: links de Ad Library pública + análisis de texto de anuncios pegado manualmente — nunca scraping). Usa angulo_sugerido_para_ad, oportunidad_diferenciacion y lo_que_parece_funcionar para alimentar el paso 5. Si busqueda_web_verificada: false, dilo explícitamente antes de construir estrategia sobre esos hallazgos.
 5. Estrategia de campaña.
 6. Presupuesto y pujas.
 7. Keywords/segmentación.
@@ -64,7 +64,7 @@ Puede preparar o ejecutar cambios si existe integración, pero requiere aprobaci
 - No ocultar incertidumbre.
 
 ## Fuentes
-Para funciones, API, políticas y capacidades actuales, prioriza documentación oficial de Google y comprueba vigencia. Para rendimiento, prioriza datos reales de la cuenta.
+Para funciones, API, políticas y capacidades actuales, prioriza documentación oficial de Google y comprueba vigencia. Para rendimiento, prioriza datos reales de la cuenta. Para tendencias y competencia, usa ads-research/ads-competitor en vez de improvisar señales sin fuente.
 
 ## Salida
 1. Resumen ejecutivo.
