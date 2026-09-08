@@ -121,7 +121,7 @@ export default function Melasma() {
                 src="/images/melasma-problema.webp"
                 alt="Por qué salen las manchas"
                 width={600}
-                height={760}
+                height={748}
                 loading="lazy"
                 className="mx-auto h-auto w-full max-w-[420px] rounded-2xl"
               />
@@ -137,7 +137,7 @@ export default function Melasma() {
                 src="/images/melasma-solucion.webp"
                 alt="Manchas"
                 width={600}
-                height={741}
+                height={745}
                 loading="lazy"
                 className="mx-auto h-auto w-full max-w-[420px] rounded-2xl"
               />
@@ -192,7 +192,7 @@ export default function Melasma() {
                 src="/images/melasma-beneficios.webp"
                 alt="Qué mancha tienes"
                 width={700}
-                height={776}
+                height={687}
                 loading="lazy"
                 className="mx-auto h-auto w-full max-w-[480px] rounded-2xl"
               />
@@ -225,7 +225,7 @@ export default function Melasma() {
                 src="/images/melasma-equipo.webp"
                 alt="Tratamiento para manchas y melasma"
                 width={600}
-                height={746}
+                height={734}
                 loading="lazy"
                 className="mx-auto h-auto w-full max-w-[420px] rounded-2xl"
               />

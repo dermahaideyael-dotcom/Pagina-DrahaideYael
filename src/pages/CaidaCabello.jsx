@@ -113,7 +113,7 @@ export default function CaidaCabello() {
                 src="/images/placeholder-caida-cabello.webp"
                 alt="Caída de cabello"
                 width={400}
-                height={300}
+                height={598}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
@@ -129,7 +129,7 @@ export default function CaidaCabello() {
                 src="/images/placeholder-solution-caida-cabello.webp"
                 alt="Solución para la caída de cabello"
                 width={400}
-                height={300}
+                height={501}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
@@ -184,7 +184,7 @@ export default function CaidaCabello() {
                 src="/images/placeholder-before-after-caida-cabello.webp"
                 alt="Antes y después — tratamiento de caída de cabello"
                 width={500}
-                height={300}
+                height={528}
                 loading="lazy"
                 className="mx-auto w-full max-w-[500px] rounded-2xl"
               />
@@ -217,7 +217,7 @@ export default function CaidaCabello() {
                 src="/images/placeholder-equipo-caida-cabello.webp"
                 alt="Equipo utilizado en el tratamiento de caída de cabello"
                 width={400}
-                height={300}
+                height={501}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />

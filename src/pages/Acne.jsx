@@ -113,7 +113,7 @@ export default function Acne() {
                 src="/images/placeholder-acne.webp"
                 alt="Acné adulto"
                 width={400}
-                height={300}
+                height={436}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
@@ -129,7 +129,7 @@ export default function Acne() {
                 src="/images/placeholder-solution-acne.webp"
                 alt="Solución para el acné"
                 width={400}
-                height={300}
+                height={464}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
@@ -184,7 +184,7 @@ export default function Acne() {
                 src="/images/placeholder-before-after-acne.webp"
                 alt="Antes y después — tratamiento de acné"
                 width={500}
-                height={300}
+                height={525}
                 loading="lazy"
                 className="mx-auto w-full max-w-[500px] rounded-2xl"
               />
@@ -216,7 +216,7 @@ export default function Acne() {
                 src="/images/placeholder-equipo-acne.webp"
                 alt="Equipo utilizado en el tratamiento de acné"
                 width={400}
-                height={300}
+                height={436}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />

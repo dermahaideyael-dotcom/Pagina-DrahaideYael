@@ -113,7 +113,7 @@ export default function Rejuvenecimiento() {
                 src="/images/placeholder-rejuvenecimiento.webp"
                 alt="Envejecimiento de la piel"
                 width={400}
-                height={300}
+                height={454}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
@@ -129,7 +129,7 @@ export default function Rejuvenecimiento() {
                 src="/images/placeholder-solution-rejuvenecimiento.webp"
                 alt="Solución de rejuvenecimiento dermatológico"
                 width={400}
-                height={300}
+                height={441}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
@@ -183,7 +183,7 @@ export default function Rejuvenecimiento() {
                 src="/images/placeholder-before-after-rejuvenecimiento.webp"
                 alt="Antes y después — rejuvenecimiento dermatológico"
                 width={500}
-                height={300}
+                height={555}
                 loading="lazy"
                 className="mx-auto w-full max-w-[500px] rounded-2xl"
               />
@@ -215,7 +215,7 @@ export default function Rejuvenecimiento() {
                 src="/images/placeholder-equipo-rejuvenecimiento.webp"
                 alt="Equipo utilizado en rejuvenecimiento dermatológico"
                 width={400}
-                height={300}
+                height={485}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
