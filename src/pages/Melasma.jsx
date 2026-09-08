@@ -21,7 +21,7 @@ const BENEFICIOS = [
   { title: 'Plan de manejo a largo plazo, con seguimiento activo', description: 'El melasma puede reaparecer; por eso el plan incluye seguimiento continuo para sostener resultados, no una consulta única y listo.' },
   { title: 'Láser y procedimientos con intensidad controlada', description: 'Ajustamos el tipo e intensidad del procedimiento a tu piel para reducir molestia e irritación; no hay un protocolo único para todos.' },
   { title: 'Protección solar como parte del tratamiento', description: 'Es la base para sostener resultados, no un paso opcional.' },
-  { title: 'Consulta con diagnóstico incluido, sin presión para comprar', description: 'El precio cubre dermatoscopia, diagnóstico diferencial y plan personalizado; no hay presión para comprar tratamientos adicionales.' },
+  { title: 'Consulta con diagnóstico incluido', description: 'El precio cubre dermatoscopia, diagnóstico diferencial y plan personalizado.' },
 ]
 
 const CAROUSEL_SLIDES = [
@@ -214,10 +214,9 @@ export default function Melasma() {
               </span>
               <h2 className="section-title mt-6">Equipo y procedimientos</h2>
               <p className="section-subtitle">
-                Empleamos <strong>láser</strong>, <strong>luz pulsada</strong> y{' '}
-                <strong>tratamientos tópicos especializados</strong>,
-                seleccionados según el tipo y profundidad de tus manchas, y
-                ajustados para minimizar irritación.
+                Tratamientos especializados y personalizados según el tipo y
+                profundidad de tus manchas, ajustados para minimizar
+                irritación.
               </p>
             </div>
             <div>

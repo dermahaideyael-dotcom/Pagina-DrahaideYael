@@ -1,12 +1,14 @@
 import { useLocation } from 'react-router-dom'
-import { Instagram } from 'lucide-react'
+import { Instagram, Facebook } from 'lucide-react'
 import logo from '@/assets/logo.webp'
 import cilad from '@/assets/cilad.webp'
 import cmd from '@/assets/cmd.webp'
 import { trackClickPhone } from '@/lib/analytics'
-import { INSTAGRAM_URL, TIKTOK_URL } from '@/lib/social'
+import { INSTAGRAM_URL, TIKTOK_URL, FACEBOOK_URL } from '@/lib/social'
 
 const AVISO_PUBLICIDAD = '2515062002A00106'
+const CEDULA_PROFESIONAL = '10402667'
+const CEDULA_ESPECIALISTA = '14191219'
 
 function TikTokIcon({ size = 24 }) {
   return (
@@ -106,6 +108,16 @@ export default function Footer() {
             >
               <TikTokIcon size={24} />
             </a>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en Facebook"
+              title="Facebook"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition duration-300 hover:bg-primary-600 hover:opacity-90"
+            >
+              <Facebook size={24} />
+            </a>
           </div>
         </div>
 
@@ -148,14 +160,18 @@ export default function Footer() {
                 55 5291 5654
               </a>
             </li>
-            <li>derma.haideyael@gmail.com</li>
+            <li>
+              <a href="mailto:derma.haideyael@gmail.com" className="hover:text-white">
+                derma.haideyael@gmail.com
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-white/10 py-6">
         <div className="section-container flex flex-col items-center justify-between gap-2 text-center text-xs text-primary-300 sm:flex-row sm:text-left">
-          <p>© {new Date().getFullYear()} Dra. Haide Yael Guerrero - Dermatología</p>
+          <p>© {new Date().getFullYear()} Dra. Haide Yael - Dermatología</p>
           <div className="flex gap-5">
             <a href="/aviso-de-privacidad" className="hover:text-white">Aviso de Privacidad</a>
             <a href="/aviso-de-privacidad#etica-medica" className="hover:text-white">Ética Médica</a>
@@ -163,6 +179,7 @@ export default function Footer() {
         </div>
         <div className="section-container mt-2 text-center text-[11px] text-primary-400 sm:text-left">
           <p>Aviso de Publicidad: {AVISO_PUBLICIDAD}</p>
+          <p>Cédula profesional: {CEDULA_PROFESIONAL} · Cédula de especialista: {CEDULA_ESPECIALISTA}</p>
         </div>
       </div>
     </footer>

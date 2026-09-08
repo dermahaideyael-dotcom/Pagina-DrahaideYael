@@ -206,10 +206,8 @@ export default function CaidaCabello() {
               </span>
               <h2 className="section-title mt-6">Equipo y procedimientos</h2>
               <p className="section-subtitle">
-                Usamos <strong>tricoscopía</strong> para el diagnóstico,{' '}
-                <strong>microinyecciones</strong> y{' '}
-                <strong>tratamientos tópicos especializados</strong> según cada
-                caso.
+                Tratamientos especializados y personalizados según cada caso,
+                con un enfoque médico riguroso.
               </p>
             </div>
             <div>

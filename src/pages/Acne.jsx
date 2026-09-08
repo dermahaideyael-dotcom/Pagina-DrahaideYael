@@ -206,9 +206,9 @@ export default function Acne() {
               </span>
               <h2 className="section-title mt-6">Equipo y procedimientos</h2>
               <p className="section-subtitle">
-                Utilizamos <strong>dermatoscopio</strong> para el diagnóstico,
-                tecnología <strong>láser</strong> y <strong>peelings químicos</strong>{' '}
-                según el caso, siempre con un enfoque médico personalizado.
+                Tratamientos especializados y personalizados según el tipo de
+                acné y las necesidades de tu piel, siempre con un enfoque
+                médico personalizado.
               </p>
             </div>
             <div>

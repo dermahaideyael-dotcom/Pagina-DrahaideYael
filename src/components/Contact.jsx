@@ -20,7 +20,7 @@ const CONTACT_INFO = [
     icon: Mail,
     title: 'Correo',
     detail: 'derma.haideyael@gmail.com',
-    href: null,
+    href: 'mailto:derma.haideyael@gmail.com',
   },
   {
     icon: Clock,
@@ -148,7 +148,7 @@ export default function Contact() {
                 title="Ubicación de la clínica"
                 className="h-full w-full border-0"
                 loading="lazy"
-                src="https://www.google.com/maps?q=Plaza%20Mandarina%20Interlomas%2C%20Estado%20de%20Mexico&output=embed"
+                src="https://www.google.com/maps?q=Dra.+Haide+Yael+Dermat%C3%B3loga&output=embed"
               />
             </div>
           </div>

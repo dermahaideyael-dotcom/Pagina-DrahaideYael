@@ -205,9 +205,8 @@ export default function Rejuvenecimiento() {
               </span>
               <h2 className="section-title mt-6">Equipo y procedimientos</h2>
               <p className="section-subtitle">
-                Utilizamos <strong>radiofrecuencia</strong>, tecnología{' '}
-                <strong>láser</strong> y <strong>ácido hialurónico</strong>,
-                combinados según las necesidades específicas de tu piel.
+                Tratamientos especializados y personalizados según las
+                necesidades específicas de tu piel.
               </p>
             </div>
             <div>

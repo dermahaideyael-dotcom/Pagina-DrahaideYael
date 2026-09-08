@@ -19,7 +19,7 @@ export default function AvisoPrivacidad() {
             <section>
               <h2 className="text-lg font-bold text-primary-950">1. Responsable del tratamiento de datos</h2>
               <p className="mt-2">
-                La Dra. Haide Yael Guerrero, con consultorio en Plaza Mandarina
+                La Dra. Haide Yael, con consultorio en Plaza Mandarina
                 Interlomas, Calle Parque de Cádiz 1, Col. Parques de la Herradura,
                 Primer piso, Estado de México, es responsable del tratamiento de
                 los datos personales que nos proporcionas, de conformidad con la
