@@ -29,7 +29,11 @@ const CAROUSEL_SLIDES = [
   { name: 'melasma-carrusel-2', alt: 'Manchas y melasma — Dra. Haide Yael' },
   { name: 'melasma-carrusel-3', alt: 'Manchas y melasma — Dra. Haide Yael' },
   { name: 'melasma-carrusel-4', alt: 'Manchas y melasma — Dra. Haide Yael' },
-  { name: 'melasma-carrusel-5', alt: 'Daño solar acumulado' },
+  { name: 'melasma-carrusel-5', alt: 'Manchas y melasma — Dra. Haide Yael' },
+  { name: 'melasma-carrusel-6', alt: 'Manchas y melasma — Dra. Haide Yael' },
+  { name: 'melasma-carrusel-7', alt: 'Manchas y melasma — Dra. Haide Yael' },
+  { name: 'melasma-carrusel-8', alt: 'Manchas y melasma — Dra. Haide Yael' },
+  { name: 'melasma-carrusel-9', alt: 'Manchas y melasma — Dra. Haide Yael' },
 ]
 
 export default function Melasma() {
