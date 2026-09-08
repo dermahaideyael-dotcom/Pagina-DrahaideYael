@@ -216,7 +216,7 @@ export default function Acne() {
                 src="/images/placeholder-equipo-acne.webp"
                 alt="Equipo utilizado en el tratamiento de acné"
                 width={400}
-                height={436}
+                height={456}
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />

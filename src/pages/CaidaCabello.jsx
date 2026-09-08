@@ -213,13 +213,14 @@ export default function CaidaCabello() {
               </p>
             </div>
             <div>
+              {/* REEMPLAZAR CON IMAGEN REAL: equipo utilizado en caída de cabello */}
               <img
                 src="/images/placeholder-equipo-caida-cabello.webp"
                 alt="Equipo utilizado en el tratamiento de caída de cabello"
                 width={400}
-                height={501}
+                height={300}
                 loading="lazy"
-                className="mx-auto w-full max-w-[400px] rounded-2xl"
+                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>

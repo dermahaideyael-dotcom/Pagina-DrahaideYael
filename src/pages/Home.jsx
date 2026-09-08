@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
+import VideoIntro from '@/components/VideoIntro'
 import About from '@/components/About'
 import Services from '@/components/Services'
 import Pharmacy from '@/components/Pharmacy'
@@ -15,6 +16,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <VideoIntro />
         <About />
         <Services />
         <Pharmacy />
