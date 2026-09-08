@@ -109,14 +109,13 @@ export default function Rejuvenecimiento() {
               </p>
             </div>
             <div>
-              {/* REEMPLAZAR CON IMAGEN REAL: rejuvenecimiento (problema) */}
               <img
                 src="/images/placeholder-rejuvenecimiento.webp"
                 alt="Envejecimiento de la piel"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>
@@ -126,14 +125,13 @@ export default function Rejuvenecimiento() {
         <section className="bg-nude-100 py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div className="order-2 md:order-1">
-              {/* REEMPLAZAR CON IMAGEN REAL: solución rejuvenecimiento */}
               <img
                 src="/images/placeholder-solution-rejuvenecimiento.webp"
                 alt="Solución de rejuvenecimiento dermatológico"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
             <div className="order-1 md:order-2">
@@ -181,14 +179,13 @@ export default function Rejuvenecimiento() {
             </div>
 
             <div className="mt-10">
-              {/* REEMPLAZAR CON IMAGEN REAL: antes/después rejuvenecimiento */}
               <img
                 src="/images/placeholder-before-after-rejuvenecimiento.webp"
                 alt="Antes y después — rejuvenecimiento dermatológico"
                 width={500}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[500px] rounded-2xl"
+                className="mx-auto w-full max-w-[500px] rounded-2xl"
               />
             </div>
 
@@ -214,14 +211,13 @@ export default function Rejuvenecimiento() {
               </p>
             </div>
             <div>
-              {/* REEMPLAZAR CON IMAGEN REAL: equipo utilizado en rejuvenecimiento */}
               <img
                 src="/images/placeholder-equipo-rejuvenecimiento.webp"
                 alt="Equipo utilizado en rejuvenecimiento dermatológico"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>

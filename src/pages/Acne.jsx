@@ -109,14 +109,13 @@ export default function Acne() {
               </p>
             </div>
             <div>
-              {/* REEMPLAZAR CON IMAGEN REAL: acné (problema) */}
               <img
                 src="/images/placeholder-acne.webp"
                 alt="Acné adulto"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>
@@ -126,14 +125,13 @@ export default function Acne() {
         <section className="bg-nude-100 py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div className="order-2 md:order-1">
-              {/* REEMPLAZAR CON IMAGEN REAL: solución acné */}
               <img
                 src="/images/placeholder-solution-acne.webp"
                 alt="Solución para el acné"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
             <div className="order-1 md:order-2">
@@ -182,14 +180,13 @@ export default function Acne() {
             </div>
 
             <div className="mt-10">
-              {/* REEMPLAZAR CON IMAGEN REAL: antes/después acné */}
               <img
                 src="/images/placeholder-before-after-acne.webp"
                 alt="Antes y después — tratamiento de acné"
                 width={500}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[500px] rounded-2xl"
+                className="mx-auto w-full max-w-[500px] rounded-2xl"
               />
             </div>
 
@@ -215,14 +212,13 @@ export default function Acne() {
               </p>
             </div>
             <div>
-              {/* REEMPLAZAR CON IMAGEN REAL: equipo utilizado en acné */}
               <img
                 src="/images/placeholder-equipo-acne.webp"
                 alt="Equipo utilizado en el tratamiento de acné"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>
@@ -269,7 +265,7 @@ export default function Acne() {
                   width={300}
                   height={300}
                   loading="lazy"
-                  className="placeholder-img aspect-square w-full rounded-2xl object-cover"
+                  className="aspect-square w-full rounded-2xl object-cover"
                 />
               ))}
             </div>

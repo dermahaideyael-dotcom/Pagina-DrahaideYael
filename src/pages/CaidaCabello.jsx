@@ -109,14 +109,13 @@ export default function CaidaCabello() {
               </p>
             </div>
             <div>
-              {/* REEMPLAZAR CON IMAGEN REAL: caída de cabello (problema) */}
               <img
                 src="/images/placeholder-caida-cabello.webp"
                 alt="Caída de cabello"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>
@@ -126,14 +125,13 @@ export default function CaidaCabello() {
         <section className="bg-nude-100 py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div className="order-2 md:order-1">
-              {/* REEMPLAZAR CON IMAGEN REAL: solución caída de cabello */}
               <img
                 src="/images/placeholder-solution-caida-cabello.webp"
                 alt="Solución para la caída de cabello"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
             <div className="order-1 md:order-2">
@@ -182,14 +180,13 @@ export default function CaidaCabello() {
             </div>
 
             <div className="mt-10">
-              {/* REEMPLAZAR CON IMAGEN REAL: antes/después caída de cabello */}
               <img
                 src="/images/placeholder-before-after-caida-cabello.webp"
                 alt="Antes y después — tratamiento de caída de cabello"
                 width={500}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[500px] rounded-2xl"
+                className="mx-auto w-full max-w-[500px] rounded-2xl"
               />
             </div>
 
@@ -216,14 +213,13 @@ export default function CaidaCabello() {
               </p>
             </div>
             <div>
-              {/* REEMPLAZAR CON IMAGEN REAL: equipo utilizado en caída de cabello */}
               <img
                 src="/images/placeholder-equipo-caida-cabello.webp"
                 alt="Equipo utilizado en el tratamiento de caída de cabello"
                 width={400}
                 height={300}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>
