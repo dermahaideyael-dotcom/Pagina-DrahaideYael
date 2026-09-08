@@ -148,7 +148,7 @@ export default function Contact() {
                 title="Ubicación de la clínica"
                 className="h-full w-full border-0"
                 loading="lazy"
-                src="https://www.google.com/maps?q=Dra.+Haide+Yael+Dermat%C3%B3loga&output=embed"
+                src="https://www.google.com/maps?cid=6477618317722789100&output=embed"
               />
             </div>
           </div>
