@@ -205,6 +205,8 @@ export default function Melasma() {
           </div>
         </section>
 
+        <Contact />
+
         {/* 5. Equipamiento / Procedimiento */}
         <section className="bg-nude-100 py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
@@ -302,8 +304,6 @@ export default function Melasma() {
             </div>
           </div>
         </section>
-
-        <Contact />
       </main>
 
       <Footer />
