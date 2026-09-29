@@ -8,6 +8,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Contact from '@/components/Contact'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import ImageCarousel from '@/components/ImageCarousel'
 import { trackClickPhone, trackClickWhatsApp } from '@/lib/analytics'
 
 const WHATSAPP_HREF =
@@ -22,7 +23,7 @@ const BENEFICIOS = [
   { title: 'Resultados naturales', description: 'Un enfoque médico que respeta tus rasgos, sin exagerar.' },
 ]
 
-const GALLERY = [
+const CAROUSEL_SLIDES = [
   { src: '/images/gallery-rejuvenecimiento-1.webp', alt: 'Valoración de líneas de expresión' },
   { src: '/images/gallery-rejuvenecimiento-2.webp', alt: 'Consulta de bioestimulación de colágeno' },
   { src: '/images/gallery-rejuvenecimiento-3.webp', alt: 'Preparación de tratamiento inyectable' },
@@ -95,7 +96,41 @@ export default function Rejuvenecimiento() {
           </div>
         </section>
 
-        {/* 2. Problema */}
+        {/* 2. CTA — luce como te sientes */}
+        <section className="bg-white py-20 md:py-28">
+          <div className="section-container grid items-center gap-12 md:grid-cols-2">
+            <ImageCarousel slides={CAROUSEL_SLIDES} />
+
+            <div>
+              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
+                Empieza hoy
+              </span>
+              <h2 className="section-title mt-6">
+                Luce como te sientes
+              </h2>
+              <p className="section-subtitle">
+                Con un diagnóstico personalizado y procedimientos médicos de
+                vanguardia, podemos ayudarte a suavizar líneas de expresión y
+                recuperar firmeza, con resultados naturales.
+              </p>
+
+              <div className="mt-8">
+                <a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={trackClickWhatsApp}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                  <MessageCircle size={18} />
+                  Agenda tu valoración
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. Problema */}
         <section className="bg-white py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div>
@@ -122,7 +157,7 @@ export default function Rejuvenecimiento() {
           </div>
         </section>
 
-        {/* 3. Solución */}
+        {/* 4. Solución */}
         <section className="bg-nude-100 py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div className="order-2 md:order-1">
@@ -160,7 +195,7 @@ export default function Rejuvenecimiento() {
           </div>
         </section>
 
-        {/* 4. Resultados / Beneficios */}
+        {/* 5. Resultados / Beneficios */}
         <section className="bg-white py-20 md:py-28">
           <div className="section-container">
             <div className="mx-auto max-w-2xl text-center">
@@ -197,7 +232,7 @@ export default function Rejuvenecimiento() {
           </div>
         </section>
 
-        {/* 5. Equipamiento / Procedimiento */}
+        {/* 6. Equipamiento / Procedimiento */}
         <section className="bg-nude-100 py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div>
@@ -223,7 +258,7 @@ export default function Rejuvenecimiento() {
           </div>
         </section>
 
-        {/* 6. CTA principal */}
+        {/* 7. CTA principal */}
         <section className="bg-primary-950 py-16 md:py-20">
           <div className="section-container text-center">
             <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
@@ -240,32 +275,6 @@ export default function Rejuvenecimiento() {
                 <MessageCircle size={18} />
                 Escribir por WhatsApp
               </a>
-            </div>
-          </div>
-        </section>
-
-        {/* 7. Galería inspiradora */}
-        <section className="bg-white py-20 md:py-28">
-          <div className="section-container">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Galería
-              </span>
-              <h2 className="section-title mt-6">Inspiración de resultados</h2>
-            </div>
-
-            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-              {GALLERY.map((img) => (
-                <img
-                  key={img.src}
-                  src={img.src}
-                  alt={img.alt}
-                  width={300}
-                  height={300}
-                  loading="lazy"
-                  className="aspect-square w-full rounded-2xl object-cover"
-                />
-              ))}
             </div>
           </div>
         </section>

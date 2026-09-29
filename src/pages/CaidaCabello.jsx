@@ -1,8 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
   MessageCircle,
   Phone,
   Sparkles,
@@ -11,6 +8,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Contact from '@/components/Contact'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import ImageCarousel from '@/components/ImageCarousel'
 import { trackClickPhone, trackClickWhatsApp } from '@/lib/analytics'
 
 const WHATSAPP_HREF =
@@ -33,113 +31,6 @@ const SENALES_SLIDES = [
   { src: '/images/caida-cabello-senal-3-640.webp', alt: 'Caída de cabello — desagüe' },
   { src: '/images/caida-cabello-senal-4-640.webp', alt: 'Caída de cabello — cuello de saco' },
 ]
-
-const AUTOPLAY_MS = 5000
-const RESUME_AFTER_MS = 8000
-
-function SenalesCarousel() {
-  const [index, setIndex] = useState(0)
-  const resumeTimeoutRef = useRef(null)
-  const autoplayIntervalRef = useRef(null)
-
-  const goTo = useCallback((next) => {
-    setIndex(((next % SENALES_SLIDES.length) + SENALES_SLIDES.length) % SENALES_SLIDES.length)
-  }, [])
-
-  const stopAutoplay = useCallback(() => {
-    if (autoplayIntervalRef.current) {
-      clearInterval(autoplayIntervalRef.current)
-      autoplayIntervalRef.current = null
-    }
-  }, [])
-
-  const startAutoplay = useCallback(() => {
-    stopAutoplay()
-    autoplayIntervalRef.current = setInterval(() => {
-      setIndex((prev) => (prev + 1) % SENALES_SLIDES.length)
-    }, AUTOPLAY_MS)
-  }, [stopAutoplay])
-
-  const pauseAndScheduleResume = useCallback(() => {
-    stopAutoplay()
-    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
-    resumeTimeoutRef.current = setTimeout(startAutoplay, RESUME_AFTER_MS)
-  }, [stopAutoplay, startAutoplay])
-
-  useEffect(() => {
-    startAutoplay()
-    return () => {
-      stopAutoplay()
-      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
-    }
-  }, [startAutoplay, stopAutoplay])
-
-  const handlePrev = () => {
-    goTo(index - 1)
-    pauseAndScheduleResume()
-  }
-
-  const handleNext = () => {
-    goTo(index + 1)
-    pauseAndScheduleResume()
-  }
-
-  const handleDotClick = (i) => {
-    goTo(i)
-    pauseAndScheduleResume()
-  }
-
-  return (
-    <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-2xl shadow-sm">
-      <div className="relative aspect-[4/3] w-full">
-        {SENALES_SLIDES.map((slide, i) => (
-          <img
-            key={slide.src}
-            src={slide.src}
-            alt={slide.alt}
-            loading="lazy"
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-              i === index ? 'opacity-100' : 'pointer-events-none opacity-0'
-            }`}
-            aria-hidden={i !== index}
-          />
-        ))}
-      </div>
-
-      <button
-        type="button"
-        onClick={handlePrev}
-        aria-label="Imagen anterior"
-        className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-primary-900 shadow-sm transition hover:bg-white"
-      >
-        <ChevronLeft size={20} />
-      </button>
-      <button
-        type="button"
-        onClick={handleNext}
-        aria-label="Imagen siguiente"
-        className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-primary-900 shadow-sm transition hover:bg-white"
-      >
-        <ChevronRight size={20} />
-      </button>
-
-      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
-        {SENALES_SLIDES.map((slide, i) => (
-          <span
-            key={slide.src}
-            role="button"
-            tabIndex={-1}
-            aria-label={`Ir a la imagen ${i + 1}`}
-            onClick={() => handleDotClick(i)}
-            className={`h-2 w-2 cursor-pointer rounded-full transition ${
-              i === index ? 'w-5 bg-white' : 'bg-white/50'
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  )
-}
 
 export default function CaidaCabello() {
   return (
@@ -209,7 +100,7 @@ export default function CaidaCabello() {
         {/* 2. CTA — señales de alerta */}
         <section className="bg-white py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
-            <SenalesCarousel />
+            <ImageCarousel slides={SENALES_SLIDES} />
 
             <div>
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
