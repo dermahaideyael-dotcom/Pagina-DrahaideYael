@@ -27,7 +27,7 @@ const CAROUSEL_SLIDES = [
   { src: '/images/gallery-acne-1.webp', alt: 'Valoración dermatológica de acné' },
   { src: '/images/gallery-acne-2.webp', alt: 'Limpieza suave de piel con acné' },
   { src: '/images/gallery-acne-3.webp', alt: 'Cuidado de piel con acné' },
-  { src: '/images/gallery-acne-4.webp', alt: 'Paciente con acné adulto' },
+  { src: '/images/gallery-acne-4.webp', alt: 'Paciente con acné' },
   { src: '/images/gallery-acne-5.webp', alt: 'Paciente con acné' },
 ]
 
@@ -49,7 +49,7 @@ export default function Acne() {
               </span>
 
               <h1 className="mt-6 font-display text-4xl font-bold leading-tight text-primary-900 md:text-5xl">
-                ¿Tienes acné adulto o cicatrices?
+                ¿Tienes acné o cicatrices?
               </h1>
 
               <p className="mt-4 text-xl font-medium text-accent-600">
@@ -137,17 +137,17 @@ export default function Acne() {
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
                 El problema
               </span>
-              <h2 className="section-title mt-6">¿Por qué aparece el acné adulto?</h2>
+              <h2 className="section-title mt-6">¿Por qué aparece el acné?</h2>
               <p className="section-subtitle">
-                El acné adulto puede aparecer por cambios hormonales, estrés o el
-                uso de productos inadecuados. A diferencia del acné juvenil,
-                suele ser más persistente y dejar marcas si no se trata a tiempo.
+                El acné puede aparecer por cambios hormonales, estrés o el uso
+                de productos inadecuados, y en la etapa adulta suele ser más
+                persistente y dejar marcas si no se trata a tiempo.
               </p>
             </div>
             <div>
               <img
                 src="/images/placeholder-acne.webp"
-                alt="Acné adulto"
+                alt="Acné"
                 width={400}
                 height={436}
                 loading="lazy"
