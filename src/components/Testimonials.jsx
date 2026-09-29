@@ -8,8 +8,11 @@ const REVIEWS = [
   { name: 'Leodan Hernández', source: 'Google', url: GOOGLE_REVIEWS_URL, quote: 'La verdad muy amables y la atención también.' },
   { name: 'Montserrat Garnica', source: 'Google', url: GOOGLE_REVIEWS_URL, quote: 'Súper buena atención al detalle. Gran servicio. Súper recomendada.' },
   { name: 'Jorge Paredes', source: 'Google', url: GOOGLE_REVIEWS_URL, quote: 'La doctora muy amable, se toma su tiempo para explicarte tu tratamiento; la clínica tiene bonito diseño y espacios privados para realizar las limpiezas y procedimientos.' },
-  { name: 'Naomi', source: 'Doctoralia', url: DOCTORALIA_REVIEWS_URL, quote: 'Me encantó todo, muy buenas atenciones, no le hace falta nada.' },
+  { name: 'Israel Mendoza', source: 'Google', url: GOOGLE_REVIEWS_URL, quote: 'He llevado seguimiento con la Dra. Haide y los resultados han sido maravillosos, nunca había recibido un tratamiento tan completo y personalizado. Sin duda, continuaré cuidando mi piel y cabellera con la Dra.' },
+  { name: 'Carmen Verónica Islas Limón', source: 'Doctoralia', url: DOCTORALIA_REVIEWS_URL, quote: 'Increíble servicio de la doctora, muy profesional y los resultados al instante.' },
+  { name: 'Naomi', source: 'Doctoralia', url: DOCTORALIA_REVIEWS_URL, quote: 'Me encantó todo, muy buenos resultados y muy buenas atenciones, no le hace falta nada.' },
   { name: 'Isaías', source: 'Doctoralia', url: DOCTORALIA_REVIEWS_URL, quote: 'Explicación detallada y trato amable de la doctora.' },
+  { name: 'Ortega Azul', source: 'Doctoralia', url: DOCTORALIA_REVIEWS_URL, quote: 'Se nota el compromiso que tiene con sus pacientes y el cuidado que pone en cada detalle. Gracias a su seguimiento y recomendaciones he visto una gran mejoría en mi piel y me he sentido mucho más segura durante todo el proceso.' },
   { name: 'Manuel López', source: 'Doctoralia', url: DOCTORALIA_REVIEWS_URL, quote: 'Excelente doctora, su tratamiento sí me ha ayudado, muy recomendable.' },
 ]
 
