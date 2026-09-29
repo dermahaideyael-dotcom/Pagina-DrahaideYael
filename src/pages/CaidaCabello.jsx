@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   ArrowRight,
   ChevronLeft,
@@ -34,9 +34,60 @@ const SENALES_SLIDES = [
   { src: '/images/caida-cabello-senal-4-640.webp', alt: 'Caída de cabello — cuello de saco' },
 ]
 
+const AUTOPLAY_MS = 5000
+const RESUME_AFTER_MS = 8000
+
 function SenalesCarousel() {
   const [index, setIndex] = useState(0)
-  const goTo = (next) => setIndex(((next % SENALES_SLIDES.length) + SENALES_SLIDES.length) % SENALES_SLIDES.length)
+  const resumeTimeoutRef = useRef(null)
+  const autoplayIntervalRef = useRef(null)
+
+  const goTo = useCallback((next) => {
+    setIndex(((next % SENALES_SLIDES.length) + SENALES_SLIDES.length) % SENALES_SLIDES.length)
+  }, [])
+
+  const stopAutoplay = useCallback(() => {
+    if (autoplayIntervalRef.current) {
+      clearInterval(autoplayIntervalRef.current)
+      autoplayIntervalRef.current = null
+    }
+  }, [])
+
+  const startAutoplay = useCallback(() => {
+    stopAutoplay()
+    autoplayIntervalRef.current = setInterval(() => {
+      setIndex((prev) => (prev + 1) % SENALES_SLIDES.length)
+    }, AUTOPLAY_MS)
+  }, [stopAutoplay])
+
+  const pauseAndScheduleResume = useCallback(() => {
+    stopAutoplay()
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
+    resumeTimeoutRef.current = setTimeout(startAutoplay, RESUME_AFTER_MS)
+  }, [stopAutoplay, startAutoplay])
+
+  useEffect(() => {
+    startAutoplay()
+    return () => {
+      stopAutoplay()
+      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
+    }
+  }, [startAutoplay, stopAutoplay])
+
+  const handlePrev = () => {
+    goTo(index - 1)
+    pauseAndScheduleResume()
+  }
+
+  const handleNext = () => {
+    goTo(index + 1)
+    pauseAndScheduleResume()
+  }
+
+  const handleDotClick = (i) => {
+    goTo(i)
+    pauseAndScheduleResume()
+  }
 
   return (
     <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-2xl shadow-sm">
@@ -57,7 +108,7 @@ function SenalesCarousel() {
 
       <button
         type="button"
-        onClick={() => goTo(index - 1)}
+        onClick={handlePrev}
         aria-label="Imagen anterior"
         className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-primary-900 shadow-sm transition hover:bg-white"
       >
@@ -65,7 +116,7 @@ function SenalesCarousel() {
       </button>
       <button
         type="button"
-        onClick={() => goTo(index + 1)}
+        onClick={handleNext}
         aria-label="Imagen siguiente"
         className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-primary-900 shadow-sm transition hover:bg-white"
       >
@@ -79,7 +130,7 @@ function SenalesCarousel() {
             role="button"
             tabIndex={-1}
             aria-label={`Ir a la imagen ${i + 1}`}
-            onClick={() => goTo(i)}
+            onClick={() => handleDotClick(i)}
             className={`h-2 w-2 cursor-pointer rounded-full transition ${
               i === index ? 'w-5 bg-white' : 'bg-white/50'
             }`}
