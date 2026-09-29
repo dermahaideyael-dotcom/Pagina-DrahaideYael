@@ -1,4 +1,10 @@
 import { CheckCircle2, ShoppingBag, Sparkles } from 'lucide-react'
+import { trackClickWhatsApp } from '@/lib/analytics'
+
+const WHATSAPP_HREF =
+  'https://wa.me/525584041696?text=' +
+  encodeURIComponent('Hola, quiero consultar precios de productos de la farmacia dermatológica.') +
+  '&utm_source=chatgpt&utm_medium=paid&utm_campaign=farmacia'
 
 const CATEGORIES = [
   { name: 'Protectores solares dermatológicos' },
@@ -62,10 +68,13 @@ export default function Pharmacy() {
               </ul>
 
               <a
-                href="#contacto"
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={trackClickWhatsApp}
                 className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary-950 transition hover:bg-primary-50"
               >
-                Consultar productos
+                Consultar precios
               </a>
             </div>
           </div>

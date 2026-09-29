@@ -1,63 +1,29 @@
-import { useState } from 'react'
-import { Send, Star } from 'lucide-react'
-import { trackFormStart, trackSubmitReview } from '@/lib/analytics'
+import { ExternalLink, Star } from 'lucide-react'
 
-const EMPTY_FORM = { name: '', treatment: '', rating: 5, comment: '', website: '' }
+const GOOGLE_REVIEWS_URL = 'https://g.page/r/CewkbkKKH-VZEBM/review'
+const DOCTORALIA_REVIEWS_URL =
+  'https://www.doctoralia.com.mx/perfil/haide-yael-guerrero-quiroz-3?prevent-patient-app-banner=true&utm_source=google&utm_medium=gmb&utm_campaign=455785&utm_content=book_visit#profile-reviews'
+
+const REVIEWS = [
+  { name: 'Leodan Hernández', source: 'Google', quote: 'La verdad muy amables y la atención también.' },
+  { name: 'Montserrat Garnica', source: 'Google', quote: 'Súper buena atención al detalle. Gran servicio. Súper recomendada.' },
+  { name: 'Jorge Paredes', source: 'Google', quote: 'La doctora muy amable, se toma su tiempo para explicarte tu tratamiento; la clínica tiene bonito diseño y espacios privados para realizar las limpiezas y procedimientos.' },
+  { name: 'Naomi', source: 'Doctoralia', quote: 'Me encantó todo, muy buenas atenciones, no le hace falta nada.' },
+  { name: 'Isaías', source: 'Doctoralia', quote: 'Explicación detallada y trato amable de la doctora.' },
+  { name: 'Manuel López', source: 'Doctoralia', quote: 'Excelente doctora, su tratamiento sí me ha ayudado, muy recomendable.' },
+]
+
+function Stars() {
+  return (
+    <div className="flex gap-0.5">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <Star key={i} size={16} className="text-amber-400" fill="currentColor" strokeWidth={0} />
+      ))}
+    </div>
+  )
+}
 
 export default function Testimonials() {
-  const [form, setForm] = useState(EMPTY_FORM)
-  const [status, setStatus] = useState('idle') // idle | submitting | success | error
-  const [hasStarted, setHasStarted] = useState(false)
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
-
-    if (!hasStarted && name !== 'website') {
-      setHasStarted(true)
-      trackFormStart()
-    }
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    // Honeypot: si el campo trampa viene lleno, es un bot — ignorar en silencio
-    if (form.website) return
-
-    setStatus('submitting')
-
-    const payload = {
-      type: 'review',
-      name: form.name,
-      treatment: form.treatment,
-      rating: form.rating,
-      comment: form.comment,
-      website: form.website,
-    }
-
-    try {
-      const res = await fetch(import.meta.env.VITE_CONTACT_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload),
-      })
-
-      const data = await res.json()
-
-      if (data.ok) {
-        setStatus('success')
-        trackSubmitReview()
-        setForm(EMPTY_FORM)
-        setHasStarted(false)
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
-    }
-  }
-
   return (
     <section id="testimonios" className="bg-primary-950 py-20 md:py-28">
       <div className="section-container">
@@ -66,121 +32,51 @@ export default function Testimonials() {
             Testimonios
           </span>
           <h2 className="mt-6 font-display text-3xl font-bold text-white md:text-4xl">
-            Comparte tu experiencia
+            Lo que dicen nuestros pacientes
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-primary-100 md:text-lg">
-            Si ya fuiste paciente de la Dra. Haide, cuéntanos cómo te fue.
+            Reseñas reales de pacientes en Google y Doctoralia.
           </p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="mx-auto mt-14 max-w-2xl rounded-3xl bg-white/5 p-8 backdrop-blur-sm ring-1 ring-white/10"
-        >
-          <div className="grid gap-5 sm:grid-cols-2">
-            <div>
-              <label htmlFor="t-name" className="text-sm font-medium text-primary-100">
-                Tu nombre
-              </label>
-              <input
-                id="t-name"
-                name="name"
-                type="text"
-                required
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Tu nombre"
-                className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition placeholder:text-primary-300 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/30"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="t-treatment" className="text-sm font-medium text-primary-100">
-                Tratamiento recibido
-              </label>
-              <input
-                id="t-treatment"
-                name="treatment"
-                type="text"
-                value={form.treatment}
-                onChange={handleChange}
-                placeholder="Ej. Consulta dermatológica"
-                className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition placeholder:text-primary-300 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/30"
-              />
-            </div>
-
-            <div className="sm:col-span-2">
-              <span className="text-sm font-medium text-primary-100">Calificación</span>
-              <div className="mt-2 flex gap-1">
-                {[1, 2, 3, 4, 5].map((value) => (
-                  <button
-                    key={value}
-                    type="button"
-                    onClick={() => setForm((prev) => ({ ...prev, rating: value }))}
-                    aria-label={`Calificar con ${value} estrellas`}
-                    className="p-0.5"
-                  >
-                    <Star
-                      size={22}
-                      className={value <= form.rating ? 'text-amber-400' : 'text-primary-300/40'}
-                      fill={value <= form.rating ? 'currentColor' : 'none'}
-                      strokeWidth={1.5}
-                    />
-                  </button>
-                ))}
+        <div className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {REVIEWS.map((review) => (
+            <div
+              key={review.name}
+              className="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10"
+            >
+              <Stars />
+              <p className="mt-3 text-sm leading-relaxed text-primary-50">
+                "{review.quote}"
+              </p>
+              <div className="mt-4 flex items-center justify-between text-xs text-primary-300">
+                <span className="font-semibold text-primary-100">{review.name}</span>
+                <span className="rounded-full bg-white/10 px-2.5 py-1">{review.source}</span>
               </div>
             </div>
+          ))}
+        </div>
 
-            <div className="sm:col-span-2">
-              <label htmlFor="t-comment" className="text-sm font-medium text-primary-100">
-                Tu comentario
-              </label>
-              <textarea
-                id="t-comment"
-                name="comment"
-                rows={4}
-                required
-                value={form.comment}
-                onChange={handleChange}
-                placeholder="Cuéntanos cómo fue tu experiencia"
-                className="mt-2 w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition placeholder:text-primary-300 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/30"
-              />
-            </div>
-          </div>
-
-          <input
-            type="text"
-            name="website"
-            value={form.website}
-            onChange={handleChange}
-            tabIndex={-1}
-            autoComplete="off"
-            className="hidden"
-            aria-hidden="true"
-          />
-
-          <button
-            type="submit"
-            disabled={status === 'submitting'}
-            className="btn-primary mt-6 w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary-950 transition hover:bg-primary-50"
           >
-            {status === 'submitting' ? 'Enviando…' : 'Enviar comentario'}
-            <Send size={16} />
-          </button>
-
-          {status === 'success' && (
-            <p className="mt-4 text-sm font-medium text-primary-300">
-              ¡Gracias por tu comentario!
-            </p>
-          )}
-
-          {status === 'error' && (
-            <p className="mt-4 text-sm font-medium text-red-300">
-              Hubo un problema al enviar tu comentario. Intenta de nuevo más
-              tarde.
-            </p>
-          )}
-        </form>
+            Ver reseñas en Google
+            <ExternalLink size={16} />
+          </a>
+          <a
+            href={DOCTORALIA_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            Ver reseñas en Doctoralia
+            <ExternalLink size={16} />
+          </a>
+        </div>
 
         <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-primary-300">
           Los resultados pueden variar según cada paciente y no garantizamos
