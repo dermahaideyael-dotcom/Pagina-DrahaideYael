@@ -437,6 +437,19 @@ export default function CaidaCabello() {
           </div>
         </section>
 
+        {/* 9. Puente a inicio */}
+        <section className="bg-nude-50 py-10">
+          <div className="section-container text-center">
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 transition hover:text-primary-900"
+            >
+              Consulta todos nuestros servicios
+              <ArrowRight size={16} />
+            </a>
+          </div>
+        </section>
+
         <Contact />
       </main>
 
