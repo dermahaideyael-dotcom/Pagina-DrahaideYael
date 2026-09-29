@@ -23,10 +23,10 @@ const BENEFICIOS = [
 ]
 
 const GALLERY = [
-  { src: '/images/placeholder-gallery-caida-cabello-1.webp', alt: 'Tratamiento de caída de cabello — resultado 1' },
-  { src: '/images/placeholder-gallery-caida-cabello-2.webp', alt: 'Tratamiento de caída de cabello — resultado 2' },
-  { src: '/images/placeholder-gallery-caida-cabello-3.webp', alt: 'Tratamiento de caída de cabello — resultado 3' },
-  { src: '/images/placeholder-gallery-caida-cabello-4.webp', alt: 'Tratamiento de caída de cabello — resultado 4' },
+  { src: '/images/placeholder-gallery-caida-cabello-1.webp', alt: 'Caída de cabello — cepillo' },
+  { src: '/images/placeholder-gallery-caida-cabello-2.webp', alt: 'Caída de cabello — almohada' },
+  { src: '/images/placeholder-gallery-caida-cabello-3.webp', alt: 'Caída de cabello — desagüe' },
+  { src: '/images/placeholder-gallery-caida-cabello-4.webp', alt: 'Caída de cabello — cuello de saco' },
 ]
 
 export default function CaidaCabello() {
@@ -211,14 +211,13 @@ export default function CaidaCabello() {
               </p>
             </div>
             <div>
-              {/* REEMPLAZAR CON IMAGEN REAL: equipo utilizado en caída de cabello */}
               <img
                 src="/images/placeholder-equipo-caida-cabello.webp"
                 alt="Equipo utilizado en el tratamiento de caída de cabello"
                 width={400}
-                height={300}
+                height={416}
                 loading="lazy"
-                className="placeholder-img mx-auto w-full max-w-[400px] rounded-2xl"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
             </div>
           </div>
@@ -257,7 +256,6 @@ export default function CaidaCabello() {
 
             <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
               {GALLERY.map((img) => (
-                // REEMPLAZAR CON IMAGEN REAL: galería de caída de cabello
                 <img
                   key={img.src}
                   src={img.src}
@@ -265,7 +263,7 @@ export default function CaidaCabello() {
                   width={300}
                   height={300}
                   loading="lazy"
-                  className="placeholder-img aspect-square w-full rounded-2xl object-cover"
+                  className="aspect-square w-full rounded-2xl object-cover"
                 />
               ))}
             </div>
