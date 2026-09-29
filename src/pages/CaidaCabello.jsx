@@ -241,8 +241,19 @@ export default function CaidaCabello() {
 
         {/* 7. CTA — señales de alerta */}
         <section className="bg-white py-20 md:py-28">
-          <div className="section-container">
-            <div className="mx-auto max-w-2xl text-center">
+          <div className="section-container grid items-center gap-12 md:grid-cols-2">
+            <div>
+              <img
+                src="/images/placeholder-gallery-caida-cabello-1.webp"
+                alt="Caída de cabello — cepillo"
+                width={400}
+                height={258}
+                loading="lazy"
+                className="mx-auto w-full max-w-[400px] rounded-2xl"
+              />
+            </div>
+
+            <div>
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
                 ¿Te identificas?
               </span>
@@ -254,30 +265,30 @@ export default function CaidaCabello() {
                 drenaje o tu ropa, es una señal que vale la pena revisar antes
                 de que avance.
               </p>
-            </div>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              {SENALES.map((item) => (
-                <span
-                  key={item}
-                  className="inline-flex items-center gap-2 rounded-full bg-nude-100 px-4 py-2 text-sm font-semibold text-primary-800"
+              <div className="mt-6 flex flex-wrap gap-3">
+                {SENALES.map((item) => (
+                  <span
+                    key={item}
+                    className="inline-flex items-center gap-2 rounded-full bg-nude-100 px-4 py-2 text-sm font-semibold text-primary-800"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8">
+                <a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={trackClickWhatsApp}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
                 >
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            <div className="mt-10 text-center">
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={trackClickWhatsApp}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                <MessageCircle size={18} />
-                Quiero un diagnóstico
-              </a>
+                  <MessageCircle size={18} />
+                  Quiero un diagnóstico
+                </a>
+              </div>
             </div>
           </div>
         </section>
