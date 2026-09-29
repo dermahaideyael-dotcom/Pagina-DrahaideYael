@@ -22,12 +22,7 @@ const BENEFICIOS = [
   { title: 'Autoestima recuperada', description: 'Acompañamiento médico en cada etapa del proceso.' },
 ]
 
-const GALLERY = [
-  { src: '/images/placeholder-gallery-caida-cabello-1.webp', alt: 'Caída de cabello — cepillo' },
-  { src: '/images/placeholder-gallery-caida-cabello-2.webp', alt: 'Caída de cabello — almohada' },
-  { src: '/images/placeholder-gallery-caida-cabello-3.webp', alt: 'Caída de cabello — desagüe' },
-  { src: '/images/placeholder-gallery-caida-cabello-4.webp', alt: 'Caída de cabello — cuello de saco' },
-]
+const SENALES = ['En la almohada', 'En el cepillo', 'En el drenaje', 'En tu ropa']
 
 export default function CaidaCabello() {
   return (
@@ -51,7 +46,7 @@ export default function CaidaCabello() {
               </h1>
 
               <p className="mt-4 text-xl font-medium text-accent-600">
-                Diagnóstico tricológico especializado, no productos genéricos.
+                Diagnóstico tricológico especializado.
               </p>
 
               <p className="section-subtitle mt-5 text-nude-700">
@@ -244,28 +239,45 @@ export default function CaidaCabello() {
           </div>
         </section>
 
-        {/* 7. Galería inspiradora */}
+        {/* 7. CTA — señales de alerta */}
         <section className="bg-white py-20 md:py-28">
           <div className="section-container">
             <div className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                Galería
+                ¿Te identificas?
               </span>
-              <h2 className="section-title mt-6">Inspiración de resultados</h2>
+              <h2 className="section-title mt-6">
+                Cabello que se queda... en todas partes
+              </h2>
+              <p className="section-subtitle">
+                Si notas más cabello del habitual en tu almohada, tu cepillo, el
+                drenaje o tu ropa, es una señal que vale la pena revisar antes
+                de que avance.
+              </p>
             </div>
 
-            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-              {GALLERY.map((img) => (
-                <img
-                  key={img.src}
-                  src={img.src}
-                  alt={img.alt}
-                  width={300}
-                  height={300}
-                  loading="lazy"
-                  className="aspect-square w-full rounded-2xl object-cover"
-                />
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {SENALES.map((item) => (
+                <span
+                  key={item}
+                  className="inline-flex items-center gap-2 rounded-full bg-nude-100 px-4 py-2 text-sm font-semibold text-primary-800"
+                >
+                  {item}
+                </span>
               ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={trackClickWhatsApp}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                <MessageCircle size={18} />
+                Quiero un diagnóstico
+              </a>
             </div>
           </div>
         </section>
