@@ -1,5 +1,8 @@
+import { useState } from 'react'
 import {
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   MessageCircle,
   Phone,
   Sparkles,
@@ -23,6 +26,69 @@ const BENEFICIOS = [
 ]
 
 const SENALES = ['En la almohada', 'En el cepillo', 'En el drenaje', 'En tu ropa']
+
+const SENALES_SLIDES = [
+  { src: '/images/caida-cabello-senal-1-640.webp', alt: 'Caída de cabello — cepillo' },
+  { src: '/images/caida-cabello-senal-2-640.webp', alt: 'Caída de cabello — almohada' },
+  { src: '/images/caida-cabello-senal-3-640.webp', alt: 'Caída de cabello — desagüe' },
+  { src: '/images/caida-cabello-senal-4-640.webp', alt: 'Caída de cabello — cuello de saco' },
+]
+
+function SenalesCarousel() {
+  const [index, setIndex] = useState(0)
+  const goTo = (next) => setIndex(((next % SENALES_SLIDES.length) + SENALES_SLIDES.length) % SENALES_SLIDES.length)
+
+  return (
+    <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-2xl shadow-sm">
+      <div className="relative aspect-[4/3] w-full">
+        {SENALES_SLIDES.map((slide, i) => (
+          <img
+            key={slide.src}
+            src={slide.src}
+            alt={slide.alt}
+            loading="lazy"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+              i === index ? 'opacity-100' : 'pointer-events-none opacity-0'
+            }`}
+            aria-hidden={i !== index}
+          />
+        ))}
+      </div>
+
+      <button
+        type="button"
+        onClick={() => goTo(index - 1)}
+        aria-label="Imagen anterior"
+        className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-primary-900 shadow-sm transition hover:bg-white"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        type="button"
+        onClick={() => goTo(index + 1)}
+        aria-label="Imagen siguiente"
+        className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-primary-900 shadow-sm transition hover:bg-white"
+      >
+        <ChevronRight size={20} />
+      </button>
+
+      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
+        {SENALES_SLIDES.map((slide, i) => (
+          <span
+            key={slide.src}
+            role="button"
+            tabIndex={-1}
+            aria-label={`Ir a la imagen ${i + 1}`}
+            onClick={() => goTo(i)}
+            className={`h-2 w-2 cursor-pointer rounded-full transition ${
+              i === index ? 'w-5 bg-white' : 'bg-white/50'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default function CaidaCabello() {
   return (
@@ -89,7 +155,52 @@ export default function CaidaCabello() {
           </div>
         </section>
 
-        {/* 2. Problema */}
+        {/* 2. CTA — señales de alerta */}
+        <section className="bg-white py-20 md:py-28">
+          <div className="section-container grid items-center gap-12 md:grid-cols-2">
+            <SenalesCarousel />
+
+            <div>
+              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
+                ¿Te identificas?
+              </span>
+              <h2 className="section-title mt-6">
+                Cabello que se queda... en todas partes
+              </h2>
+              <p className="section-subtitle">
+                Si notas más cabello del habitual en tu almohada, tu cepillo, el
+                drenaje o tu ropa, es una señal que vale la pena revisar antes
+                de que avance.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                {SENALES.map((item) => (
+                  <span
+                    key={item}
+                    className="inline-flex items-center gap-2 rounded-full bg-nude-100 px-4 py-2 text-sm font-semibold text-primary-800"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8">
+                <a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={trackClickWhatsApp}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                  <MessageCircle size={18} />
+                  Quiero un diagnóstico
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. Problema */}
         <section className="bg-white py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div>
@@ -116,7 +227,7 @@ export default function CaidaCabello() {
           </div>
         </section>
 
-        {/* 3. Solución */}
+        {/* 4. Solución */}
         <section className="bg-nude-100 py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div className="order-2 md:order-1">
@@ -155,7 +266,7 @@ export default function CaidaCabello() {
           </div>
         </section>
 
-        {/* 4. Resultados / Beneficios */}
+        {/* 5. Resultados / Beneficios */}
         <section className="bg-white py-20 md:py-28">
           <div className="section-container">
             <div className="mx-auto max-w-2xl text-center">
@@ -192,7 +303,7 @@ export default function CaidaCabello() {
           </div>
         </section>
 
-        {/* 5. Equipamiento / Procedimiento */}
+        {/* 6. Equipamiento / Procedimiento */}
         <section className="bg-nude-100 py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div>
@@ -218,7 +329,7 @@ export default function CaidaCabello() {
           </div>
         </section>
 
-        {/* 6. CTA principal */}
+        {/* 7. CTA principal */}
         <section className="bg-primary-950 py-16 md:py-20">
           <div className="section-container text-center">
             <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
@@ -235,60 +346,6 @@ export default function CaidaCabello() {
                 <MessageCircle size={18} />
                 Escribir por WhatsApp
               </a>
-            </div>
-          </div>
-        </section>
-
-        {/* 7. CTA — señales de alerta */}
-        <section className="bg-white py-20 md:py-28">
-          <div className="section-container grid items-center gap-12 md:grid-cols-2">
-            <div>
-              <img
-                src="/images/placeholder-gallery-caida-cabello-1.webp"
-                alt="Caída de cabello — cepillo"
-                width={400}
-                height={258}
-                loading="lazy"
-                className="mx-auto w-full max-w-[400px] rounded-2xl"
-              />
-            </div>
-
-            <div>
-              <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
-                ¿Te identificas?
-              </span>
-              <h2 className="section-title mt-6">
-                Cabello que se queda... en todas partes
-              </h2>
-              <p className="section-subtitle">
-                Si notas más cabello del habitual en tu almohada, tu cepillo, el
-                drenaje o tu ropa, es una señal que vale la pena revisar antes
-                de que avance.
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                {SENALES.map((item) => (
-                  <span
-                    key={item}
-                    className="inline-flex items-center gap-2 rounded-full bg-nude-100 px-4 py-2 text-sm font-semibold text-primary-800"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-8">
-                <a
-                  href={WHATSAPP_HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={trackClickWhatsApp}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
-                >
-                  <MessageCircle size={18} />
-                  Quiero un diagnóstico
-                </a>
-              </div>
             </div>
           </div>
         </section>
