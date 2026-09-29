@@ -26,13 +26,13 @@ const CATEGORIES = [
     title: 'Dermatología Clínica',
     items: [
       { icon: Sparkle, title: 'Acné', description: 'Tratamiento integral del acné juvenil y adulto.' },
-      { icon: Droplets, title: 'Rosácea', description: 'Control y manejo de rojeces y sensibilidad.' },
+      { icon: Droplets, title: 'Rosácea', description: 'Control y manejo de rojeces y sensibilidad.', image: '/images/servicio-rosacea.webp' },
       { icon: Scissors, title: 'Alopecia', description: 'Diagnóstico y tratamiento de caída del cabello.' },
-      { icon: ShieldAlert, title: 'Psoriasis', description: 'Tratamiento de condiciones autoinmunes de la piel.' },
+      { icon: ShieldAlert, title: 'Psoriasis', description: 'Tratamiento de condiciones autoinmunes de la piel.', image: '/images/servicio-psoriasis.webp' },
       { icon: SunMedium, title: 'Melasma', description: 'Corrección de manchas y pigmentaciones.' },
-      { icon: Layers, title: 'Dermatitis', description: 'Manejo de eccemas y dermatitis atópica.' },
-      { icon: HandMetal, title: 'Enfermedades de uñas', description: 'Diagnóstico y tratamiento de onicomicosis.' },
-      { icon: ScanFace, title: 'Enfermedades del pelo', description: 'Tricología y salud capilar integral.' },
+      { icon: Layers, title: 'Dermatitis', description: 'Manejo de eccemas y dermatitis atópica.', image: '/images/servicio-dermatitis.webp' },
+      { icon: HandMetal, title: 'Enfermedades de uñas', description: 'Diagnóstico y tratamiento de onicomicosis.', image: '/images/servicio-enfermedades_unas_onicomicosis.webp' },
+      { icon: ScanFace, title: 'Enfermedades del pelo', description: 'Tricología y salud capilar integral.', image: '/images/servicio-enfermedades_pelo_tricologia.webp' },
     ],
   },
   {
@@ -41,31 +41,31 @@ const CATEGORIES = [
     items: [
       { icon: Syringe, title: 'Toxina Botulínica', description: 'Reducción de líneas de expresión con resultados naturales.' },
       { icon: Activity, title: 'Bioestimuladores', description: 'Bioestimulación de colágeno para rejuvenecimiento.' },
-      { icon: Droplets, title: 'Mesoterapia Inyectable', description: 'Revitalización y nutrición profunda de la piel.' },
-      { icon: Zap, title: 'Micropunción', description: 'Estimulación de colágeno y mejora de textura.' },
-      { icon: FlaskConical, title: 'Peelings Químicos', description: 'Renovación celular y corrección de manchas.' },
-      { icon: Sparkle, title: 'Limpieza Facial Profunda', description: 'Extracción y purificación profesional.' },
+      { icon: Droplets, title: 'Mesoterapia Inyectable', description: 'Revitalización y nutrición profunda de la piel.', image: '/images/servicio-mesoterapia_inyectable.webp' },
+      { icon: Zap, title: 'Micropunción', description: 'Estimulación de colágeno y mejora de textura.', image: '/images/servicio-micropuncion.webp' },
+      { icon: FlaskConical, title: 'Peelings Químicos', description: 'Renovación celular y corrección de manchas.', image: '/images/servicio-peeling_quimico.webp' },
+      { icon: Sparkle, title: 'Limpieza Facial Profunda', description: 'Extracción y purificación profesional.', image: '/images/servicio-limpieza_facial_profunda.webp' },
     ],
   },
   {
     id: 'corporales',
     title: 'Tratamientos Corporales',
     items: [
-      { icon: Waves, title: 'Cavitación', description: 'Reducción de grasa localizada con ultrasonido.' },
-      { icon: Radar, title: 'Radiofrecuencia', description: 'Reafirmación y tensado de la piel.' },
-      { icon: Wind, title: 'Carboxiterapia', description: 'Mejora de circulación y reducción de celulitis.' },
-      { icon: Gauge, title: 'Ultrasonido Acústico', description: 'Tratamiento corporal no invasivo.' },
+      { icon: Waves, title: 'Cavitación', description: 'Reducción de grasa localizada con ultrasonido.', image: '/images/servicio-cavitacion.webp' },
+      { icon: Radar, title: 'Radiofrecuencia', description: 'Reafirmación y tensado de la piel.', image: '/images/servicio-radiofrecuencia_corporal.webp' },
+      { icon: Wind, title: 'Carboxiterapia', description: 'Mejora de circulación y reducción de celulitis.', image: '/images/servicio-carboxiterapia.webp' },
+      { icon: Gauge, title: 'Ultrasonido Acústico', description: 'Tratamiento corporal no invasivo.', image: '/images/servicio-ultrasonido_acustico.webp' },
     ],
   },
   {
     id: 'procedimientos',
     title: 'Procedimientos Dermatológicos',
     items: [
-      { icon: Snowflake, title: 'Crioterapia', description: 'Eliminación de lesiones con nitrógeno líquido.' },
-      { icon: Zap, title: 'Electrofulguración', description: 'Remoción de verrugas y lesiones benignas.' },
-      { icon: Radiation, title: 'Retiro de Tatuajes', description: 'Eliminación de tatuajes mediante tecnología láser especializada.' },
-      { icon: Radiation, title: 'Láser de Diodo', description: 'Procedimientos dermatológicos especializados.' },
-      { icon: CircleDot, title: 'Tratamiento de Cicatrices', description: 'Tratamiento de cicatrices queloides.' },
+      { icon: Snowflake, title: 'Crioterapia', description: 'Eliminación de lesiones con nitrógeno líquido.', image: '/images/servicio-crioterapia.webp' },
+      { icon: Zap, title: 'Electrofulguración', description: 'Remoción de verrugas y lesiones benignas.', image: '/images/servicio-electrofulguracion.webp' },
+      { icon: Radiation, title: 'Retiro de Tatuajes', description: 'Eliminación de tatuajes mediante tecnología láser especializada.', image: '/images/servicio-retiro_tatuajes.webp' },
+      { icon: Radiation, title: 'Láser de Diodo', description: 'Procedimientos dermatológicos especializados.', image: '/images/servicio-laser_diodo.webp' },
+      { icon: CircleDot, title: 'Tratamiento de Cicatrices', description: 'Tratamiento de cicatrices queloides.', image: '/images/servicio-tratamiento_cicatrices_queloides.webp' },
     ],
   },
 ]
@@ -92,16 +92,30 @@ export default function Services() {
                 {category.title}
               </h3>
               <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                {category.items.map(({ icon: Icon, title, description }) => (
+                {category.items.map(({ icon: Icon, title, description, image }) => (
                   <div
                     key={title}
-                    className="group rounded-2xl border border-nude-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                    className="group overflow-hidden rounded-2xl border border-nude-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600 transition group-hover:bg-primary-600 group-hover:text-white">
-                      <Icon size={22} />
-                    </span>
-                    <h4 className="mt-4 text-base font-bold text-primary-950">{title}</h4>
-                    <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{description}</p>
+                    {image && (
+                      <div className="aspect-[3/2] w-full overflow-hidden">
+                        <img
+                          src={image}
+                          alt={title}
+                          width={480}
+                          height={320}
+                          loading="lazy"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600 transition group-hover:bg-primary-600 group-hover:text-white">
+                        <Icon size={22} />
+                      </span>
+                      <h4 className="mt-4 text-base font-bold text-primary-950">{title}</h4>
+                      <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{description}</p>
+                    </div>
                   </div>
                 ))}
               </div>
