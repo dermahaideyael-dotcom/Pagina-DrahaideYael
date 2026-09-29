@@ -5,12 +5,12 @@ const DOCTORALIA_REVIEWS_URL =
   'https://www.doctoralia.com.mx/perfil/haide-yael-guerrero-quiroz-3?prevent-patient-app-banner=true&utm_source=google&utm_medium=gmb&utm_campaign=455785&utm_content=book_visit#profile-reviews'
 
 const REVIEWS = [
-  { name: 'Leodan Hernández', source: 'Google', quote: 'La verdad muy amables y la atención también.' },
-  { name: 'Montserrat Garnica', source: 'Google', quote: 'Súper buena atención al detalle. Gran servicio. Súper recomendada.' },
-  { name: 'Jorge Paredes', source: 'Google', quote: 'La doctora muy amable, se toma su tiempo para explicarte tu tratamiento; la clínica tiene bonito diseño y espacios privados para realizar las limpiezas y procedimientos.' },
-  { name: 'Naomi', source: 'Doctoralia', quote: 'Me encantó todo, muy buenas atenciones, no le hace falta nada.' },
-  { name: 'Isaías', source: 'Doctoralia', quote: 'Explicación detallada y trato amable de la doctora.' },
-  { name: 'Manuel López', source: 'Doctoralia', quote: 'Excelente doctora, su tratamiento sí me ha ayudado, muy recomendable.' },
+  { name: 'Leodan Hernández', source: 'Google', url: GOOGLE_REVIEWS_URL, quote: 'La verdad muy amables y la atención también.' },
+  { name: 'Montserrat Garnica', source: 'Google', url: GOOGLE_REVIEWS_URL, quote: 'Súper buena atención al detalle. Gran servicio. Súper recomendada.' },
+  { name: 'Jorge Paredes', source: 'Google', url: GOOGLE_REVIEWS_URL, quote: 'La doctora muy amable, se toma su tiempo para explicarte tu tratamiento; la clínica tiene bonito diseño y espacios privados para realizar las limpiezas y procedimientos.' },
+  { name: 'Naomi', source: 'Doctoralia', url: DOCTORALIA_REVIEWS_URL, quote: 'Me encantó todo, muy buenas atenciones, no le hace falta nada.' },
+  { name: 'Isaías', source: 'Doctoralia', url: DOCTORALIA_REVIEWS_URL, quote: 'Explicación detallada y trato amable de la doctora.' },
+  { name: 'Manuel López', source: 'Doctoralia', url: DOCTORALIA_REVIEWS_URL, quote: 'Excelente doctora, su tratamiento sí me ha ayudado, muy recomendable.' },
 ]
 
 function Stars() {
@@ -41,9 +41,12 @@ export default function Testimonials() {
 
         <div className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {REVIEWS.map((review) => (
-            <div
+            <a
               key={review.name}
-              className="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10"
+              href={review.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 transition hover:-translate-y-1 hover:bg-white/10 hover:ring-white/20"
             >
               <Stars />
               <p className="mt-3 text-sm leading-relaxed text-primary-50">
@@ -53,7 +56,7 @@ export default function Testimonials() {
                 <span className="font-semibold text-primary-100">{review.name}</span>
                 <span className="rounded-full bg-white/10 px-2.5 py-1">{review.source}</span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
