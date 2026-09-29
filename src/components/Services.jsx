@@ -25,11 +25,11 @@ const CATEGORIES = [
     id: 'clinica',
     title: 'Dermatología Clínica',
     items: [
-      { icon: Sparkle, title: 'Acné', description: 'Tratamiento integral del acné juvenil y adulto.' },
+      { icon: Sparkle, title: 'Acné', description: 'Tratamiento integral del acné juvenil y adulto.', image: '/images/gallery-acne-1.webp' },
       { icon: Droplets, title: 'Rosácea', description: 'Control y manejo de rojeces y sensibilidad.', image: '/images/servicio-rosacea.webp' },
-      { icon: Scissors, title: 'Alopecia', description: 'Diagnóstico y tratamiento de caída del cabello.' },
+      { icon: Scissors, title: 'Alopecia', description: 'Diagnóstico y tratamiento de caída del cabello.', image: '/images/caida-cabello-senal-1-640.webp' },
       { icon: ShieldAlert, title: 'Psoriasis', description: 'Tratamiento de condiciones autoinmunes de la piel.', image: '/images/servicio-psoriasis.webp' },
-      { icon: SunMedium, title: 'Melasma', description: 'Corrección de manchas y pigmentaciones.' },
+      { icon: SunMedium, title: 'Melasma', description: 'Corrección de manchas y pigmentaciones.', image: '/images/melasma-beneficios.webp' },
       { icon: Layers, title: 'Dermatitis', description: 'Manejo de eccemas y dermatitis atópica.', image: '/images/servicio-dermatitis.webp' },
       { icon: HandMetal, title: 'Enfermedades de uñas', description: 'Diagnóstico y tratamiento de onicomicosis.', image: '/images/servicio-enfermedades_unas_onicomicosis.webp' },
       { icon: ScanFace, title: 'Enfermedades del pelo', description: 'Tricología y salud capilar integral.', image: '/images/servicio-enfermedades_pelo_tricologia.webp' },
@@ -39,8 +39,8 @@ const CATEGORIES = [
     id: 'estetica',
     title: 'Dermatología Estética',
     items: [
-      { icon: Syringe, title: 'Toxina Botulínica', description: 'Reducción de líneas de expresión con resultados naturales.' },
-      { icon: Activity, title: 'Bioestimuladores', description: 'Bioestimulación de colágeno para rejuvenecimiento.' },
+      { icon: Syringe, title: 'Toxina Botulínica', description: 'Reducción de líneas de expresión con resultados naturales.', image: '/images/gallery-rejuvenecimiento-4.webp' },
+      { icon: Activity, title: 'Bioestimuladores', description: 'Bioestimulación de colágeno para rejuvenecimiento.', image: '/images/gallery-rejuvenecimiento-2.webp' },
       { icon: Droplets, title: 'Mesoterapia Inyectable', description: 'Revitalización y nutrición profunda de la piel.', image: '/images/servicio-mesoterapia_inyectable.webp' },
       { icon: Zap, title: 'Micropunción', description: 'Estimulación de colágeno y mejora de textura.', image: '/images/servicio-micropuncion.webp' },
       { icon: FlaskConical, title: 'Peelings Químicos', description: 'Renovación celular y corrección de manchas.', image: '/images/servicio-peeling_quimico.webp' },
@@ -98,14 +98,14 @@ export default function Services() {
                     className="group overflow-hidden rounded-2xl border border-nude-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
                     {image && (
-                      <div className="aspect-[3/2] w-full overflow-hidden">
+                      <div className="aspect-[3/2] w-full overflow-hidden bg-nude-100">
                         <img
                           src={image}
                           alt={title}
                           width={480}
                           height={320}
                           loading="lazy"
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-contain"
                         />
                       </div>
                     )}
