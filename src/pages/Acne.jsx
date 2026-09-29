@@ -23,10 +23,11 @@ const BENEFICIOS = [
 ]
 
 const GALLERY = [
-  { src: '/images/placeholder-gallery-acne-1.webp', alt: 'Tratamiento de acné — resultado 1' },
-  { src: '/images/placeholder-gallery-acne-2.webp', alt: 'Tratamiento de acné — resultado 2' },
-  { src: '/images/placeholder-gallery-acne-3.webp', alt: 'Tratamiento de acné — resultado 3' },
-  { src: '/images/placeholder-gallery-acne-4.webp', alt: 'Tratamiento de acné — resultado 4' },
+  { src: '/images/gallery-acne-1.webp', alt: 'Valoración dermatológica de acné' },
+  { src: '/images/gallery-acne-2.webp', alt: 'Limpieza suave de piel con acné' },
+  { src: '/images/gallery-acne-3.webp', alt: 'Cuidado de piel con acné' },
+  { src: '/images/gallery-acne-4.webp', alt: 'Paciente con acné adulto' },
+  { src: '/images/gallery-acne-5.webp', alt: 'Paciente con acné' },
 ]
 
 export default function Acne() {
@@ -257,7 +258,6 @@ export default function Acne() {
 
             <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
               {GALLERY.map((img) => (
-                // REEMPLAZAR CON IMAGEN REAL: galería de acné
                 <img
                   key={img.src}
                   src={img.src}

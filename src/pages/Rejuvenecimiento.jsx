@@ -23,10 +23,11 @@ const BENEFICIOS = [
 ]
 
 const GALLERY = [
-  { src: '/images/placeholder-gallery-rejuvenecimiento-1.webp', alt: 'Rejuvenecimiento dermatológico — resultado 1' },
-  { src: '/images/placeholder-gallery-rejuvenecimiento-2.webp', alt: 'Rejuvenecimiento dermatológico — resultado 2' },
-  { src: '/images/placeholder-gallery-rejuvenecimiento-3.webp', alt: 'Rejuvenecimiento dermatológico — resultado 3' },
-  { src: '/images/placeholder-gallery-rejuvenecimiento-4.webp', alt: 'Rejuvenecimiento dermatológico — resultado 4' },
+  { src: '/images/gallery-rejuvenecimiento-1.webp', alt: 'Valoración de líneas de expresión' },
+  { src: '/images/gallery-rejuvenecimiento-2.webp', alt: 'Consulta de bioestimulación de colágeno' },
+  { src: '/images/gallery-rejuvenecimiento-3.webp', alt: 'Preparación de tratamiento inyectable' },
+  { src: '/images/gallery-rejuvenecimiento-4.webp', alt: 'Tratamiento de líneas de expresión en frente' },
+  { src: '/images/gallery-rejuvenecimiento-5.webp', alt: 'Belleza natural en piel madura' },
 ]
 
 export default function Rejuvenecimiento() {
@@ -255,7 +256,6 @@ export default function Rejuvenecimiento() {
 
             <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
               {GALLERY.map((img) => (
-                // REEMPLAZAR CON IMAGEN REAL: galería de rejuvenecimiento
                 <img
                   key={img.src}
                   src={img.src}
@@ -263,7 +263,7 @@ export default function Rejuvenecimiento() {
                   width={300}
                   height={300}
                   loading="lazy"
-                  className="placeholder-img aspect-square w-full rounded-2xl object-cover"
+                  className="aspect-square w-full rounded-2xl object-cover"
                 />
               ))}
             </div>
