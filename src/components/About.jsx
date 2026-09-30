@@ -28,7 +28,7 @@ const PILLARS = [
 
 export default function About() {
   return (
-    <section id="dra-haide" className="py-20 md:py-28">
+    <section id="dra-haide" className="py-14 sm:py-20 md:py-28">
       <div className="section-container grid items-center gap-14 md:grid-cols-2">
         <div className="relative order-2 md:order-1">
           <div className="grid grid-cols-2 gap-4">

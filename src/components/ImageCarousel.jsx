@@ -11,6 +11,7 @@ export default function ImageCarousel({ slides, aspectClassName = 'aspect-[3/2]'
   const [index, setIndex] = useState(0)
   const resumeTimeoutRef = useRef(null)
   const autoplayIntervalRef = useRef(null)
+  const touchStartXRef = useRef(null)
 
   const goTo = useCallback((next) => {
     setIndex(((next % slides.length) + slides.length) % slides.length)
@@ -59,8 +60,44 @@ export default function ImageCarousel({ slides, aspectClassName = 'aspect-[3/2]'
     pauseAndScheduleResume()
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      handlePrev()
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      handleNext()
+    }
+  }
+
+  const handleTouchStart = (e) => {
+    touchStartXRef.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e) => {
+    if (touchStartXRef.current === null) return
+    const deltaX = e.changedTouches[0].clientX - touchStartXRef.current
+    touchStartXRef.current = null
+
+    const SWIPE_THRESHOLD = 40
+    if (deltaX > SWIPE_THRESHOLD) {
+      handlePrev()
+    } else if (deltaX < -SWIPE_THRESHOLD) {
+      handleNext()
+    }
+  }
+
   return (
-    <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-2xl bg-nude-100 shadow-sm">
+    <div
+      className="relative mx-auto w-full max-w-[400px] select-none overflow-hidden rounded-2xl bg-nude-100 shadow-sm outline-none"
+      role="region"
+      aria-roledescription="carrusel"
+      aria-label="Galería de imágenes"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className={`relative w-full ${aspectClassName}`}>
         {slides.map((slide, i) => (
           <img

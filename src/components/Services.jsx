@@ -72,7 +72,7 @@ const CATEGORIES = [
 
 export default function Services() {
   return (
-    <section id="servicios" className="bg-nude-50 py-20 md:py-28">
+    <section id="servicios" className="bg-nude-50 py-14 sm:py-20 md:py-28">
       <div className="section-container">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">

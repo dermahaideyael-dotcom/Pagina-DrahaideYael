@@ -21,7 +21,7 @@ const PILLARS = [
 
 export default function Pharmacy() {
   return (
-    <section id="farmacia" className="py-20 md:py-28">
+    <section id="farmacia" className="py-14 sm:py-20 md:py-28">
       <div className="section-container">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">

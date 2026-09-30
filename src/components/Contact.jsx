@@ -104,7 +104,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contacto" className="py-20 md:py-28">
+    <section id="contacto" className="py-14 sm:py-20 md:py-28">
       <div className="section-container">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
@@ -170,7 +170,7 @@ export default function Contact() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Tu nombre"
-                  className="mt-2 w-full rounded-xl border border-nude-200 px-4 py-3 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                  className="mt-2 w-full rounded-xl border border-nude-200 px-4 py-3 text-[16px] outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100 sm:text-sm"
                 />
               </div>
 
@@ -186,7 +186,7 @@ export default function Contact() {
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="(55) 0000-0000"
-                  className="mt-2 w-full rounded-xl border border-nude-200 px-4 py-3 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                  className="mt-2 w-full rounded-xl border border-nude-200 px-4 py-3 text-[16px] outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100 sm:text-sm"
                 />
               </div>
 
@@ -202,7 +202,7 @@ export default function Contact() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="tu@correo.com"
-                  className="mt-2 w-full rounded-xl border border-nude-200 px-4 py-3 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                  className="mt-2 w-full rounded-xl border border-nude-200 px-4 py-3 text-[16px] outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100 sm:text-sm"
                 />
               </div>
 
@@ -217,7 +217,7 @@ export default function Contact() {
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Cuéntanos más sobre lo que necesitas"
-                  className="mt-2 w-full resize-none rounded-xl border border-nude-200 px-4 py-3 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                  className="mt-2 w-full resize-none rounded-xl border border-nude-200 px-4 py-3 text-[16px] outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100 sm:text-sm"
                 />
               </div>
             </div>

@@ -1,6 +1,6 @@
 export default function VideoIntro() {
   return (
-    <section className="bg-white py-16 md:py-20">
+    <section className="bg-white py-12 sm:py-16 md:py-20">
       <div className="section-container">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">

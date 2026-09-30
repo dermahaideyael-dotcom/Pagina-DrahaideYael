@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useLocation } from 'react-router-dom'
 import { Menu, X, Phone, Instagram, Music2 } from 'lucide-react'
 import logo from '@/assets/logo.webp'
@@ -28,13 +29,20 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled ? 'bg-nude-50/95 backdrop-blur-md shadow-sm' : 'bg-nude-50/70 backdrop-blur-sm'
       }`}
     >
-      <div className="section-container flex h-18 items-center justify-between py-4">
+      <div className="section-container relative z-20 flex h-18 items-center justify-between py-4">
         <a href={withHomePrefix('#inicio')} className="flex shrink-0 items-center gap-3">
           <img
             src={logo}
@@ -100,7 +108,7 @@ export default function Header() {
         </div>
 
         <button
-          className="flex items-center justify-center rounded-md p-2 text-primary-900 xl:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-md text-primary-900 xl:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir menú"
         >
@@ -108,8 +116,18 @@ export default function Header() {
         </button>
       </div>
 
+      {open &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-40 bg-black/40 xl:hidden"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />,
+          document.body
+        )}
+
       {open && (
-        <div className="border-t border-nude-200 bg-nude-50 px-6 py-4 xl:hidden">
+        <div className="relative z-20 border-t border-nude-200 bg-nude-50 px-6 py-4 xl:hidden">
           <nav className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => (
               <a

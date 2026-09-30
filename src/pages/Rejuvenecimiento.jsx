@@ -97,7 +97,7 @@ export default function Rejuvenecimiento() {
         </section>
 
         {/* 2. CTA — luce como te sientes */}
-        <section className="bg-white py-20 md:py-28">
+        <section className="bg-white py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <ImageCarousel slides={CAROUSEL_SLIDES} />
 
@@ -131,7 +131,7 @@ export default function Rejuvenecimiento() {
         </section>
 
         {/* 3. Problema */}
-        <section className="bg-white py-20 md:py-28">
+        <section className="bg-white py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div>
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
@@ -158,7 +158,7 @@ export default function Rejuvenecimiento() {
         </section>
 
         {/* 4. Solución */}
-        <section className="bg-nude-100 py-20 md:py-28">
+        <section className="bg-nude-100 py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div className="order-2 md:order-1">
               <img
@@ -196,7 +196,7 @@ export default function Rejuvenecimiento() {
         </section>
 
         {/* 5. Resultados / Beneficios */}
-        <section className="bg-white py-20 md:py-28">
+        <section className="bg-white py-14 sm:py-20 md:py-28">
           <div className="section-container">
             <div className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
@@ -233,7 +233,7 @@ export default function Rejuvenecimiento() {
         </section>
 
         {/* 6. Equipamiento / Procedimiento */}
-        <section className="bg-nude-100 py-20 md:py-28">
+        <section className="bg-nude-100 py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
             <div>
               <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
@@ -259,7 +259,7 @@ export default function Rejuvenecimiento() {
         </section>
 
         {/* 7. CTA principal */}
-        <section className="bg-primary-950 py-16 md:py-20">
+        <section className="bg-primary-950 py-12 sm:py-16 md:py-20">
           <div className="section-container text-center">
             <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
               Agenda tu valoración de rejuvenecimiento
@@ -280,7 +280,7 @@ export default function Rejuvenecimiento() {
         </section>
 
         {/* 8. CTA secundario */}
-        <section className="bg-nude-100 py-16 md:py-20">
+        <section className="bg-nude-100 py-12 sm:py-16 md:py-20">
           <div className="section-container grid items-center gap-8 rounded-3xl bg-white p-8 shadow-sm md:grid-cols-2 md:p-12">
             <div>
               <h3 className="font-display text-2xl font-bold text-primary-950">
