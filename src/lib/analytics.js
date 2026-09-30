@@ -105,6 +105,11 @@ export function trackFormStart() {
   trackEvent('form_start', attributionParams())
 }
 
+/** Clic en una de las tarjetas del Home que llevan a una landing de tratamiento. */
+export function trackClickTreatmentCard(treatment) {
+  trackEvent('click_treatment_card', { treatment, ...attributionParams() })
+}
+
 /** Llamar SOLO cuando el backend confirmó data.ok === true. Nunca antes. */
 export function trackGenerateLead() {
   trackEvent('generate_lead', attributionParams())
