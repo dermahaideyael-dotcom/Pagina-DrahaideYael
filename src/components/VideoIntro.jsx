@@ -12,7 +12,10 @@ export default function VideoIntro() {
         <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-[2rem] bg-white p-3 shadow-xl shadow-primary-900/10">
           <video
             controls
-            preload="none"
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
             poster="/videos/haide-yael-intro-poster.webp"
             className="aspect-video w-full rounded-[1.5rem] object-cover"
           >
