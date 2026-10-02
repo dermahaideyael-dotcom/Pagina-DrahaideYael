@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Mail, MapPin, Phone, Send, Clock } from 'lucide-react'
+import Reveal from '@/components/Reveal'
 import { getAttribution, flattenAttribution } from '@/hooks/useAttribution'
 import { trackClickPhone, trackFormStart, trackGenerateLead } from '@/lib/analytics'
 
@@ -106,7 +107,7 @@ export default function Contact() {
   return (
     <section id="contacto" className="py-14 sm:py-20 md:py-28">
       <div className="section-container">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
             Contacto
           </span>
@@ -115,7 +116,7 @@ export default function Contact() {
             Cuéntanos qué necesitas y nuestro equipo se pondrá en contacto contigo
             para agendar tu cita.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">

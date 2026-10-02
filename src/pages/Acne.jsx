@@ -9,6 +9,8 @@ import Footer from '@/components/Footer'
 import Contact from '@/components/Contact'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import ImageCarousel from '@/components/ImageCarousel'
+import Reveal from '@/components/Reveal'
+import ConsultationSteps from '@/components/ConsultationSteps'
 import { trackClickPhone, trackClickWhatsApp } from '@/lib/analytics'
 
 const WHATSAPP_HREF =
@@ -99,9 +101,11 @@ export default function Acne() {
         {/* 2. CTA — piel sin acné */}
         <section className="bg-white py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
-            <ImageCarousel slides={CAROUSEL_SLIDES} />
+            <Reveal>
+              <ImageCarousel slides={CAROUSEL_SLIDES} />
+            </Reveal>
 
-            <div>
+            <Reveal delay={150}>
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
                 Empieza hoy
               </span>
@@ -126,14 +130,14 @@ export default function Acne() {
                   Agenda tu valoración
                 </a>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* 3. Problema */}
         <section className="bg-white py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
-            <div>
+            <Reveal>
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
                 El problema
               </span>
@@ -143,8 +147,8 @@ export default function Acne() {
                 de productos inadecuados, y en la etapa adulta suele ser más
                 persistente y dejar marcas si no se trata a tiempo.
               </p>
-            </div>
-            <div>
+            </Reveal>
+            <Reveal delay={150}>
               <img
                 src="/images/placeholder-acne.webp"
                 alt="Acné"
@@ -153,14 +157,14 @@ export default function Acne() {
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* 4. Solución */}
         <section className="bg-nude-100 py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
-            <div className="order-2 md:order-1">
+            <Reveal delay={150} className="order-2 md:order-1">
               <img
                 src="/images/placeholder-solution-acne.webp"
                 alt="Solución para el acné"
@@ -169,8 +173,8 @@ export default function Acne() {
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
-            </div>
-            <div className="order-1 md:order-2">
+            </Reveal>
+            <Reveal className="order-1 md:order-2">
               <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
                 La solución
               </span>
@@ -192,30 +196,33 @@ export default function Acne() {
                   </span>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
+
+        {/* Tu primera consulta */}
+        <ConsultationSteps bgClassName="bg-nude-50" />
 
         {/* 5. Resultados / Beneficios */}
         <section className="bg-white py-14 sm:py-20 md:py-28">
           <div className="section-container">
-            <div className="mx-auto max-w-2xl text-center">
+            <Reveal className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
                 Beneficios
               </span>
               <h2 className="section-title mt-6">Lo que buscamos lograr juntos</h2>
-            </div>
+            </Reveal>
 
             <div className="mt-12 grid gap-5 sm:grid-cols-2">
-              {BENEFICIOS.map((b) => (
-                <div key={b.title} className="rounded-2xl border border-nude-200 bg-nude-50 p-6">
+              {BENEFICIOS.map((b, i) => (
+                <Reveal key={b.title} delay={(i % 2) * 100} className="rounded-2xl border border-nude-200 bg-nude-50 p-6">
                   <p className="text-base font-bold text-primary-950">{b.title}</p>
                   <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{b.description}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
 
-            <div className="mt-10">
+            <Reveal className="mt-10">
               <img
                 src="/images/placeholder-before-after-acne.webp"
                 alt="Antes y después — tratamiento de acné"
@@ -224,7 +231,7 @@ export default function Acne() {
                 loading="lazy"
                 className="mx-auto w-full max-w-[500px] rounded-2xl"
               />
-            </div>
+            </Reveal>
 
             <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-nude-500">
               Los resultados pueden variar según cada paciente y no garantizamos
@@ -236,7 +243,7 @@ export default function Acne() {
         {/* 6. Equipamiento / Procedimiento */}
         <section className="bg-nude-100 py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
-            <div>
+            <Reveal>
               <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
                 Tecnología
               </span>
@@ -246,8 +253,8 @@ export default function Acne() {
                 acné y las necesidades de tu piel, siempre con un enfoque
                 médico personalizado.
               </p>
-            </div>
-            <div>
+            </Reveal>
+            <Reveal delay={150}>
               <img
                 src="/images/placeholder-equipo-acne.webp"
                 alt="Equipo utilizado en el tratamiento de acné"
@@ -256,7 +263,7 @@ export default function Acne() {
                 loading="lazy"
                 className="mx-auto w-full max-w-[400px] rounded-2xl"
               />
-            </div>
+            </Reveal>
           </div>
         </section>
 

@@ -7,6 +7,8 @@ import {
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Gallery from '@/components/Gallery'
+import Reveal from '@/components/Reveal'
+import ConsultationSteps from '@/components/ConsultationSteps'
 import Contact from '@/components/Contact'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { trackClickPhone, trackClickWhatsApp } from '@/lib/analytics'
@@ -105,7 +107,7 @@ export default function Melasma() {
         {/* 2. Problema */}
         <section className="bg-white py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
-            <div>
+            <Reveal>
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
                 El problema
               </span>
@@ -115,8 +117,8 @@ export default function Melasma() {
                 cambios hormonales o factores genéticos — identificar la causa
                 es clave antes de cualquier tratamiento.
               </p>
-            </div>
-            <div>
+            </Reveal>
+            <Reveal delay={150}>
               <img
                 src="/images/melasma-problema.webp"
                 alt="Por qué salen las manchas"
@@ -125,14 +127,14 @@ export default function Melasma() {
                 loading="lazy"
                 className="mx-auto h-auto w-full max-w-[420px] rounded-2xl"
               />
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* 3. Solución */}
         <section className="bg-nude-100 py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
-            <div className="order-2 md:order-1">
+            <Reveal delay={150} className="order-2 md:order-1">
               <img
                 src="/images/melasma-solucion.webp"
                 alt="Manchas"
@@ -141,8 +143,8 @@ export default function Melasma() {
                 loading="lazy"
                 className="mx-auto h-auto w-full max-w-[420px] rounded-2xl"
               />
-            </div>
-            <div className="order-1 md:order-2">
+            </Reveal>
+            <Reveal className="order-1 md:order-2">
               <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
                 La solución
               </span>
@@ -164,30 +166,33 @@ export default function Melasma() {
                   </span>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
+
+        {/* Tu primera consulta */}
+        <ConsultationSteps bgClassName="bg-nude-50" />
 
         {/* 4. Resultados / Beneficios */}
         <section className="bg-white py-14 sm:py-20 md:py-28">
           <div className="section-container">
-            <div className="mx-auto max-w-2xl text-center">
+            <Reveal className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
                 Beneficios
               </span>
               <h2 className="section-title mt-6">Lo que buscamos lograr juntos</h2>
-            </div>
+            </Reveal>
 
             <div className="mt-12 grid gap-5 sm:grid-cols-2">
-              {BENEFICIOS.map((b) => (
-                <div key={b.title} className="rounded-2xl border border-nude-200 bg-nude-50 p-6">
+              {BENEFICIOS.map((b, i) => (
+                <Reveal key={b.title} delay={(i % 2) * 100} className="rounded-2xl border border-nude-200 bg-nude-50 p-6">
                   <p className="text-base font-bold text-primary-950">{b.title}</p>
                   <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{b.description}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
 
-            <div className="mt-10">
+            <Reveal className="mt-10">
               <img
                 src="/images/melasma-beneficios.webp"
                 alt="Qué mancha tienes"
@@ -196,7 +201,7 @@ export default function Melasma() {
                 loading="lazy"
                 className="mx-auto h-auto w-full max-w-[480px] rounded-2xl"
               />
-            </div>
+            </Reveal>
 
             <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-nude-500">
               Los resultados pueden variar según cada paciente y no garantizamos
@@ -223,7 +228,7 @@ export default function Melasma() {
         {/* 5. Equipamiento / Procedimiento */}
         <section className="bg-nude-100 py-14 sm:py-20 md:py-28">
           <div className="section-container grid items-center gap-12 md:grid-cols-2">
-            <div>
+            <Reveal>
               <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
                 Tecnología
               </span>
@@ -233,8 +238,8 @@ export default function Melasma() {
                 profundidad de tus manchas, ajustados para minimizar
                 irritación.
               </p>
-            </div>
-            <div>
+            </Reveal>
+            <Reveal delay={150}>
               <img
                 src="/images/melasma-equipo.webp"
                 alt="Tratamiento para manchas y melasma"
@@ -243,7 +248,7 @@ export default function Melasma() {
                 loading="lazy"
                 className="mx-auto h-auto w-full max-w-[420px] rounded-2xl"
               />
-            </div>
+            </Reveal>
           </div>
         </section>
 

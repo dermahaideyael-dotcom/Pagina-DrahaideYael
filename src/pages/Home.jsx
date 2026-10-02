@@ -6,6 +6,7 @@ import About from '@/components/About'
 import Services from '@/components/Services'
 import Pharmacy from '@/components/Pharmacy'
 import Testimonials from '@/components/Testimonials'
+import ConsultationSteps from '@/components/ConsultationSteps'
 import Gallery from '@/components/Gallery'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
@@ -34,6 +35,7 @@ export default function Home() {
         <Services />
         <Pharmacy />
         <Testimonials />
+        <ConsultationSteps bgClassName="bg-white" />
         <Gallery slides={GALLERY_SLIDES} />
         <Contact />
       </main>

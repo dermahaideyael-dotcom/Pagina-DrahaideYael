@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react'
+import Reveal from '@/components/Reveal'
 import { trackClickTreatmentCard } from '@/lib/analytics'
 
 const TREATMENTS = [
@@ -36,7 +37,7 @@ export default function TreatmentHighlights() {
   return (
     <section className="bg-white py-14 sm:py-20 md:py-28">
       <div className="section-container">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
             ¿Qué buscas tratar?
           </span>
@@ -44,15 +45,15 @@ export default function TreatmentHighlights() {
           <p className="section-subtitle mx-auto">
             Explora cada especialidad y encuentra el diagnóstico indicado para ti.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          {TREATMENTS.map((t) => (
+          {TREATMENTS.map((t, i) => (
+            <Reveal key={t.id} delay={i * 100}>
             <a
-              key={t.id}
               href={t.href}
               onClick={() => trackClickTreatmentCard(t.id)}
-              className="group overflow-hidden rounded-3xl border border-nude-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              className="group block h-full overflow-hidden rounded-3xl border border-nude-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="aspect-[3/2] w-full overflow-hidden bg-nude-100">
                 <img
@@ -73,6 +74,7 @@ export default function TreatmentHighlights() {
                 </span>
               </div>
             </a>
+            </Reveal>
           ))}
         </div>
       </div>

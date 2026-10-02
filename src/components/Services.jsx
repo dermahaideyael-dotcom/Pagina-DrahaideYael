@@ -19,6 +19,7 @@ import {
   Radiation,
   CircleDot,
 } from 'lucide-react'
+import Reveal from '@/components/Reveal'
 
 const CATEGORIES = [
   {
@@ -74,7 +75,7 @@ export default function Services() {
   return (
     <section id="servicios" className="bg-nude-50 py-14 sm:py-20 md:py-28">
       <div className="section-container">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
             Servicios especializados
           </span>
@@ -83,19 +84,19 @@ export default function Services() {
             Un enfoque integral que combina dermatología clínica, estética,
             tratamientos corporales y procedimientos especializados.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-16 space-y-16">
           {CATEGORIES.map((category) => (
             <div key={category.id}>
-              <h3 className="text-xl font-bold text-primary-950 md:text-2xl">
+              <Reveal as="h3" className="text-xl font-bold text-primary-950 md:text-2xl">
                 {category.title}
-              </h3>
+              </Reveal>
               <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                {category.items.map(({ icon: Icon, title, description, image }) => (
+                {category.items.map(({ icon: Icon, title, description, image }, i) => (
+                  <Reveal key={title} delay={(i % 4) * 100}>
                   <div
-                    key={title}
-                    className="group overflow-hidden rounded-2xl border border-nude-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                    className="group h-full overflow-hidden rounded-2xl border border-nude-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
                     {image && (
                       <div className="aspect-[3/2] w-full overflow-hidden bg-nude-100">
@@ -117,6 +118,7 @@ export default function Services() {
                       <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{description}</p>
                     </div>
                   </div>
+                  </Reveal>
                 ))}
               </div>
             </div>

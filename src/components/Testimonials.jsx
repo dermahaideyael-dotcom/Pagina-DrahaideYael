@@ -1,4 +1,5 @@
 import { ExternalLink, Star } from 'lucide-react'
+import Reveal from '@/components/Reveal'
 
 const GOOGLE_REVIEWS_URL = 'https://g.page/r/CewkbkKKH-VZEBM/review'
 const DOCTORALIA_REVIEWS_URL =
@@ -30,7 +31,7 @@ export default function Testimonials() {
   return (
     <section id="testimonios" className="bg-primary-950 py-14 sm:py-20 md:py-28">
       <div className="section-container">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-primary-200">
             Testimonios
           </span>
@@ -40,16 +41,16 @@ export default function Testimonials() {
           <p className="mx-auto mt-4 max-w-2xl text-base text-primary-100 md:text-lg">
             Reseñas reales de pacientes en Google y Doctoralia.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {REVIEWS.map((review) => (
+          {REVIEWS.map((review, i) => (
+            <Reveal key={review.name} delay={(i % 3) * 100}>
             <a
-              key={review.name}
               href={review.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 transition hover:-translate-y-1 hover:bg-white/10 hover:ring-white/20"
+              className="block h-full rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 transition hover:-translate-y-1 hover:bg-white/10 hover:ring-white/20"
             >
               <Stars />
               <p className="mt-3 text-sm leading-relaxed text-primary-50">
@@ -60,6 +61,7 @@ export default function Testimonials() {
                 <span className="rounded-full bg-white/10 px-2.5 py-1">{review.source}</span>
               </div>
             </a>
+            </Reveal>
           ))}
         </div>
 

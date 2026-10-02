@@ -1,4 +1,5 @@
 import { ShieldCheck, HeartHandshake, ScrollText, Stethoscope } from 'lucide-react'
+import Reveal from '@/components/Reveal'
 import clinica1 from '@/assets/clinica-1.webp'
 import clinica2 from '@/assets/clinica-2.webp'
 import clinica3 from '@/assets/clinica-3.webp'
@@ -30,7 +31,7 @@ export default function About() {
   return (
     <section id="dra-haide" className="py-14 sm:py-20 md:py-28">
       <div className="section-container grid items-center gap-14 md:grid-cols-2">
-        <div className="relative order-2 md:order-1">
+        <Reveal delay={150} className="relative order-2 md:order-1">
           <div className="grid grid-cols-2 gap-4">
             <img
               src={clinica1}
@@ -57,9 +58,9 @@ export default function About() {
               className="h-40 w-full rounded-2xl object-cover shadow-lg"
             />
           </div>
-        </div>
+        </Reveal>
 
-        <div className="order-1 md:order-2">
+        <Reveal className="order-1 md:order-2">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
             Dra. Haide Yael
           </span>
@@ -88,7 +89,7 @@ export default function About() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

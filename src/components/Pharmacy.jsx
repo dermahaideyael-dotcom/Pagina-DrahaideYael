@@ -1,4 +1,5 @@
 import { CheckCircle2, ShoppingBag, Sparkles } from 'lucide-react'
+import Reveal from '@/components/Reveal'
 import { trackClickWhatsApp } from '@/lib/analytics'
 
 const WHATSAPP_HREF =
@@ -23,7 +24,7 @@ export default function Pharmacy() {
   return (
     <section id="farmacia" className="py-14 sm:py-20 md:py-28">
       <div className="section-container">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700">
             Farmacia dermatológica
           </span>
@@ -32,13 +33,13 @@ export default function Pharmacy() {
             Contamos con una línea de dermocosméticos seleccionados por la Dra.
             Haide para complementar tu tratamiento y cuidar tu piel en casa.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-5 lg:items-center">
           <div className="grid grid-cols-2 gap-5 lg:col-span-3">
-            {CATEGORIES.map((category) => (
+            {CATEGORIES.map((category, i) => (
+              <Reveal key={category.name} delay={i * 100}>
               <div
-                key={category.name}
                 className="flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-nude-200 bg-white p-4 text-center shadow-sm transition hover:shadow-lg"
               >
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-50 text-accent-600">
@@ -46,10 +47,11 @@ export default function Pharmacy() {
                 </span>
                 <p className="text-sm font-semibold text-primary-950">{category.name}</p>
               </div>
+              </Reveal>
             ))}
           </div>
 
-          <div className="lg:col-span-2">
+          <Reveal delay={200} className="lg:col-span-2">
             <div className="rounded-3xl bg-primary-950 p-8 text-white md:p-10">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
                 <ShoppingBag size={24} />
@@ -77,7 +79,7 @@ export default function Pharmacy() {
                 Consultar productos y disponibilidad
               </a>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
