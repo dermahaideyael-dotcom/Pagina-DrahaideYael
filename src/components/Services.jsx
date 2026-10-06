@@ -79,11 +79,14 @@ const CATEGORIES = [
   },
 ]
 
-// Tailwind necesita ver las clases completas en el código fuente para
-// generarlas — no se puede interpolar el número de columnas directamente.
-const GRID_COLS_CLASS = {
-  3: 'lg:grid-cols-3',
-  4: 'lg:grid-cols-4',
+// flex + justify-center (en vez de CSS grid) para que la última fila
+// incompleta quede centrada, no pegada a la izquierda. El ancho de cada
+// tarjeta se calcula a mano para que "n por fila" quepa exacto descontando
+// los gaps — Tailwind necesita las clases completas escritas aquí para
+// generarlas, no se puede interpolar el número de columnas en runtime.
+const ITEM_WIDTH_CLASS = {
+  3: 'w-full sm:w-[calc(50%_-_0.625rem)] lg:w-[calc(33.333%_-_0.834rem)]',
+  4: 'w-full sm:w-[calc(50%_-_0.625rem)] lg:w-[calc(25%_-_0.938rem)]',
 }
 
 export default function Services() {
@@ -107,9 +110,9 @@ export default function Services() {
               <Reveal as="h3" className="text-xl font-bold text-primary-950 md:text-2xl">
                 {category.title}
               </Reveal>
-              <div className={`mt-6 grid gap-5 sm:grid-cols-2 ${GRID_COLS_CLASS[category.cols]}`}>
+              <div className="mt-6 flex flex-wrap justify-center gap-5">
                 {category.items.map(({ icon: Icon, title, description, image }, i) => (
-                  <Reveal key={title} delay={(i % 4) * 100}>
+                  <Reveal key={title} delay={(i % 4) * 100} className={ITEM_WIDTH_CLASS[category.cols]}>
                   <div
                     className="group h-full overflow-hidden rounded-2xl border border-nude-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
