@@ -31,7 +31,7 @@ export default function About() {
   return (
     <section id="dra-haide" className="py-14 sm:py-20 md:py-28">
       <div className="section-container grid items-center gap-14 md:grid-cols-2">
-        <Reveal delay={150} className="relative order-2 md:order-1">
+        <Reveal variant="left" className="relative order-2 md:order-1">
           <div className="grid grid-cols-2 gap-4">
             <img
               src={clinica1}
@@ -60,7 +60,7 @@ export default function About() {
           </div>
         </Reveal>
 
-        <Reveal className="order-1 md:order-2">
+        <Reveal variant="right" delay={100} className="order-1 md:order-2">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
             Dra. Haide Yael
           </span>

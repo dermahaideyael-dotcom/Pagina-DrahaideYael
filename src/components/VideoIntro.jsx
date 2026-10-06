@@ -1,15 +1,17 @@
+import Reveal from '@/components/Reveal'
+
 export default function VideoIntro() {
   return (
     <section className="bg-white py-12 sm:py-16 md:py-20">
       <div className="section-container">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">
             Conócenos
           </span>
           <h2 className="section-title mt-6">Un vistazo a la clínica</h2>
-        </div>
+        </Reveal>
 
-        <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-[2rem] bg-white p-3 shadow-xl shadow-primary-900/10">
+        <Reveal variant="zoom" delay={100} className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-[2rem] bg-white p-3 shadow-xl shadow-primary-900/10">
           <video
             controls
             autoPlay
@@ -21,7 +23,7 @@ export default function VideoIntro() {
           >
             <source src="/videos/haide-yael-intro.mp4" type="video/mp4" />
           </video>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

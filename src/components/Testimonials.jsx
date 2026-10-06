@@ -29,7 +29,7 @@ function Stars() {
 
 export default function Testimonials() {
   return (
-    <section id="testimonios" className="bg-primary-950 py-14 sm:py-20 md:py-28">
+    <section id="testimonios" className="bg-primary-950 py-14 sm:py-20 md:py-28 scroll-mt-24">
       <div className="section-container">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-primary-200">

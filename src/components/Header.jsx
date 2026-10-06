@@ -17,6 +17,7 @@ const NAV_LINKS = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [activeHash, setActiveHash] = useState('#inicio')
   const { pathname } = useLocation()
   // Los anclas (#servicios, etc.) solo existen en el home — desde otra ruta
   // (ej. /melasma) hay que anteponer "/" para volver ahí antes de saltar.
@@ -28,6 +29,25 @@ export default function Header() {
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  // Resalta en el menú la sección que está a la vista (scrollspy) - solo
+  // aplica en el home, que es donde viven los anclas.
+  useEffect(() => {
+    if (pathname !== '/') return
+    const sections = NAV_LINKS.map((l) => document.getElementById(l.href.slice(1))).filter(Boolean)
+    if (sections.length === 0) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting)
+        if (visible.length === 0) return
+        const top = visible.reduce((a, b) => (a.boundingClientRect.top < b.boundingClientRect.top ? a : b))
+        setActiveHash(`#${top.target.id}`)
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    )
+    sections.forEach((s) => observer.observe(s))
+    return () => observer.disconnect()
+  }, [pathname])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -60,15 +80,21 @@ export default function Header() {
         </a>
 
         <nav className="hidden xl:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={withHomePrefix(link.href)}
-              className="text-sm font-medium text-nude-700 transition hover:text-primary-800"
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === '/' && link.href === activeHash
+            return (
+              <a
+                key={link.href}
+                href={withHomePrefix(link.href)}
+                aria-current={isActive ? 'true' : undefined}
+                className={`text-sm font-medium transition ${
+                  isActive ? 'text-primary-800 font-semibold' : 'text-nude-700 hover:text-primary-800'
+                }`}
+              >
+                {link.label}
+              </a>
+            )
+          })}
         </nav>
 
         <div className="hidden md:flex items-center gap-3">

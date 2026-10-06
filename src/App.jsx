@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useAttribution } from '@/hooks/useAttribution'
 import { initAnalytics, trackPageView } from '@/lib/analytics'
 import { initOpenAIPixel } from '@/lib/openaiPixel'
+import ScrollProgress from '@/components/ScrollProgress'
 
 // Cada ruta se descarga solo cuando se visita, así una landing de anuncio
 // (ej. /melasma) no le hace descargar al visitante el código de las otras
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <Suspense fallback={<div className="min-h-screen bg-nude-50" />}>
+      <ScrollProgress />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/melasma" element={<Melasma />} />

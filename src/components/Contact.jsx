@@ -105,7 +105,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contacto" className="py-14 sm:py-20 md:py-28">
+    <section id="contacto" className="py-14 sm:py-20 md:py-28 scroll-mt-24">
       <div className="section-container">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-700">

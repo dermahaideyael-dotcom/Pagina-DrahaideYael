@@ -1,11 +1,16 @@
 import { ArrowRight, MessageCircle } from 'lucide-react'
 import { trackClickWhatsApp } from '@/lib/analytics'
+import { useParallax } from '@/hooks/useParallax'
 
 export default function Hero() {
+  const blobTopRef = useParallax(0.12)
+  const blobBottomRef = useParallax(0.08)
+  const portraitRef = useParallax(0.06)
+
   return (
-    <section id="inicio" className="relative overflow-hidden bg-nude-50 pt-14 pb-20 md:pt-20 md:pb-28">
-      <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-nude-200/50 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-primary-100/40 blur-3xl" />
+    <section id="inicio" className="relative overflow-hidden bg-nude-50 pt-14 pb-20 md:pt-20 md:pb-28 scroll-mt-24">
+      <div ref={blobTopRef} className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-nude-200/50 blur-3xl" />
+      <div ref={blobBottomRef} className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-primary-100/40 blur-3xl" />
 
       <div className="section-container relative grid items-center gap-12 md:grid-cols-2">
         <div className="animate-fade-in-up">
@@ -22,7 +27,7 @@ export default function Hero() {
           </p>
 
           <p className="section-subtitle mt-5 text-nude-700">
-            Atención médica personalizada, ética y sustentada en la evidencia
+            Atención médica personalizada, ética, sustentada en la evidencia
             científica, priorizando siempre tu seguridad, salud y bienestar.
           </p>
 
@@ -44,7 +49,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative">
+        <div ref={portraitRef} className="relative">
           <div className="rounded-[2rem] bg-white p-3 shadow-xl shadow-primary-900/10">
             <div className="aspect-[4/5] w-full overflow-hidden rounded-[1.5rem]">
               <img

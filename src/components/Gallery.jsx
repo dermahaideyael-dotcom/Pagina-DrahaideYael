@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Reveal from '@/components/Reveal'
 
 const DEFAULT_SLIDES = [
   { name: 'cara', alt: 'Cuidado de piel — Dra. Haide Yael' },
@@ -94,7 +95,9 @@ export default function Gallery({ slides = DEFAULT_SLIDES }) {
 
   return (
     <section className="section-container" style={{ marginTop: 60, marginBottom: 40 }}>
-      <div
+      <Reveal
+        as="div"
+        variant="zoom"
         ref={containerRef}
         className="image-gallery relative mx-auto w-full max-w-sm select-none overflow-hidden rounded-xl shadow-lg outline-none sm:max-w-md"
         role="region"
@@ -157,7 +160,7 @@ export default function Gallery({ slides = DEFAULT_SLIDES }) {
             />
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }
