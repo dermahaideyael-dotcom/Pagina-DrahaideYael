@@ -69,7 +69,7 @@ export default function TreatmentHighlights() {
                 <h3 className="text-xl font-bold text-primary-950">{t.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-nude-600">{t.description}</p>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-700 transition group-hover:gap-3">
-                  Ver tratamiento
+                  Ver más
                   <ArrowRight size={16} />
                 </span>
               </div>
