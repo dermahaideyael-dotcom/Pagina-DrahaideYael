@@ -1,4 +1,4 @@
-import { CheckCircle2, ShoppingBag, Sparkles } from 'lucide-react'
+import { CheckCircle2, ShoppingBag } from 'lucide-react'
 import Reveal from '@/components/Reveal'
 import { trackClickWhatsApp } from '@/lib/analytics'
 
@@ -8,10 +8,10 @@ const WHATSAPP_HREF =
   '&utm_source=chatgpt&utm_medium=paid&utm_campaign=farmacia'
 
 const CATEGORIES = [
-  { name: 'Protectores solares dermatológicos' },
-  { name: 'Tratamientos para acné' },
-  { name: 'Cremas hidratantes especializadas' },
-  { name: 'Productos antiedad y piel sensible' },
+  { name: 'Protectores solares dermatológicos', image: '/images/farmacia-protectores-solares.webp' },
+  { name: 'Tratamientos para acné', image: '/images/farmacia-tratamientos-acne.webp' },
+  { name: 'Cremas hidratantes especializadas', image: '/images/farmacia-cremas-hidratantes.webp' },
+  { name: 'Productos antiedad y piel sensible', image: '/images/farmacia-productos-antiedad.webp' },
 ]
 
 const PILLARS = [
@@ -40,12 +40,19 @@ export default function Pharmacy() {
             {CATEGORIES.map((category, i) => (
               <Reveal key={category.name} delay={i * 100}>
               <div
-                className="flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-nude-200 bg-white p-4 text-center shadow-sm transition hover:shadow-lg"
+                className="flex aspect-square flex-col overflow-hidden rounded-2xl border border-nude-200 bg-white shadow-sm transition hover:shadow-lg"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-50 text-accent-600">
-                  <Sparkles size={22} />
-                </span>
-                <p className="text-sm font-semibold text-primary-950">{category.name}</p>
+                <div className="flex-1 overflow-hidden bg-nude-100">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    width={480}
+                    height={480}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <p className="p-3 text-center text-sm font-semibold text-primary-950">{category.name}</p>
               </div>
               </Reveal>
             ))}
